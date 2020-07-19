@@ -1,0 +1,41 @@
+{
+    "name": "hi-folks/rando-php",
+    "description": "Random generator Library for PHP",
+    "keywords": [
+        "hi-folks",
+        "rando-php"
+    ],
+    "homepage": "https://github.com/hi-folks/rando-php",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Roberto Butti",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "HiFolks\\RandoPhp\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "HiFolks\\RandoPhp\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

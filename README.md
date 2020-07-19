@@ -52,6 +52,13 @@ Sometime you want to obtain some random sequences. For example, you want to roll
 $randomRolls = Randomize::sequence()->min(1)->max(6)->count(15)->generate();
 ```
 
+### Generate sequences with no duplicates
+Sometime you want to obtain some random sequences with **no duplicates**. For example, you want to play "Tombola" (extracting number from 1 to 90 with NO duplicates):
+
+```php
+$randomTombola = Randomize::sequence()->min(1)->max(90)->count(90)->unique()->generate();
+```
+
 ### Testing
 
 ``` bash
