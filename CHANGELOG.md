@@ -5,6 +5,7 @@ All notable changes to `rando-php` will be documented in this file
 ## 0.1.1 - WIP
 
 ### Add
+- range method for integer (shortcut for min and max)
 
 ### Change
 

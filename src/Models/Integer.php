@@ -21,6 +21,19 @@ class Integer
         return $this;
     }
 
+    /**
+     * Set the range (min and max)
+     * Calling range(1,10), it is equivalent of ->min(1)->max(10)
+     * @param $min
+     * @param $max
+     * @return $this
+     */
+    public function range($min, $max) {
+        $this->min = $min;
+        $this->max = $max;
+        return $this;
+    }
+
     public function generate() {
         return random_int($this->min, $this->max);
     }
