@@ -3,6 +3,5 @@ composer.lock
 docs
 vendor
 coverage
-examples
 .idea
 coverage.clover
