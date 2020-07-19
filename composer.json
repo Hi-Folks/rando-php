@@ -3,7 +3,12 @@
     "description": "Random generator Library for PHP",
     "keywords": [
         "hi-folks",
-        "rando-php"
+        "rando-php",
+        "random",
+        "generator",
+        "sequence",
+        "draw",
+        "library"
     ],
     "homepage": "https://github.com/hi-folks/rando-php",
     "license": "MIT",
