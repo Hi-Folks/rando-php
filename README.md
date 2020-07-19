@@ -1,6 +1,6 @@
 # Rando-PHP
 
-![CICD Github Actions](https://github.com/Hi-Folks/rando-php/workflows/PHP%20Composer/badge.svg)
+![CICD Github Actions](https://github.com/Hi-Folks/rando-php/workflows/PHP%20test/badge.svg)
 ![GitHub last commit](https://img.shields.io/github/last-commit/hi-folks/rando-php)
 ![GitHub Release Date](https://img.shields.io/github/release-date/hi-folks/rando-php)
 ![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/hi-folks/rando-php)
