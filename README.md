@@ -59,6 +59,13 @@ Sometime you want to obtain some random sequences with **no duplicates**. For ex
 $randomTombola = Randomize::sequence()->min(1)->max(90)->count(90)->unique()->generate();
 ```
 
+### Suggest which JS framework you could use in your next project
+
+```php
+$array=["React.js", "Vue.js", "Svelte.js", "Angular.js" , "Alpine.js", "Vanilla js"];
+$randomJs = Draw::sample($array)->count(1)->extract();
+```
+
 ### Testing
 
 ``` bash
