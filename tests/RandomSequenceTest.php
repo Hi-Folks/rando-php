@@ -72,6 +72,16 @@ class RandomSequenceTest extends TestCase
 
     }
 
+    /** @test */
+    public function random_sequence_implode() {
+        $min=1;
+        $max=10;
+        $count=3;
+        $string = Randomize::sequence()->integer()->min($min)->max($max)->implode()->count($count)->generate();
+        $this->assertIsString($string);
+
+    }
+
 
 
 

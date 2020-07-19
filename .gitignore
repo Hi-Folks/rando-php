@@ -5,3 +5,4 @@ vendor
 coverage
 examples
 .idea
+coverage.clover
