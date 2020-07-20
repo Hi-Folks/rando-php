@@ -72,6 +72,23 @@ $randomJs = Draw::sample($array)->count(1)->extract();
 composer test
 ```
 
+If you want to see some coverage report you can execute phpunit with coverage-text option:
+
+```bash
+vendor/bin/phpunit --coverage-text
+```
+
+### Warning :warning:
+
+Under the hood RandoPHP uses some native PHP functions like:
+- array_rand(): [PHP Doc for array_rand](https://www.php.net/manual/en/function.array-rand.php);
+- random_int(): [PHP Doc for random_int](https://www.php.net/manual/en/function.random-int.php);
+- shuffle(): [PHP Doc for shuffle](https://www.php.net/manual/en/function.shuffle);
+- random_bytes(): [PHP Doc for random_bytes](https://www.php.net/manual/en/function.random-bytes).
+
+These PHP functions use a pseudo random number generator that is not suitable for cryptographic purposes.
+
+
 ### Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
