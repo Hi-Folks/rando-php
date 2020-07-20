@@ -6,12 +6,18 @@
 ![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/hi-folks/rando-php)
 
 
-This is a PHP open source package for random stuff. With this package you can:
-- **Draw**: Extract random items from an array. This is useful when you want to "draw" some numbers or items;
+RandoPHP is a PHP open source package for random stuff. With this package you can:
+- **Draw**: Extract random items (sample) from an array. This is useful when you want to "draw" some numbers or items;
 - **Generate**: useful for create random
    - *item* like integer, byte, boolean;
    - *sequences* like array of integer;
 
+With the fluent interface you can control some things like:
+- minimum and maximum value for generation;
+- how many items you want to create;
+- for sequences if you want or not duplicates ([1,5,3,1,1], 1 is duplicate or [1,6,5,3,8], no duplicates);
+- And other stuff, see the documentation for more options.
+ 
 ## Installation
 
 You can install the package via composer:
