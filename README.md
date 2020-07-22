@@ -62,7 +62,7 @@ $randomRolls = Randomize::sequence()->min(1)->max(6)->count(15)->generate();
 Sometime you want to obtain some random sequences with **no duplicates**. For example, you want to play "Tombola" (extracting number from 1 to 90 with NO duplicates):
 
 ```php
-$randomTombola = Randomize::sequence()->min(1)->max(90)->count(90)->unique()->generate();
+$randomTombola = Randomize::sequence()->min(1)->max(90)->count(90)->noDuplicates()->generate();
 ```
 
 ### Suggest which JS framework you could use in your next project

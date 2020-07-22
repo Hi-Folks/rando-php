@@ -5,7 +5,8 @@ All notable changes to `rando-php` will be documented in this file
 
 ### Add
 - preserveKeys() during drawing sample from an associative array
- 
+- added some test in order to have coverage 100%
+  
 ### Change
 - method unique(), allowDuplicates(), noDuplicates() for sequence generation;
 
