@@ -5,6 +5,7 @@
 ![GitHub Release Date](https://img.shields.io/github/release-date/hi-folks/rando-php)
 ![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/hi-folks/rando-php)
 
+![RandoPHP](rando-php.png)
 
 RandoPHP is a PHP open source package for random stuff. With this package you can:
 - **Draw**: Extract random items (sample) from an array. This is useful when you want to "draw" some numbers or items;
