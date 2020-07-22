@@ -19,16 +19,33 @@ class Sequence
 
 
     public function integer() {
-
         $this->type("int");
         return $this;
     }
 
+    /**
+     * Unique means that the sequence includes NO duplicates
+     * [1,2,4,7,3] is $unique === true, no duplicates
+     * [1,4,3,4,3] is $unique === false, with duplicates
+     * @param bool $unique
+     * @return $this
+     */
     public function unique($unique = true): self
     {
         $this->unique=$unique;
         return $this;
     }
+
+    public function allowDuplicates(): self
+    {
+        return $this->unique(false);
+    }
+    public function noDuplicates(): self
+    {
+        return $this->unique(true);
+    }
+
+
     /**
      * Set the output. The extract method instead of returning an array,
      * it returns a string with items separated by ","
@@ -80,8 +97,7 @@ class Sequence
             case "int":
                 if ($this->unique) {
                     $arr = range($this->min, $this->max);
-
-                    $result = Draw::sample($arr)->allowDuplicates(false)->count($this->count)->extract();
+                    $result = Draw::sample($arr)->noDuplicates()->count($this->count)->extract();
 
                 } else {
                     for ($i = 0; $i < $this->count; $i++) {

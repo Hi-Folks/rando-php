@@ -31,7 +31,7 @@ echo "15 ROLLS: ". $randomRolls;
 echo PHP_EOL. "-----------------".PHP_EOL;
 
 echo "--- TOMBOLA ".PHP_EOL;
-$randomTombola = Randomize::sequence()->min(1)->max(90)->count(90)->unique()->implode()->generate();
+$randomTombola = Randomize::sequence()->min(1)->max(90)->count(90)->unique("true")->implode()->generate();
 echo "TOMBOLA: ". $randomTombola;
 echo PHP_EOL. "-----------------".PHP_EOL;
 

@@ -14,7 +14,7 @@ class Sample
 {
     private $array=[];
     private $count = 1;
-    private $allowDuplicates = false;
+    private $unique = true;
     private $implode = false;
 
 
@@ -34,14 +34,24 @@ class Sample
         return $this;
     }
 
+
+    public function unique($unique= true): self {
+        $this->unique = $unique;
+        return $this;
+    }
     /**
      * Allow extract duplicates from the original array
-     * @param bool $allow
      * @return $this
      */
-    public function allowDuplicates( $allow = true) {
-        $this->allowDuplicates = $allow;
-        return $this;
+    public function allowDuplicates() {
+        return $this->unique(false);
+    }
+    /**
+     * No duplicates from the original array
+     * @return $this
+     */
+    public function noDuplicates() {
+        return $this->unique(true);
     }
 
     /**
@@ -53,7 +63,7 @@ class Sample
     public function extractKeys() {
         $size = count($this->array);
         if ($size >=1) {
-            if ($this->allowDuplicates) {
+            if ( ! $this->unique) {
                 $keys= array_keys($this->array);
                 $result = [];
                 for ($i =0; $i<$this->count; $i++) {
@@ -96,7 +106,7 @@ class Sample
         $keys = $this->extractKeys();
         $results = [];
         foreach ((array) $keys as $key) {
-            if ($this->allowDuplicates) {
+            if ( ! $this->unique) {
                 $results[] = $this->array[$key];
             } else {
                 $results[$key] = $this->array[$key];
