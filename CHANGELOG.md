@@ -1,6 +1,14 @@
 # Changelog
 
 All notable changes to `rando-php` will be documented in this file
+## 0.1.2 - WIP
+
+### Add
+- preserveKeys() during drawing sample from an associative array
+ 
+### Change
+- method unique(), allowDuplicates(), noDuplicates() for sequence generation;
+
 
 ## 0.1.1 - 2020-07-20
 

@@ -62,4 +62,14 @@ class DrawSampleTest extends TestCase
 
     }
 
+    /** @test */
+    public function random_extract_preservekeys()
+    {
+        $array=range(1,100);
+        $count=5;
+        $sample = Draw::sample($array)->count($count)->preserveKeys()->extract();
+        $this->assertIsArray($sample);
+        $this->assertEquals($count, count($sample), "Check extract count is correct");
+    }
+
 }

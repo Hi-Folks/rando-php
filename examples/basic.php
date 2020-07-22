@@ -34,11 +34,22 @@ echo "--- TOMBOLA ".PHP_EOL;
 $randomTombola = Randomize::sequence()->min(1)->max(90)->count(90)->unique("true")->implode()->generate();
 echo "TOMBOLA: ". $randomTombola;
 echo PHP_EOL. "-----------------".PHP_EOL;
-
+$randomTombola = Randomize::sequence()->min(1)->max(90)->count(90)->noDuplicates()->generate();
+var_dump($randomTombola);
 echo "--- SUGGEST ME THE  JS FRAMEWORK TO USE ".PHP_EOL;
 $array=["React.js", "Vue.js", "Svelte.js", "Angular.js" , "Alpine.js", "Vanilla js"];
 $randomJs = Draw::sample($array)->count(1)->implode()->extract();
 echo "FRAMEWORK: ". $randomJs;
 echo PHP_EOL. "-----------------".PHP_EOL;
+$array=[
+    "react"=>"React.js",
+    "vue" => "Vue.js",
+    "svelte" => "Svelte.js",
+    "angular"=> "Angular.js" ,
+    "alpine" => "Alpine.js",
+    "vanilla" => "Vanilla js"
+];
+$randomJs = Draw::sample($array)->count(2)->preserveKeys()->extract();
+var_dump($randomJs);
 
 

@@ -16,6 +16,7 @@ class Sample
     private $count = 1;
     private $unique = true;
     private $implode = false;
+    private $preserveKeys = false;
 
 
 
@@ -31,6 +32,13 @@ class Sample
      */
     public function count( $count = 1) {
         $this->count = $count;
+        return $this;
+    }
+
+
+    public function preserveKeys():self
+    {
+        $this->preserveKeys = true;
         return $this;
     }
 
@@ -109,7 +117,12 @@ class Sample
             if ( ! $this->unique) {
                 $results[] = $this->array[$key];
             } else {
-                $results[$key] = $this->array[$key];
+                if ($this->preserveKeys) {
+                    $results[$key] = $this->array[$key];
+                } else {
+                    $results[] = $this->array[$key];
+                }
+
             }
         }
         if ($this->implode) {
