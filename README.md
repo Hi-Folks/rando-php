@@ -66,12 +66,24 @@ Sometime you want to obtain some random sequences with **no duplicates**. For ex
 $randomTombola = Randomize::sequence()->min(1)->max(90)->count(90)->noDuplicates()->generate();
 ```
 
-### Suggest which JS framework you could use in your next project
-
+### Suggest which JS framework you could use in your next project (random)
 ```php
 $array=["React.js", "Vue.js", "Svelte.js", "Angular.js" , "Alpine.js", "Vanilla js"];
-$randomJs = Draw::sample($array)->count(1)->extract();
+$randomJs = Draw::sample($array)->extract();
 ```
+
+### Extract 3 JS framework you could use in your next project
+```php
+$array=["React.js", "Vue.js", "Svelte.js", "Angular.js" , "Alpine.js", "Vanilla js"];
+$randomJs = Draw::sample($array)->count(3)->extract();
+```
+
+### Extract 3 JS framework (duplicates allowed)
+```php
+$array = ["React.js", "Vue.js", "Svelte.js", "Angular.js", "Alpine.js", "Vanilla js"];
+$randomJs = Draw::sample($array)->count(3)->allowDuplicates()->extract();
+```
+
 
 ### Testing
 

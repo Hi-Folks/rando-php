@@ -1,7 +1,8 @@
 # Changelog
 
-All notable changes to `rando-php` will be documented in this file
-## 0.1.2 - WIP
+## 0.1.3 - WIP
+
+## 0.1.2 - 2020-07-22
 
 ### Add
 - preserveKeys() during drawing sample from an associative array
