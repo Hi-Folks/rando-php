@@ -1,22 +1,27 @@
 <?php
-
-
 namespace HiFolks\RandoPhp\Models;
-
 
 class Integer
 {
     private $min = 0;
     private $max= 100;
 
-    /** @return self */
-    public function max($max) {
+    /**
+     * Set the greatest value to generate
+     * @param $max int greatest value
+     * @return self
+     */
+    public function max(int $max) {
         $this->max = $max;
         return $this;
     }
 
-    /** @return self */
-    public function min($min) {
+    /**
+     * Set the smallest value to generate
+     * @param $min int  smallest value
+     * @return self
+     */
+    public function min(int $min) {
         $this->min = $min;
         return $this;
     }
@@ -28,13 +33,18 @@ class Integer
      * @param $max
      * @return $this
      */
-    public function range($min, $max) {
+    public function range(int $min, int $max) {
         $this->min = $min;
         $this->max = $max;
         return $this;
     }
 
-    public function generate() {
+    /**
+     * Generate and returns a random integer (considering $min and $max attribute)
+     * @return int the random value (integer)
+     * @throws \Exception
+     */
+    public function generate():int {
         return random_int($this->min, $this->max);
     }
 
