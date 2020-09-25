@@ -10,7 +10,7 @@ class Integer
     /**
      * Set the greatest value to generate
      *
-     * @param  $max int greatest value
+     * @param int $max greatest value
      * @return self
      */
     public function max(int $max)
@@ -22,7 +22,7 @@ class Integer
     /**
      * Set the smallest value to generate
      *
-     * @param  $min int  smallest value
+     * @param  int $min smallest value
      * @return self
      */
     public function min(int $min)
@@ -35,8 +35,8 @@ class Integer
      * Set the range (min and max)
      * Calling range(1,10), it is equivalent of ->min(1)->max(10)
      *
-     * @param  $min
-     * @param  $max
+     * @param  int $min
+     * @param  int $max
      * @return $this
      */
     public function range(int $min, int $max)
