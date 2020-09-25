@@ -1,17 +1,18 @@
 <?php
 
-
 namespace HiFolks\RandoPhp;
 
 use HiFolks\RandoPhp\Models\Sample;
 
-class Draw {
+class Draw
+{
 
     /**
-     * @param array $array
+     * @param  array<int|string> $array
      * @return Sample
      */
-    public static function sample($array = []) {
+    public static function sample($array = [])
+    {
         return new Sample($array);
     }
 }

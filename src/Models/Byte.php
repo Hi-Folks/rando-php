@@ -1,8 +1,6 @@
 <?php
 
-
 namespace HiFolks\RandoPhp\Models;
-
 
 class Byte
 {
@@ -10,7 +8,8 @@ class Byte
     private $length = 8;
 
 
-    public function length($length): self {
+    public function length($length): self
+    {
         $this->length = $length;
         return $this;
     }
@@ -19,9 +18,8 @@ class Byte
      * @return string
      * @throws \Exception
      */
-    public function generate(): string {
+    public function generate(): string
+    {
         return bin2hex(random_bytes($this->length));
     }
-
-
 }

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace HiFolks\RandoPhp\Models;
 
 use HiFolks\RandoPhp\Randomize;
@@ -9,16 +8,17 @@ use HiFolks\RandoPhp\Draw;
 class Sequence
 {
 
-    private $type= "int";
-    private $count=10;
+    private $type = "int";
+    private $count = 10;
     private $min = 0;
-    private $max=10;
+    private $max = 10;
     private $unique = false;
     private $implode = false;
 
 
 
-    public function integer() {
+    public function integer()
+    {
         $this->type("int");
         return $this;
     }
@@ -27,12 +27,13 @@ class Sequence
      * Unique means that the sequence includes NO duplicates
      * [1,2,4,7,3] is $unique === true, no duplicates
      * [1,4,3,4,3] is $unique === false, with duplicates
-     * @param bool $unique
+     *
+     * @param  bool $unique
      * @return $this
      */
     public function unique($unique = true): self
     {
-        $this->unique=$unique;
+        $this->unique = $unique;
         return $this;
     }
 
@@ -49,6 +50,7 @@ class Sequence
     /**
      * Set the output. The extract method instead of returning an array,
      * it returns a string with items separated by ","
+     *
      * @param bool $implode
      */
     public function implode(bool $implode = true): self
@@ -86,19 +88,18 @@ class Sequence
 
     /**
      * Make the random array.
+     *
      * @return array
      */
-    public  function generate()
+    public function generate()
     {
         $result = [];
 
-        switch ($this->type)
-        {
+        switch ($this->type) {
             case "int":
                 if ($this->unique) {
                     $arr = range($this->min, $this->max);
                     $result = Draw::sample($arr)->noDuplicates()->count($this->count)->extract();
-
                 } else {
                     for ($i = 0; $i < $this->count; $i++) {
                         $result[] = Randomize::integer()->max($this->max)->min($this->min)->generate();
@@ -112,7 +113,5 @@ class Sequence
         } else {
             return $result;
         }
-
     }
-
 }
