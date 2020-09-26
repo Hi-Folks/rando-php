@@ -2,6 +2,7 @@
 
 namespace HiFolks\RandoPhp;
 
+use HiFolks\RandoPhp\Models\Char;
 use HiFolks\RandoPhp\Models\Integer;
 use HiFolks\RandoPhp\Models\Boolean;
 use HiFolks\RandoPhp\Models\Byte;
@@ -43,5 +44,10 @@ class Randomize
     public static function sequence()
     {
         return new Sequence();
+    }
+
+    public static function char()
+    {
+        return new Char();
     }
 }
