@@ -4,45 +4,59 @@ namespace HiFolks\RandoPhp\Models;
 
 class Char
 {
-    private $min = 0;
-    private $max = 25;
-
+    private $ascii_codes;
     /**
-     * Set the greatest value to generate
-     *
-     * @param int $max greatest value
-     * @return self
+     * @var array
      */
-    public function max(int $max)
+    private $numeric;
+    /**
+     * @var array
+     */
+    private $alpha;
+    /**
+     * @var array
+     */
+    private $alphanumeric;
+
+    public function __construct()
     {
-        $this->max = $max;
-        return $this;
+        $this->alpha = range(48, 57);
+        $this->numeric = range(97, 122);
     }
 
     /**
-     * Set the smallest value to generate
-     *
-     * @param int $min smallest value
-     * @return self
-     */
-    public function min(int $min)
-    {
-        $this->min = $min;
-        return $this;
-    }
-
-    /**
-     * Set the range (min and max)
-     * Calling range(1,10), it is equivalent of ->min(1)->max(10)
+     * Set the alpha value to generate
      *
      * @param int $min
      * @param int $max
-     * @return $this
+     * @return self
      */
-    public function range(int $min, int $max)
+    public function alpha(int $min, int $max)
     {
-        $this->min = $min;
-        $this->max = $max;
+        $this->alpha = range($min, $max);
+        return $this;
+    }
+
+    /**
+     * Set the numeric value to generate
+     *
+     * @param int $min
+     * @param int $max
+     * @return self
+     */
+    public function numeric(int $min, int $max)
+    {
+        $this->numeric = range($min, $max);
+        return $this;
+    }
+
+    /**
+     * Get Alphanumeric value
+     * @return self
+     */
+    public function alphanumeric(): Char
+    {
+        $this->alphanumeric = $this->alpha + $this->numeric;
         return $this;
     }
 
@@ -54,8 +68,7 @@ class Char
      */
     public function generate(): string
     {
-        $ascii_codes = range(48, 57) + range(97, 122);
-        $rand_index = random_int($this->min, $this->max);
-        return chr($ascii_codes[$rand_index]);
+        $rand_index = random_int(0, sizeof($this->alphanumeric) - 1);
+        return chr($this->alphanumeric[$rand_index]);
     }
 }
