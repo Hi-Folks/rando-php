@@ -8,7 +8,11 @@ class Byte
     private $length = 8;
 
 
-    public function length($length): self
+    /**
+     * @param $length
+     * @return $this
+     */
+    public function length(int $length): self
     {
         $this->length = $length;
         return $this;
