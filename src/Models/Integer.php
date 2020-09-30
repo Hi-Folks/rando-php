@@ -13,7 +13,7 @@ class Integer
      * @param int $max greatest value
      * @return self
      */
-    public function max(int $max)
+    public function max(int $max): self
     {
         $this->max = $max;
         return $this;
@@ -25,7 +25,7 @@ class Integer
      * @param  int $min smallest value
      * @return self
      */
-    public function min(int $min)
+    public function min(int $min): self
     {
         $this->min = $min;
         return $this;
@@ -37,13 +37,11 @@ class Integer
      *
      * @param  int $min
      * @param  int $max
-     * @return $this
+     * @return self
      */
-    public function range(int $min, int $max)
+    public function range(int $min, int $max): self
     {
-        $this->min = $min;
-        $this->max = $max;
-        return $this;
+        return $this->min($min)->max($max);
     }
 
     /**
