@@ -15,8 +15,6 @@ class Sequence
     private $unique = false;
     private $implode = false;
 
-
-
     public function integer()
     {
         $this->type("int");
@@ -41,11 +39,11 @@ class Sequence
     {
         return $this->unique(false);
     }
+
     public function noDuplicates(): self
     {
         return $this->unique(true);
     }
-
 
     /**
      * Set the output. The extract method instead of returning an array,
@@ -59,13 +57,21 @@ class Sequence
         return $this;
     }
 
-    public function min($min): self
+    /**
+     * @param int $min
+     * @return $this
+     */
+    public function min(int $min): self
     {
         $this->min = $min;
         return $this;
     }
 
-    public function max($max): self
+    /**
+     * @param int $max
+     * @return $this
+     */
+    public function max(int $max): self
     {
         $this->max = $max;
         return $this;
@@ -73,6 +79,7 @@ class Sequence
 
     /**
      * @param int $count
+     * @return $this
      */
     public function count(int $count): self
     {
@@ -80,17 +87,21 @@ class Sequence
         return $this;
     }
 
+    /**
+     * @param string $type
+     * @return $this
+     */
     public function type(string $type): self
     {
         $this->type = $type;
         return $this;
     }
 
-
     /**
      * Make the random array.
      *
      * @return array|string
+     * @throws \Exception
      */
     public function generate()
     {

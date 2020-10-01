@@ -11,7 +11,7 @@ namespace HiFolks\RandoPhp\Models;
  */
 class Sample
 {
-    private $array = [];
+    private $array;
     private $count = 1;
     private $unique = true;
     private $implode = false;
@@ -37,6 +37,9 @@ class Sample
     }
 
 
+    /**
+     * @return $this
+     */
     public function preserveKeys(): self
     {
         $this->preserveKeys = true;
@@ -54,6 +57,7 @@ class Sample
         $this->unique = $unique;
         return $this;
     }
+
     /**
      * Allow extract duplicates from the original array
      *
@@ -63,6 +67,7 @@ class Sample
     {
         return $this->unique(false);
     }
+
     /**
      * No duplicates from the original array
      *
@@ -111,6 +116,7 @@ class Sample
      * it returns a string with items separated by ","
      *
      * @param bool $implode
+     * @return Sample
      */
     public function implode(bool $implode = true): self
     {
