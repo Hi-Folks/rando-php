@@ -2,7 +2,7 @@
 
 namespace HiFolks\RandoPhp;
 
-use HiFolks\RandoPhp\Models\Integer;
+use HiFolks\RandoPhp\Models\Integer as ModelInt;
 use HiFolks\RandoPhp\Models\Boolean;
 use HiFolks\RandoPhp\Models\Byte;
 use HiFolks\RandoPhp\Models\Sequence;
@@ -23,11 +23,11 @@ class Randomize
     /**
      * Generates random numbers
      *
-     * @return Integer
+     * @return ModelInt
      */
     public static function integer()
     {
-        return new Integer();
+        return new ModelInt();
     }
 
     /**
