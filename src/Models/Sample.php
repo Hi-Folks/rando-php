@@ -47,7 +47,7 @@ class Sample
     }
 
     /**
-     * Sets the unique attribute 
+     * Sets the unique attribute
      *
      * @param bool $unique
      * @return $this
