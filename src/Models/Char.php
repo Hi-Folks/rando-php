@@ -5,48 +5,31 @@ namespace HiFolks\RandoPhp\Models;
 class Char
 {
     private $ascii_codes;
-    /**
-     * @var array
-     */
-    private $numeric;
-    /**
-     * @var array
-     */
-    private $alpha;
-    /**
-     * @var array
-     */
-    private $alphanumeric;
 
     public function __construct()
     {
+
         $this->alpha = range(48, 57);
         $this->numeric = range(97, 122);
     }
 
     /**
      * Set the alpha value to generate
-     *
-     * @param int $min
-     * @param int $max
      * @return self
      */
-    public function alpha(int $min, int $max)
+    public function alpha()
     {
-        $this->alpha = range($min, $max);
+        $this->ascii_codes = range(97, 122);
         return $this;
     }
 
     /**
      * Set the numeric value to generate
-     *
-     * @param int $min
-     * @param int $max
      * @return self
      */
-    public function numeric(int $min, int $max)
+    public function numeric()
     {
-        $this->numeric = range($min, $max);
+        $this->ascii_codes = range(48, 57);
         return $this;
     }
 
@@ -56,19 +39,19 @@ class Char
      */
     public function alphanumeric(): Char
     {
-        $this->alphanumeric = $this->alpha + $this->numeric;
+        $this->ascii_codes = range(48, 57) + range(97, 122);
         return $this;
     }
 
     /**
-     * Generate and returns a random char (considering $min and $max attribute)
+     * Generate and returns a random char
      *
      * @return string the random value (integer)
      * @throws \Exception
      */
     public function generate(): string
     {
-        $rand_index = random_int(0, sizeof($this->alphanumeric) - 1);
-        return chr($this->alphanumeric[$rand_index]);
+        $rand_index = random_int(0, sizeof($this->ascii_codes) - 1);
+        return chr($this->ascii_codes[$rand_index]);
     }
 }
