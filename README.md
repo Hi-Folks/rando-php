@@ -45,6 +45,14 @@ Sometimes you want to obtain a random integer (min - max rang). For example, you
 $randomNumber = Randomize::integer()->min(1)->max(6)->generate();
 ```
 
+### Generate an Range
+
+Set the range (min and max) Calling range(1,10), it is equivalent of ->min(1)->max(10):
+
+``` php
+$randomNumber = Randomize::integer()->range(1,10)->generate();
+```
+
 ### Generate bytes
 Sometime you want to obtain some random bytes (hexadecimal). For example, you want to generate a random RGB color (a hex triplet in hexadecimal format):
 
