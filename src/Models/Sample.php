@@ -43,7 +43,12 @@ class Sample
         return $this;
     }
 
-
+    /**
+     * Sets the unique attribute 
+     *
+     * @param bool $unique
+     * @return $this
+     */
     public function unique($unique = true): self
     {
         $this->unique = $unique;
