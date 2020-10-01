@@ -31,7 +31,7 @@ composer require hi-folks/rando-php
 
 ### Generate Char
 
-Sometimes you want to obtain a random char, for example a numeric char:
+Sometimes you want to obtain a random char, for example, a numeric char:
 
 ```php
 Randomize::char()->numeric()->generate();
