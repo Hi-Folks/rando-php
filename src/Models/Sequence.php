@@ -58,6 +58,7 @@ class Sequence
         $this->implode = $implode;
         return $this;
     }
+
     public function min($min): self
     {
         $this->min = $min;
@@ -89,7 +90,7 @@ class Sequence
     /**
      * Make the random array.
      *
-     * @return array
+     * @return array|string
      */
     public function generate()
     {
