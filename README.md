@@ -29,6 +29,24 @@ composer require hi-folks/rando-php
 
 ## Usage
 
+### Generate Char
+
+Sometimes you want to obtain a random char, for example, a numeric char:
+
+```php
+Randomize::char()->numeric()->generate();
+```
+Or you might want a alphabetic char:
+
+```php
+Randomize::char()->alpha()->generate();
+```
+
+You can even do both!
+```php
+Randomize::char()->alphanumeric()->generate();
+```
+
 ### Generate Boolean
 
 Sometimes you want to obtain a random boolean true or false.(flip a coin):
