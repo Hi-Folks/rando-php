@@ -29,6 +29,24 @@ composer require hi-folks/rando-php
 
 ## Usage
 
+### Generate Char
+
+Sometimes you want to obtain a random char, for example, a numeric char:
+
+```php
+Randomize::char()->numeric()->generate();
+```
+Or you might want a alphabetic char:
+
+```php
+Randomize::char()->alpha()->generate();
+```
+
+You can even do both!
+```php
+Randomize::char()->alphanumeric()->generate();
+```
+
 ### Generate Boolean
 
 Sometimes you want to obtain a random boolean true or false.(flip a coin):
@@ -43,6 +61,14 @@ Sometimes you want to obtain a random integer (min - max rang). For example, you
 
 ``` php
 $randomNumber = Randomize::integer()->min(1)->max(6)->generate();
+```
+
+### Generate an Range
+
+Set the range (min and max) Calling range(1,10), it is equivalent of ->min(1)->max(10):
+
+``` php
+$randomNumber = Randomize::integer()->range(1,10)->generate();
 ```
 
 ### Generate bytes

@@ -3,7 +3,6 @@ require_once "./vendor/autoload.php";
 
 use HiFolks\RandoPhp\Draw;
 use HiFolks\RandoPhp\Randomize;
-use HiFolks\RandoPhp\Sequence;
 
 
 echo "--- FLIP THE COIN".PHP_EOL;
