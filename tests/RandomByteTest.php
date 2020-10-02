@@ -15,7 +15,7 @@ class RandomByteTest extends TestCase
 
         foreach (range(1,32) as $len) {
             $byte = Randomize::byte()->length($len)->generate();
-            $this->assertEquals($len*2, strlen($byte), "Check length ". $len);
+            $this->assertSame($len*2, strlen($byte), "Check length ". $len);
         }
         $catch = false;
         try {
@@ -24,7 +24,7 @@ class RandomByteTest extends TestCase
             $catch = true;
             $this->assertStringContainsString("Length must be greater", $e->getMessage(), "Message Error test");
         }
-        $this->assertEquals(true, $catch, "Exception catch");
+        $this->assertSame(true, $catch, "Exception catch");
 
 
     }
