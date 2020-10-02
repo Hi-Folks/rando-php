@@ -3,6 +3,7 @@
 namespace HiFolks\RandoPhp;
 
 use HiFolks\RandoPhp\Models\Char;
+use HiFolks\RandoPhp\Models\DateTime;
 use HiFolks\RandoPhp\Models\Integer as ModelInt;
 use HiFolks\RandoPhp\Models\Boolean;
 use HiFolks\RandoPhp\Models\Byte;
@@ -49,5 +50,9 @@ class Randomize
     public static function char()
     {
         return new Char();
+    }
+
+    public static function datetime($format = 'Y-m-d H:i:s') {
+        return new DateTime($format);
     }
 }
