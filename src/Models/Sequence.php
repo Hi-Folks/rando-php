@@ -14,6 +14,7 @@ class Sequence
     private $max = 10;
     private $unique = false;
     private $implode = false;
+    private $toString = false;
     private $ascii_codes = [];
 
     public function integer()
@@ -72,7 +73,7 @@ class Sequence
     }
 
     /**
-     * @param int $min
+     * @param  int $min
      * @return $this
      */
     public function min(int $min): self
@@ -82,7 +83,7 @@ class Sequence
     }
 
     /**
-     * @param int $max
+     * @param  int $max
      * @return $this
      */
     public function max(int $max): self
@@ -92,7 +93,7 @@ class Sequence
     }
 
     /**
-     * @param int $count
+     * @param  int $count
      * @return $this
      */
     public function count(int $count): self
@@ -102,7 +103,7 @@ class Sequence
     }
 
     /**
-     * @param string $type
+     * @param  string $type
      * @return $this
      */
     public function type(string $type): self
@@ -113,6 +114,7 @@ class Sequence
 
     /**
      * Set the alpha value to generate
+     *
      * @return self
      */
     public function alpha()
@@ -123,6 +125,7 @@ class Sequence
 
     /**
      * Set the numeric value to generate
+     *
      * @return self
      */
     public function numeric()
@@ -133,6 +136,7 @@ class Sequence
 
     /**
      * Get Alphanumeric value
+     *
      * @return self
      */
     public function alphanumeric()
@@ -140,6 +144,18 @@ class Sequence
         $this->ascii_codes = range(48, 57) + range(97, 122);
         return $this;
     }
+
+    /**
+     * Get String
+     * 
+     * @return self
+     */
+    public function asString(bool $toString = true) :self
+    {
+        $this->toString = $toString;
+        return $this;
+    }
+
 
     /**
      * Make the random array.
@@ -152,38 +168,39 @@ class Sequence
         $result = [];
 
         switch ($this->type) {
-            case "int":
-                if ($this->unique) {
-                    $arr = range($this->min, $this->max);
-                    $result = Draw::sample($arr)->noDuplicates()->count($this->count)->extract();
-                } else {
-                    for ($i = 0; $i < $this->count; $i++) {
-                        $result[] = Randomize::integer()->max($this->max)->min($this->min)->generate();
-                    }
+        case "int":
+            if ($this->unique) {
+                $arr = range($this->min, $this->max);
+                $result = Draw::sample($arr)->noDuplicates()->count($this->count)->extract();
+            } else {
+                for ($i = 0; $i < $this->count; $i++) {
+                    $result[] = Randomize::integer()->max($this->max)->min($this->min)->generate();
                 }
-                break;
+            }
+            break;
 
-            case "char":
-                if($this->unique)
+        case "char":
+            if($this->unique) {
+                $intArrResult = Draw::sample($this->ascii_codes)->noDuplicates()->count($this->count)->extract();
+                for($i = 0; $i < sizeof($intArrResult); $i++)
                 {
-                    $intArrResult = Draw::sample($this->ascii_codes)->noDuplicates()->count($this->count)->extract();
-                    for($i = 0; $i < sizeof($intArrResult); $i++)
-                    {
-                        $result[] = chr($intArrResult[$i]);
-                    }
+                    $result[] = chr($intArrResult[$i]);
                 }
-                else
+            }
+            else
+            {
+                for($i = 0; $i < $this->count; $i++)
                 {
-                    for($i = 0; $i < $this->count; $i++)
-                    {
-                        $result[] = Randomize::char()->setAsciiCodes($this->ascii_codes)->generate();
-                    }
+                    $result[] = Randomize::char()->setAsciiCodes($this->ascii_codes)->generate();
                 }
-                break;
+            }
+            break;
         }
 
         if ($this->implode) {
             return implode(";", $result);
+        } elseif ($this->toString) {
+            return implode("", $result);
         } else {
             return $result;
         }

@@ -7,7 +7,11 @@ use PHPUnit\Framework\TestCase;
 
 class RandomSequenceTest extends TestCase
 {
-    /** @test */
+    /**
+     * 
+     *
+     * @test 
+     */
     public function random_sequence()
     {
         $array = Randomize::sequence()->generate();
@@ -15,7 +19,11 @@ class RandomSequenceTest extends TestCase
 
     }
 
-    /** @test */
+    /**
+     * 
+     *
+     * @test 
+     */
     public function random_count_sequence()
     {
         $array = Randomize::sequence()->count(7)->generate();
@@ -24,7 +32,11 @@ class RandomSequenceTest extends TestCase
 
     }
 
-    /** @test */
+    /**
+     * 
+     *
+     * @test 
+     */
     public function random_char_sequence()
     {
         $array = Randomize::sequence()->chars()->generate();
@@ -32,7 +44,11 @@ class RandomSequenceTest extends TestCase
 
     }
 
-    /** @test */
+    /**
+     * 
+     *
+     * @test 
+     */
     public function random_count_char_sequence()
     {
         $array = Randomize::sequence()->chars()->count(7)->generate();
@@ -41,7 +57,11 @@ class RandomSequenceTest extends TestCase
 
     }
 
-    /** @test */
+    /**
+     * 
+     *
+     * @test 
+     */
     public function random_no_duplicate_char_sequence()
     {
         $array = Randomize::sequence()->chars()->count(7)->noDuplicates()->generate();
@@ -50,7 +70,11 @@ class RandomSequenceTest extends TestCase
 
     }
 
-    /** @test */
+    /**
+     * 
+     *
+     * @test 
+     */
     public function random_rollthedice()
     {
         $count=10;
@@ -85,7 +109,11 @@ class RandomSequenceTest extends TestCase
 
     }
 
-    /** @test */
+    /**
+     * 
+     *
+     * @test 
+     */
     public function random_tombola()
     {
         $count=90;
@@ -106,8 +134,13 @@ class RandomSequenceTest extends TestCase
 
     }
 
-    /** @test */
-    public function random_sequence_implode() {
+    /**
+     * 
+     *
+     * @test 
+     */
+    public function random_sequence_implode()
+    {
         $min=1;
         $max=10;
         $count=3;
@@ -116,6 +149,20 @@ class RandomSequenceTest extends TestCase
 
     }
 
+    /**
+     * 
+     *
+     * @test 
+     */
+    public function random_sequence_asString()
+    {
+        $min=1;
+        $max=10;
+        $count=3;
+        $string = Randomize::sequence()->integer()->min($min)->max($max)->asString()->count($count)->generate();
+        $this->assertIsString($string);
+
+    }
 
 
 

@@ -16,7 +16,7 @@ echo "DICE: ". $randomNumber;
 echo PHP_EOL. "-----------------".PHP_EOL;
 
 echo "--- ROLL THE DICE (range)".PHP_EOL;
-$randomNumber = Randomize::integer()->range(1,6)->generate();
+$randomNumber = Randomize::integer()->range(1, 6)->generate();
 echo "DICE: ". $randomNumber;
 echo PHP_EOL. "-----------------".PHP_EOL;
 echo "--- GENERATE RGB HEX COLOR ".PHP_EOL;
@@ -51,4 +51,18 @@ $array=[
 $randomJs = Draw::sample($array)->count(2)->preserveKeys()->extract();
 var_dump($randomJs);
 
+echo "--- ROLL THE DICE 15 times show as string ".PHP_EOL;
+$randomRolls = Randomize::sequence()->min(1)->max(6)->count(15)->asString()->generate();
+echo "15 ROLLS: ". $randomRolls;
+echo PHP_EOL. "-----------------".PHP_EOL;
+
+echo "--- TOMBOLA  show as string".PHP_EOL;
+$randomTombola = Randomize::sequence()->min(1)->max(90)->count(90)->unique("true")->asString()->generate();
+echo "TOMBOLA: ". $randomTombola;
+echo PHP_EOL. "-----------------".PHP_EOL;
+
+
+echo "--- TOMBOLA WITHOUT DUPLICATES show as string".PHP_EOL;
+$randomTombola = Randomize::sequence()->min(1)->max(90)->count(90)->noDuplicates()->asString()->generate();
+var_dump($randomTombola);
 
