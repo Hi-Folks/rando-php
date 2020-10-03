@@ -85,11 +85,59 @@ Sometime you want to obtain some random sequences. For example, you want to roll
 $randomRolls = Randomize::sequence()->min(1)->max(6)->count(15)->generate();
 ```
 
+Sometime you want to obtain some random char sequences. For example, char sequences of length 10:
+
+```php
+$randomChars = Randomize::sequence()->chars()->count(10)->generate();
+```
+
+Or you might want numeric char sequences.
+
+```php
+$randomChars = Randomize::sequence()->chars()->numeric()->count(10)->generate();
+```
+
+Or you might want aphabetical char sequences.
+
+```php
+$randomChars = Randomize::sequence()->chars()->alpha()->count(10)->generate();
+```
+
+Yes, even both.
+
+```php
+$randomChars = Randomize::sequence()->chars()->alphanumeric()->count(10)->generate();
+```
+
 ### Generate sequences with no duplicates
 Sometime you want to obtain some random sequences with **no duplicates**. For example, you want to play "Tombola" (extracting number from 1 to 90 with NO duplicates):
 
 ```php
 $randomTombola = Randomize::sequence()->min(1)->max(90)->count(90)->noDuplicates()->generate();
+```
+
+Sometime you want to obtain some random char sequences with **no duplicates**.
+
+```php
+$randomChars = Randomize::sequence()->chars()->count(10)->noDuplicates()->generate();
+```
+
+Or you might want numeric char sequences with **no duplicates**. For example, char sequences of length 10:
+
+```php
+$randomChars = Randomize::sequence()->chars()->numeric()->count(10)->noDuplicates()->generate();
+```
+
+Or you might want aphabetical char sequences with **no duplicates**.
+
+```php
+$randomChars = Randomize::sequence()->chars()->alpha()->count(10)->noDuplicates()->generate();
+```
+
+Yes, even both and with **no duplicates**.
+
+```php
+$randomChars = Randomize::sequence()->chars()->alphanumeric()->count(10)->noDuplicates()->generate();
 ```
 
 ### Suggest which JS framework you could use in your next project (random)

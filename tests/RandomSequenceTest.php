@@ -25,6 +25,32 @@ class RandomSequenceTest extends TestCase
     }
 
     /** @test */
+    public function random_char_sequence()
+    {
+        $array = Randomize::sequence()->chars()->generate();
+        $this->assertIsArray($array, "Char sequence check is array");
+
+    }
+
+    /** @test */
+    public function random_count_char_sequence()
+    {
+        $array = Randomize::sequence()->chars()->count(7)->generate();
+        $this->assertIsArray($array, "Char sequence check is array");
+        $this->assertEquals(7, count($array), "Char sequence check length array generated");
+
+    }
+
+    /** @test */
+    public function random_no_duplicate_char_sequence()
+    {
+        $array = Randomize::sequence()->chars()->count(7)->noDuplicates()->generate();
+        $arrryUnique = array_unique($array);
+        $this->assertEquals(7, count($arrryUnique), "No duplicate char sequence array generated");
+
+    }
+
+    /** @test */
     public function random_rollthedice()
     {
         $count=10;
