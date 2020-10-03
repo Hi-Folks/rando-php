@@ -16,10 +16,10 @@ class DrawSampleTest extends TestCase
         $count=5;
         $sample = Draw::sample($array)->count($count)->extract();
         $this->assertIsArray($sample);
-        $this->assertEquals($count, count($sample));
+        $this->assertSame($count, count($sample));
         $sampleKeys = Draw::sample($array)->count($count)->extractKeys();
         $this->assertIsArray($sampleKeys);
-        $this->assertEquals($count, count($sampleKeys));
+        $this->assertSame($count, count($sampleKeys));
     }
     /** @test */
     public function random_extract_duplicates()
@@ -28,7 +28,7 @@ class DrawSampleTest extends TestCase
         $count = 5;
         $sample = Draw::sample($array)->allowDuplicates()->count($count)->extract();
         $this->assertIsArray($sample);
-        $this->assertEquals($count, count($sample));
+        $this->assertSame($count, count($sample));
     }
 
     /** @test */
@@ -38,7 +38,7 @@ class DrawSampleTest extends TestCase
         $count = 5;
         $sampleKeys = Draw::sample($array)->count($count)->extractKeys();
         $this->assertIsArray($sampleKeys, "Check extract key is array");
-        $this->assertEquals($count, count($sampleKeys), "Check extract count is correct");
+        $this->assertSame($count, count($sampleKeys), "Check extract count is correct");
     }
 
     /** @test */
@@ -69,7 +69,7 @@ class DrawSampleTest extends TestCase
         $count=5;
         $sample = Draw::sample($array)->count($count)->preserveKeys()->extract();
         $this->assertIsArray($sample);
-        $this->assertEquals($count, count($sample), "Check extract count is correct");
+        $this->assertSame($count, count($sample), "Check extract count is correct");
     }
 
 }

@@ -20,7 +20,7 @@ class RandomSequenceTest extends TestCase
     {
         $array = Randomize::sequence()->count(7)->generate();
         $this->assertIsArray($array, "Check is array");
-        $this->assertEquals(7, count($array), "Check length array generated");
+        $this->assertSame(7, count($array), "Check length array generated");
 
     }
 
@@ -58,7 +58,7 @@ class RandomSequenceTest extends TestCase
         $max=6;
         $array = Randomize::sequence()->min($min)->max($max)->count($count)->generate();
         $this->assertIsArray($array, "Check is array");
-        $this->assertEquals($count, count($array), "Check length array generated");
+        $this->assertSame($count, count($array), "Check length array generated");
         foreach ($array as $item) {
             $this->assertGreaterThanOrEqual(1, $item, "Greater than " . $min);
             $this->assertLessThanOrEqual(6, $item, "Less than " . $min);
@@ -67,7 +67,7 @@ class RandomSequenceTest extends TestCase
         // the same as before, forcing integer items
         $array = Randomize::sequence()->min($min)->max($max)->count($count)->generate();
         $this->assertIsArray($array, "Check is array");
-        $this->assertEquals($count, count($array), "Check length array generated");
+        $this->assertSame($count, count($array), "Check length array generated");
         foreach ($array as $item) {
             $this->assertGreaterThanOrEqual(1, $item, "Greater than " . $min);
             $this->assertLessThanOrEqual(6, $item, "Less than " . $min);
@@ -75,7 +75,7 @@ class RandomSequenceTest extends TestCase
 
         $array = Randomize::sequence()->min($min)->max($max)->count($count)->allowDuplicates()->generate();
         $this->assertIsArray($array, "Check is array");
-        $this->assertEquals($count, count($array), "Check length array generated");
+        $this->assertSame($count, count($array), "Check length array generated");
         foreach ($array as $item) {
             $this->assertGreaterThanOrEqual(1, $item, "Greater than " . $min);
             $this->assertLessThanOrEqual(6, $item, "Less than " . $min);
@@ -93,13 +93,13 @@ class RandomSequenceTest extends TestCase
         $max=90;
         $array = Randomize::sequence()->integer()->min($min)->max($max)->noDuplicates()->count($count)->generate();
         $this->assertIsArray($array, "Check is array");
-        $this->assertEquals($count, count($array), "Check length array generated");
+        $this->assertSame($count, count($array), "Check length array generated");
         foreach ($array as $item) {
             $this->assertGreaterThanOrEqual(1, $item, "Greater than " . $min);
             $this->assertLessThanOrEqual(90, $item, "Less than " . $min);
         }
 
-        $this->assertEquals($count, count(array_unique($array)), "Check uniqueness");
+        $this->assertSame($count, count(array_unique($array)), "Check uniqueness");
 
 
 

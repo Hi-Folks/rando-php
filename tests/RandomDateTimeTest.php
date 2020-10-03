@@ -31,7 +31,7 @@ class RandomDateTimeTest extends TestCase
     public function random_datetime_range_format()
     {
         $month = Randomize::datetime()->range('01-10-2020', '30-10-2020')->format("m")->generate();
-        $this->assertEquals("10", $month );
+        $this->assertSame("10", $month );
     }
 
 }
