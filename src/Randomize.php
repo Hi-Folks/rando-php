@@ -7,6 +7,7 @@ use HiFolks\RandoPhp\Models\Integer as ModelInt;
 use HiFolks\RandoPhp\Models\Boolean;
 use HiFolks\RandoPhp\Models\DateTime;
 use HiFolks\RandoPhp\Models\Byte;
+use HiFolks\RandoPhp\Models\FloatModel;
 use HiFolks\RandoPhp\Models\Sequence;
 
 class Randomize
@@ -30,6 +31,16 @@ class Randomize
     public static function integer()
     {
         return new ModelInt();
+    }
+
+    /**
+     * Generates random floating point numbers
+     * 
+     * @return FloatModel 
+     */
+    public static function float()
+    {
+        return new FloatModel();
     }
 
     /**
