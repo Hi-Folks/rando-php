@@ -7,20 +7,25 @@ use LogicException;
 
 class FloatModel
 {
-    private $min = 0;
+    private $min = 0.0;
 
-    private $max = 1;
+    private $max = 1.0;
 
     private $decimals = 2;
 
     /**
      * Set the greatest value to generate
      *
-     * @param int $max greatest value
+     * @param  int|float $max greatest value
+     * @throws InvalidArgumentException
      * @return self
      */
-    public function max(int $max): self
+    public function max($max): self
     {
+        if (!is_float($max) && !is_int($max)) {
+            throw new InvalidArgumentException("The max argument must be either an integer or a float.");
+        }
+
         $this->max = $max;
         return $this;
     }
@@ -28,11 +33,16 @@ class FloatModel
     /**
      * Set the smallest value to generate
      *
-     * @param  int $min smallest value
+     * @param  int|float $min smallest value
+     * @throws InvalidArgumentException
      * @return self
      */
-    public function min(int $min): self
+    public function min($min): self
     {
+        if (!is_float($min) && !is_int($min)) {
+            throw new InvalidArgumentException("The min argument must be either an integer or a float.");
+        }
+
         $this->min = $min;
         return $this;
     }
@@ -50,8 +60,8 @@ class FloatModel
         }
 
         // Due to the way PHP floating point numbers are implemented (IEEE 754)
-        // it's not possible to store more than 20 decimals (or less, depending on the value of significant)
-        $this->decimals = min($decimals, 20);
+        // A guaranteed number of decimal places is around 5, but in 99% of the cases is 8
+        $this->decimals = min($decimals, 8);
         return $this;
     }
 
@@ -59,11 +69,11 @@ class FloatModel
      * Set the range (min and max)
      * Calling range(1,10), it is equivalent of ->min(1)->max(10)
      *
-     * @param  int $min
-     * @param  int $max
+     * @param  int|float $min
+     * @param  int|float $max
      * @return self
      */
-    public function range(int $min, int $max): self
+    public function range($min, $max): self
     {
         return $this->min($min)->max($max);
     }
@@ -80,20 +90,8 @@ class FloatModel
             throw new LogicException("The specified max is <= than the specified min.");
         }
 
-        $base = (float) random_int($this->min, $this->max - 1);
+        $base = $this->min + mt_rand() / mt_getrandmax() * ($this->max - $this->min);
 
-        if ($this->decimals === 0) {
-            return $base;
-        }
-
-        for ($i = 1; $i < $this->decimals; $i++) {
-            $base += random_int(0, 9) * (10 ** -$i);
-        }
-
-        // For the last decimal, there cannot be a zero
-        $base += (random_int(1, 9) * (10 ** -$this->decimals));
-
-        // To remove errors from float addition (0.1 + 0.2 = 0.300000000000004 etc)
         return round($base, $this->decimals);
     }
 }

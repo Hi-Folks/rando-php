@@ -18,8 +18,90 @@ class RandomFloatTest extends TestCase
         $this->assertGreaterThanOrEqual(0, $number);
         $this->assertLessThan(1, $number);
 
-        // There needs to be 4 charactes when converted to string (0.xx)
-        $this->assertEquals(strlen((string) $number), 4);
+        // There needs to be 4 characters max when converted to string (0.xx)
+        $this->assertLessThanOrEqual(4, strlen((string) $number), "$number is 4 or less chars long (0.xx)");
+    }
+
+    /** @test */
+    public function random_float_min_max_types_validation(): void
+    {
+        // This should be OK
+        Randomize::float()->min(10)->max(20);
+
+        $catched = false;
+
+        try {
+            Randomize::float()->min("string");
+        }
+        catch (InvalidArgumentException $exception) {
+            $catched = true;
+            $this->assertEquals("The min argument must be either an integer or a float.", $exception->getMessage());
+        }
+
+        $this->assertTrue($catched);
+
+        $catched = false;
+
+        try {
+            Randomize::float()->max("string");
+        }
+        catch (InvalidArgumentException $exception) {
+            $catched = true;
+            $this->assertEquals("The max argument must be either an integer or a float.", $exception->getMessage());
+        }
+
+        $this->assertTrue($catched);
+
+        $catched = false;
+
+        try {
+            Randomize::float()->range(0, "string");
+        }
+        catch (InvalidArgumentException $exception) {
+            $catched = true;
+            $this->assertEquals("The max argument must be either an integer or a float.", $exception->getMessage());
+        }
+
+        $this->assertTrue($catched);
+
+        $catched = false;
+
+        try {
+            Randomize::float()->range("string", 0);
+        }
+        catch (InvalidArgumentException $exception) {
+            $catched = true;
+            $this->assertEquals("The min argument must be either an integer or a float.", $exception->getMessage());
+        }
+
+        $this->assertTrue($catched);
+
+        $catched = false;
+
+        try {
+            Randomize::float()->range("string", "another string");
+        }
+        catch (InvalidArgumentException $exception) {
+            $catched = true;
+            $this->assertEquals("The min argument must be either an integer or a float.", $exception->getMessage());
+        }
+
+        $this->assertTrue($catched);
+
+        $number = Randomize::float()->min(0.5)->max(1.5)->decimals(1)->generate();
+
+        $this->assertLessThanOrEqual(1.5, $number);
+        $this->assertGreaterThanOrEqual(0.5, $number);
+
+        $number = Randomize::float()->min(0.5)->max(1.5)->decimals(1)->generate();
+
+        $this->assertLessThanOrEqual(1.5, $number);
+        $this->assertGreaterThanOrEqual(0.5, $number);
+
+        $number = Randomize::float()->min(0.5)->max(1.5)->decimals(3)->generate();
+
+        $this->assertLessThanOrEqual(1.5, $number);
+        $this->assertGreaterThanOrEqual(0.5, $number);
     }
 
     /** @test */
@@ -31,7 +113,7 @@ class RandomFloatTest extends TestCase
         $this->assertIsFloat($number);
         $this->assertGreaterThanOrEqual(5, $number);
         $this->assertLessThan(20, $number);
-        $this->assertEquals(7, strlen($floating));
+        $this->assertLessThanOrEqual(7, strlen($floating), "$floating length is 7 or less (x.xxxxx)");
 
         $catched = false;
 
@@ -61,13 +143,15 @@ class RandomFloatTest extends TestCase
         $number = Randomize::float()->min(0)->max(1)->decimals(0)->generate();
 
         $this->assertIsFloat($number);
-        $this->assertEquals(1, strlen($number));
+        $this->assertLessThanOrEqual(1, strlen($number), "$number length is 1");
 
-        for ($i = 1; $i < 15; $i++) {
+        for ($i = 1; $i < 20; $i++) {
             $number = Randomize::float()->min(0)->max(1)->decimals($i)->generate();
+            $pattern = "x." . str_repeat("x", $i);
+            $floating = $number - floor($number);
 
             $this->assertIsFloat($number);
-            $this->assertEquals($i + 2, strlen($number));
+            $this->assertLessThanOrEqual(strlen($pattern), strlen($floating), "$floating matches $pattern");
         }
     }
 }
