@@ -51,18 +51,15 @@ $array=[
 $randomJs = Draw::sample($array)->count(2)->preserveKeys()->extract();
 var_dump($randomJs);
 
-echo "--- ROLL THE DICE 15 times show as string ".PHP_EOL;
-$randomRolls = Randomize::sequence()->min(1)->max(6)->count(15)->asString()->generate();
-echo "15 ROLLS: ". $randomRolls;
-echo PHP_EOL. "-----------------".PHP_EOL;
 
-echo "--- TOMBOLA  show as string".PHP_EOL;
-$randomTombola = Randomize::sequence()->min(1)->max(90)->count(90)->unique("true")->asString()->generate();
-echo "TOMBOLA: ". $randomTombola;
-echo PHP_EOL. "-----------------".PHP_EOL;
+echo "--- GENERATE STRING, 10 alphanumeric chars length".PHP_EOL;
+$randomChars = Randomize::sequence()->chars()->alphanumeric()->count(10)->asString()->generate();
+var_dump($randomChars);
 
+echo "--- GENERATE STRING, 10 numeric chars length".PHP_EOL;
+$randomChars = Randomize::sequence()->chars()->numeric()->count(10)->asString()->generate();
+var_dump($randomChars);
 
-echo "--- TOMBOLA WITHOUT DUPLICATES show as string".PHP_EOL;
-$randomTombola = Randomize::sequence()->min(1)->max(90)->count(90)->noDuplicates()->asString()->generate();
-var_dump($randomTombola);
-
+echo "--- GENERATE STRING, 10 alphabetical chars length".PHP_EOL;
+$randomChars = Randomize::sequence()->chars()->alpha()->count(10)->asString()->generate();
+var_dump($randomChars);
