@@ -8,9 +8,9 @@ use PHPUnit\Framework\TestCase;
 class RandomSequenceTest extends TestCase
 {
     /**
-     * 
      *
-     * @test 
+     *
+     * @test
      */
     public function random_sequence()
     {
@@ -20,9 +20,9 @@ class RandomSequenceTest extends TestCase
     }
 
     /**
-     * 
      *
-     * @test 
+     *
+     * @test
      */
     public function random_count_sequence()
     {
@@ -33,9 +33,9 @@ class RandomSequenceTest extends TestCase
     }
 
     /**
-     * 
      *
-     * @test 
+     *
+     * @test
      */
     public function random_char_sequence()
     {
@@ -45,9 +45,9 @@ class RandomSequenceTest extends TestCase
     }
 
     /**
-     * 
      *
-     * @test 
+     *
+     * @test
      */
     public function random_count_char_sequence()
     {
@@ -58,9 +58,7 @@ class RandomSequenceTest extends TestCase
     }
 
     /**
-     * 
-     *
-     * @test 
+     * @test
      */
     public function random_no_duplicate_char_sequence()
     {
@@ -71,9 +69,34 @@ class RandomSequenceTest extends TestCase
     }
 
     /**
-     * 
+     * @test
+     */
+    public function random_numeric_char_sequence()
+    {
+        $len = 5;
+        $string = Randomize::sequence()->chars()->asString()->numeric()->count($len)->generate();
+        $this->assertIsString($string, "Is String");
+        $this->assertSame($len, strlen($string), "Is right len");
+        $this->assertTrue(ctype_digit($string), "Check for Numeric character");
+
+        $string = Randomize::sequence()->chars()->asString()->alpha()->count($len)->generate();
+        $this->assertIsString($string, "Is String");
+        $this->assertSame($len, strlen($string), "Is right len");
+        $this->assertTrue(ctype_alpha($string), "Check for Alpha character");
+
+        $string = Randomize::sequence()->chars()->asString()->alphanumeric()->count($len)->generate();
+        $this->assertIsString($string, "Is String");
+        $this->assertSame($len, strlen($string), "Is right len");
+        $this->assertTrue(ctype_alnum($string), "Check for AlphaNumeric character");
+
+    }
+
+
+
+    /**
      *
-     * @test 
+     *
+     * @test
      */
     public function random_rollthedice()
     {
@@ -110,9 +133,9 @@ class RandomSequenceTest extends TestCase
     }
 
     /**
-     * 
      *
-     * @test 
+     *
+     * @test
      */
     public function random_tombola()
     {
@@ -135,9 +158,9 @@ class RandomSequenceTest extends TestCase
     }
 
     /**
-     * 
      *
-     * @test 
+     *
+     * @test
      */
     public function random_sequence_implode()
     {
@@ -150,9 +173,9 @@ class RandomSequenceTest extends TestCase
     }
 
     /**
-     * 
      *
-     * @test 
+     *
+     * @test
      */
     public function random_sequence_asString()
     {
