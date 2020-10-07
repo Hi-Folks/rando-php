@@ -81,7 +81,7 @@ class FloatModel
     /**
      * Generate and returns a random integer (considering $min and $max attribute)
      *
-     * @return int the random value (integer)
+     * @return float the float random value
      * @throws \Exception
      */
     public function generate(): float

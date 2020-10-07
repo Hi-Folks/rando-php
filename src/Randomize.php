@@ -4,7 +4,7 @@ namespace HiFolks\RandoPhp;
 
 use HiFolks\RandoPhp\Models\Char;
 use HiFolks\RandoPhp\Models\Integer as ModelInt;
-use HiFolks\RandoPhp\Models\Boolean;
+use HiFolks\RandoPhp\Models\Boolean as ModelBool;
 use HiFolks\RandoPhp\Models\DateTime;
 use HiFolks\RandoPhp\Models\Byte;
 use HiFolks\RandoPhp\Models\FloatModel;
@@ -16,11 +16,11 @@ class Randomize
     /**
      * Generates random boolean
      *
-     * @return Boolean
+     * @return ModelBool
      */
     public static function boolean()
     {
-        return new Boolean();
+        return new ModelBool();
     }
 
     /**
