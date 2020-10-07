@@ -8,18 +8,21 @@ class Char
 
     public function __construct()
     {
-
-        $this->alpha = range(48, 57);
-        $this->numeric = range(97, 122);
+        $this->ascii_codes = self::setAlpha();
     }
 
+
+    private static function setAlpha()
+    {
+        return range(97, 122);
+    }
     /**
      * Set the alpha value to generate
      * @return self
      */
     public function alpha()
     {
-        $this->ascii_codes = range(97, 122);
+        $this->ascii_codes = self::setAlpha();
         return $this;
     }
 
