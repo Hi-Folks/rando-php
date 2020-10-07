@@ -10,7 +10,7 @@
 RandoPHP is a PHP open source package for random stuff. With this package you can:
 - **Draw**: Extract random items (sample) from an array. This is useful when you want to "draw" some numbers or items;
 - **Generate**: useful for create random
-   - *item* like integer, byte, boolean;
+   - *item* like integer, byte, boolean, char (numeric, alphabetic, alphanumeric);
    - *sequences* like array of integer;
 
 With the fluent interface you can control some things like:
@@ -36,7 +36,7 @@ Sometimes you want to obtain a random char, for example, a numeric char:
 ```php
 Randomize::char()->numeric()->generate();
 ```
-Or you might want a alphabetic char:
+Or you might want an alphabetic char:
 
 ```php
 Randomize::char()->alpha()->generate();
@@ -49,7 +49,7 @@ Randomize::char()->alphanumeric()->generate();
 
 ### Generate Boolean
 
-Sometimes you want to obtain a random boolean true or false.(flip a coin):
+Sometimes you want to obtain a random boolean true or false (flip a coin):
 
 ``` php
 $randomBool = Randomize::boolean()->generate();
@@ -97,7 +97,7 @@ Or you might want numeric char sequences.
 $randomChars = Randomize::sequence()->chars()->numeric()->count(10)->generate();
 ```
 
-Or you might want aphabetical char sequences.
+Or you might want alphabetical char sequences.
 
 ```php
 $randomChars = Randomize::sequence()->chars()->alpha()->count(10)->generate();
@@ -128,7 +128,7 @@ Or you might want numeric char sequences with **no duplicates**. For example, ch
 $randomChars = Randomize::sequence()->chars()->numeric()->count(10)->noDuplicates()->generate();
 ```
 
-Or you might want aphabetical char sequences with **no duplicates**.
+Or you might want alphabetical char sequences with **no duplicates**.
 
 ```php
 $randomChars = Randomize::sequence()->chars()->alpha()->count(10)->noDuplicates()->generate();
