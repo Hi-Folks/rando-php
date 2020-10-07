@@ -26,10 +26,10 @@ class Sequence
     /**
      * chars
      * sets the sequence type to char
-     * 
+     *
      * @return $this
      */
-    public function chars() : self
+    public function chars(): self
     {
         $this->type = "char";
         $this->ascii_codes = range(97, 122);
@@ -147,10 +147,10 @@ class Sequence
 
     /**
      * Get String
-     * 
+     *
      * @return self
      */
-    public function asString(bool $toString = true) :self
+    public function asString(bool $toString = true): self
     {
         $this->toString = $toString;
         return $this;
@@ -168,33 +168,29 @@ class Sequence
         $result = [];
 
         switch ($this->type) {
-        case "int":
-            if ($this->unique) {
-                $arr = range($this->min, $this->max);
-                $result = Draw::sample($arr)->noDuplicates()->count($this->count)->extract();
-            } else {
-                for ($i = 0; $i < $this->count; $i++) {
-                    $result[] = Randomize::integer()->max($this->max)->min($this->min)->generate();
+            case "int":
+                if ($this->unique) {
+                    $arr = range($this->min, $this->max);
+                    $result = Draw::sample($arr)->noDuplicates()->count($this->count)->extract();
+                } else {
+                    for ($i = 0; $i < $this->count; $i++) {
+                        $result[] = Randomize::integer()->max($this->max)->min($this->min)->generate();
+                    }
                 }
-            }
-            break;
+                break;
 
-        case "char":
-            if($this->unique) {
-                $intArrResult = Draw::sample($this->ascii_codes)->noDuplicates()->count($this->count)->extract();
-                for($i = 0; $i < sizeof($intArrResult); $i++)
-                {
-                    $result[] = chr($intArrResult[$i]);
+            case "char":
+                if ($this->unique) {
+                    $intArrResult = Draw::sample($this->ascii_codes)->noDuplicates()->count($this->count)->extract();
+                    for ($i = 0; $i < sizeof($intArrResult); $i++) {
+                        $result[] = chr($intArrResult[$i]);
+                    }
+                } else {
+                    for ($i = 0; $i < $this->count; $i++) {
+                        $result[] = Randomize::char()->setAsciiCodes($this->ascii_codes)->generate();
+                    }
                 }
-            }
-            else
-            {
-                for($i = 0; $i < $this->count; $i++)
-                {
-                    $result[] = Randomize::char()->setAsciiCodes($this->ascii_codes)->generate();
-                }
-            }
-            break;
+                break;
         }
 
         if ($this->implode) {

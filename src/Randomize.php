@@ -35,8 +35,8 @@ class Randomize
 
     /**
      * Generates random floating point numbers
-     * 
-     * @return FloatModel 
+     *
+     * @return FloatModel
      */
     public static function float()
     {

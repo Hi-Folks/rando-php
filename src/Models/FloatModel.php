@@ -49,11 +49,11 @@ class FloatModel
 
     /**
      * Sets the number of decimals (precision)
-     * 
+     *
      * @param int $decimals number of decimals (precision)
      * @return self
      */
-    public function decimals(int $decimals): self 
+    public function decimals(int $decimals): self
     {
         if ($decimals < 0) {
             throw new InvalidArgumentException("The number of decimals cannot be negative.");

@@ -49,7 +49,7 @@ class Char
     /**
      * Set Ascii Codes
      */
-    public function setAsciiCodes($ascii_codes) : self
+    public function setAsciiCodes($ascii_codes): self
     {
         $this->ascii_codes = $ascii_codes;
         return $this;
