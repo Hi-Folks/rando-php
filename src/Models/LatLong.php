@@ -6,56 +6,78 @@ use HiFolks\RandoPhp\Randomize;
 
 class LatLong
 {
+    private $format = "array";
+
     /**
-     * Generates an array with latitude and longitude
+     * Set output format to array.
      *
-     * @return array
+     * @return self
      */
-    public function array() : array
+    public function asArray() : self
     {
-        return array($this->justLatitude(), $this->justLongitude());
+        $this->format = "array";
+        return $this;
     }
 
     /**
-     * Generates an object with latitude and longitude
+     * Set output format to object.
      *
-     * @return object
+     * @return self
      */
-    public function object() : object
+    public function asObject() : self
     {
-        $object = new \stdClass;
-        $object->latitude = $this->justLatitude();
-        $object->longitude = $this->justLongitude();
-        return $object;
+        $this->format = "object";
+        return $this;
     }
 
     /**
-     * Generates a latitude value
+     * Set output format to latitude.
      *
-     * @return float
+     * @return self
      */
-    public function justLatitude() : float
+    public function asLatitude() : self
     {
-        return Randomize::float()->range(-90.0, 90.0)->decimals(6)->generate();
+        $this->format = "latitude";
+        return $this;
     }
 
     /**
-     * Generates a longitude value
+     * Set output format to longitude.
      *
-     * @return float
+     * @return self
      */
-    public function justLongitude() : float
+    public function asLongitude() : self
     {
-        return Randomize::float()->range(-180.0, 180.0)->decimals(6)->generate();
+        $this->format = "longitude";
+        return $this;
     }
 
     /**
-     * Generates an array with latitude and longitude
+     * Generates a latitude / longitude coordinate
      *
-     * @return array
+     * @return array|object|float
      */
-    public function generate() : array
+    public function generate()
     {
-        return $this->array();
+        $latitude = Randomize::float()->range(-90.0, 90.0)->decimals(6)->generate();
+        $longitude = Randomize::float()->range(-180.0, 180.0)->decimals(6)->generate();
+        $result = [];
+        switch ($this->format) {
+            case "array":
+                $result = array($latitude, $longitude);
+            break;
+            case "object":
+                $result = new \stdClass;
+                $result->latitude = $latitude;
+                $result->longitude = $longitude;
+            break;
+            case "latitude":
+                $result = $latitude;
+            break;
+            case "longitude":
+                $result = $longitude;
+            break;
+        }
+        return $result;
     }
 }

@@ -12,7 +12,7 @@ class RandomLatLongTest extends TestCase
      */
     public function random_latlong_array(): void
     {
-        $latlong = Randomize::latlong()->array();
+        $latlong = Randomize::latlong()->asArray()->generate();
         $this->assertIsArray($latlong);
         // latitude
         $this->assertGreaterThanOrEqual(-90.0, $latlong[0]);
@@ -27,7 +27,7 @@ class RandomLatLongTest extends TestCase
      */
     public function random_latlong_object(): void
     {
-        $latlongObject = Randomize::latlong()->object();
+        $latlongObject = Randomize::latlong()->asObject()->generate();
         $this->assertIsObject($latlongObject);
         // latitude
         $this->assertGreaterThanOrEqual(-90.0, $latlongObject->latitude);
@@ -42,7 +42,7 @@ class RandomLatLongTest extends TestCase
      */
     public function random_latitude(): void
     {
-        $lat = Randomize::latlong()->justLatitude();
+        $lat = Randomize::latlong()->asLatitude()->generate();
         $this->assertGreaterThanOrEqual(-90.0, $lat);
         $this->assertLessThanOrEqual(90.0, $lat);
     }
@@ -52,7 +52,7 @@ class RandomLatLongTest extends TestCase
      */
     public function random_longitude(): void
     {
-        $long = Randomize::latlong()->justLongitude();
+        $long = Randomize::latlong()->asLongitude()->generate();
         $this->assertGreaterThanOrEqual(-180.0, $long);
         $this->assertLessThanOrEqual(180.0, $long);
     }
