@@ -11,11 +11,39 @@ class DateTime
     /**
      * @var int
      */
-    private $min = 1577836800; // 1 January 2020
+    private $min;
     /**
      * @var int
      */
-    private $max = 1609459199; // 31 December 2020
+    private $max;
+
+    public function __construct()
+    {
+        $this->min = self::setMin();
+        $this->max = self::setMax();
+    }
+
+    /**
+     * Set the min day
+     * First day (time 00:00:00)
+     * @param string $min
+     * @return int
+     */
+    private static function setMin(string $min = 'first day of january this year')
+    {
+        return strtotime($min);
+    }
+
+    /**
+     * Set the max day
+     * Last day (time 23:59:59)
+     * @param string $max
+     * @return int
+     */
+    private static function setMax(string $max = 'last day of december this year')
+    {
+        return strtotime('tomorrow', strtotime($max)) - 1;
+    }
 
     /**
      * Set the output format
@@ -37,7 +65,7 @@ class DateTime
      */
     public function max(string $max): self
     {
-        $this->max = strtotime($max);
+        $this->max = self::setMax($max);
         return $this;
     }
 
@@ -49,7 +77,7 @@ class DateTime
      */
     public function min(string $min): self
     {
-        $this->min = strtotime($min);
+        $this->min = self::setMin($min);
         return $this;
     }
 
@@ -63,8 +91,8 @@ class DateTime
      */
     public function range(string $min, string $max)
     {
-        $this->min = strtotime($min);
-        $this->max = strtotime($max);
+        $this->min = self::setMin($min);
+        $this->max = self::setMax($max);
         return $this;
     }
 
