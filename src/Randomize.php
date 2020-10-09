@@ -9,6 +9,7 @@ use HiFolks\RandoPhp\Models\DateTime;
 use HiFolks\RandoPhp\Models\Byte;
 use HiFolks\RandoPhp\Models\FloatModel;
 use HiFolks\RandoPhp\Models\Sequence;
+use HiFolks\RandoPhp\Models\LatLong;
 
 class Randomize
 {
@@ -69,5 +70,15 @@ class Randomize
     public static function char()
     {
         return new Char();
+    }
+
+    /**
+     * Generates random latitude / longitude coordinates in both array and object form.
+     *
+     * @return LatLong
+     */
+    public static function latlong() : LatLong
+    {
+        return new LatLong();
     }
 }
