@@ -11,11 +11,37 @@ class DateTime
     /**
      * @var int
      */
-    private $min = 1577836800; // 1 January 2020
+    private $min;
     /**
      * @var int
      */
-    private $max = 1609459199; // 31 December 2020
+    private $max;
+
+    public function __construct()
+    {
+        $this->min = self::setDefaultMin();
+        $this->max = self::setDefaultMax();
+    }
+
+    /**
+     * Set the default min day
+     * First day in this year (time 00:00:00)
+     * @return int
+     */
+    private static function setDefaultMin()
+    {
+        return strtotime('first day of january this year');
+    }
+
+    /**
+     * Set the default max day
+     * Last day in this year (time 23:59:59)
+     * @return int
+     */
+    private static function setDefaultMax()
+    {
+        return strtotime('tomorrow', strtotime('last day of december this year')) - 1;
+    }
 
     /**
      * Set the output format
