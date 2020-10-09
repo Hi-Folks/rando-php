@@ -1,0 +1,7 @@
+parameters:
+	level: 6
+	fileExtensions:
+		- php
+	paths:
+		- src
+	treatPhpDocTypesAsCertain: false

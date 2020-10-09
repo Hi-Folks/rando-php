@@ -5,6 +5,9 @@ namespace HiFolks\RandoPhp\Models;
 class Byte
 {
 
+    /**
+     * @var int
+     */
     private $length = 8;
 
 

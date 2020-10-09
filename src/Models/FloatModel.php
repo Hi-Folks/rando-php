@@ -7,10 +7,19 @@ use LogicException;
 
 class FloatModel
 {
+    /**
+     * @var float
+     */
     private $min = 0.0;
 
+    /**
+     * @var float
+     */
     private $max = 1.0;
 
+    /**
+     * @var int
+     */
     private $decimals = 2;
 
     /**

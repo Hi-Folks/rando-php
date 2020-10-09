@@ -4,8 +4,17 @@ namespace HiFolks\RandoPhp\Models;
 
 class DateTime
 {
+    /**
+     * @var string
+     */
     private $format = 'Y-m-d H:i:s';
+    /**
+     * @var int
+     */
     private $min = 1577836800; // 1 January 2020
+    /**
+     * @var int
+     */
     private $max = 1609459199; // 31 December 2020
 
     /**
@@ -19,7 +28,7 @@ class DateTime
         $this->format = $format;
         return $this;
     }
-    
+
     /**
      * Set the greatest value to generate
      *

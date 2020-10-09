@@ -8,15 +8,42 @@ use HiFolks\RandoPhp\Draw;
 class Sequence
 {
 
+    /**
+     * @var string
+     */
     private $type = "int";
+    /**
+     * @var int
+     */
     private $count = 10;
+    /**
+     * @var int
+     */
     private $min = 0;
+    /**
+     * @var int
+     */
     private $max = 10;
+    /**
+     * @var bool
+     */
     private $unique = false;
+    /**
+     * @var bool
+     */
     private $implode = false;
+    /**
+     * @var bool
+     */
     private $toString = false;
+    /**
+     * @var int[]
+     */
     private $ascii_codes = [];
 
+    /**
+     * @return $this
+     */
     public function integer()
     {
         $this->type("int");
@@ -50,11 +77,17 @@ class Sequence
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function allowDuplicates(): self
     {
         return $this->unique(false);
     }
 
+    /**
+     * @return $this
+     */
     public function noDuplicates(): self
     {
         return $this->unique(true);
@@ -160,7 +193,7 @@ class Sequence
     /**
      * Make the random array.
      *
-     * @return array|string
+     * @return int[]|string[]|string
      * @throws \Exception
      */
     public function generate()

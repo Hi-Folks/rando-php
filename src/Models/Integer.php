@@ -4,7 +4,13 @@ namespace HiFolks\RandoPhp\Models;
 
 class Integer
 {
+    /**
+     * @var int
+     */
     private $min = 0;
+    /**
+     * @var int
+     */
     private $max = 100;
 
     /**

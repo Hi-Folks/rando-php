@@ -11,14 +11,32 @@ namespace HiFolks\RandoPhp\Models;
  */
 class Sample
 {
+    /**
+     * @var array|mixed
+     */
     private $array;
+    /**
+     * @var int
+     */
     private $count = 1;
+    /**
+     * @var bool
+     */
     private $unique = true;
+    /**
+     * @var bool
+     */
     private $implode = false;
+    /**
+     * @var bool
+     */
     private $preserveKeys = false;
 
 
-
+    /**
+     * Sample constructor.
+     * @param int[]|string[]|\stdClass[] $array
+     */
     public function __construct($array = [])
     {
         $this->array = $array;
@@ -81,7 +99,7 @@ class Sample
     /**
      * Extract random keys from array.
      *
-     * @return array|int|string|null
+     * @return int[]|string[]|int|string|null
      * @throws \Exception
      */
     public function extractKeys()
@@ -127,7 +145,7 @@ class Sample
     /**
      * Extract and returns a sample random array, from the original array
      *
-     * @return array|string
+     * @return int[]|string[]|\stdClass[]|string
      * @throws \Exception
      */
     public function extract()

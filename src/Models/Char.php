@@ -2,20 +2,34 @@
 
 namespace HiFolks\RandoPhp\Models;
 
+/**
+ * Class Char
+ * @package HiFolks\RandoPhp\Models
+ */
 class Char
 {
+    /**
+     * @var int[]
+     */
     private $ascii_codes;
 
+    /**
+     * Char constructor.
+     */
     public function __construct()
     {
         $this->ascii_codes = self::setAlpha();
     }
 
 
+    /**
+     * @return int[]
+     */
     private static function setAlpha()
     {
         return range(97, 122);
     }
+
     /**
      * Set the alpha value to generate
      * @return self
@@ -48,6 +62,8 @@ class Char
 
     /**
      * Set Ascii Codes
+     * @param int[] $ascii_codes
+     * @return Char
      */
     public function setAsciiCodes($ascii_codes): self
     {
