@@ -54,10 +54,23 @@ Sometimes you want to obtain a random boolean true or false (flip a coin):
 ``` php
 $randomBool = Randomize::boolean()->generate();
 ```
+### Generate a Float
+
+Sometimes you want to obtain a random float (default min - max range of 0.0 - 1.0). For example, you want to generate a random temperature for a day:
+
+```php
+$randomFloat = Randomize::float()->generate();
+```
+
+Or you can set the min - max range of 0 - 90 , which is equivalent to ->min(0)->max(90)
+
+```php
+$randomFloat = Randomize::float()->min(0)->max(90)->generate();
+```
 
 ### Generate an Integer
 
-Sometimes you want to obtain a random integer (min - max rang). For example, you want to roll the dice:
+Sometimes you want to obtain a random integer (min - max range). For example, you want to roll the dice:
 
 ``` php
 $randomNumber = Randomize::integer()->min(1)->max(6)->generate();
