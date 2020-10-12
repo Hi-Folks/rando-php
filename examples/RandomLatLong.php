@@ -18,10 +18,10 @@ echo "-----------------".PHP_EOL;
 
 echo "--- GENERATING A LATITUDE VALUE IN FLOAT FORMAT" . PHP_EOL;
 echo "--- Randomize::latlong()->asLatitude()->generate();". PHP_EOL;
-echo "NUMBER " . Randomize::latlong()->asLatitude()->generate();
+echo "LATITUDE " . Randomize::latlong()->asLatitude()->generate();
 echo PHP_EOL. "-----------------".PHP_EOL;
 
 echo "--- GENERATING A LONGITUDE VALUE IN FLOAT FORMAT" . PHP_EOL;
 echo "--- Randomize::latlong()->asLongitude()->generate();". PHP_EOL;
-echo "NUMBER " . Randomize::latlong()->asLongitude()->generate();
+echo "LONGITUDE " . Randomize::latlong()->asLongitude()->generate();
 echo PHP_EOL. "-----------------".PHP_EOL;

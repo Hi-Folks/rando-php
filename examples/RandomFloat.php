@@ -14,17 +14,17 @@ echo "--- Randomize::float()->decimals(8)->generate();". PHP_EOL;
 echo "NUMBER " . Randomize::float()->decimals(8)->generate();
 echo PHP_EOL. "-----------------".PHP_EOL;
 
-echo "--- GENERATING A NUMBER BETWEEN RANGE FROM 1.2 TO 10.8" . PHP_EOL;
+echo "--- GENERATING A NUMBER (float) BETWEEN RANGE FROM 1.2 TO 10.8" . PHP_EOL;
 echo "--- Randomize::float()->range(1.2, 10.8)->generate();". PHP_EOL;
-echo "NUMBER " . Randomize::float()->range(1.2, 10.8)->generate();
+echo "FLOAT " . Randomize::float()->range(1.2, 10.8)->generate();
 echo PHP_EOL. "-----------------".PHP_EOL;
 
-echo "--- GENERATING A NUMBER BETWEEN 10.0 AND 20.0" . PHP_EOL;
+echo "--- GENERATING A NUMBER (float) BETWEEN 10.0 AND 20.0" . PHP_EOL;
 echo "--- Randomize::float()->min(10)->max(20)->generate();". PHP_EOL;
-echo "NUMBER " . Randomize::float()->min(10)->max(20)->generate();
+echo "FLOAT " . Randomize::float()->min(10)->max(20)->generate();
 echo PHP_EOL. "-----------------".PHP_EOL;
 
-echo "--- GENERATING A NUMBER BETWEEN 1.2 AND 1.3 WITH UP TO 8 DECIMALS" . PHP_EOL;
+echo "--- GENERATING A NUMBER (float) BETWEEN 1.2 AND 1.3 WITH UP TO 8 DECIMALS" . PHP_EOL;
 echo "--- Randomize::float()->min(1.2)->max(1.3)->decimals(8)->generate();". PHP_EOL;
-echo "NUMBER " . Randomize::float()->min(1.2)->max(1.3)->decimals(8)->generate();
+echo "FLOAT " . Randomize::float()->min(1.2)->max(1.3)->decimals(8)->generate();
 echo PHP_EOL. "-----------------".PHP_EOL;
