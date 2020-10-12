@@ -13,7 +13,7 @@ coverage: ## Execute the coverage test
 	vendor/bin/phpunit --coverage-text
 
 phpcs: ## execute phpcs
-	phpcs src
+	phpcs --standard=PSR12 src
 
 allcheck: phpcs phpstan coverage ## all check
 
