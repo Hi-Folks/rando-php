@@ -13,7 +13,7 @@ class LatLong
      *
      * @return self
      */
-    public function asArray() : self
+    public function asArray(): self
     {
         $this->format = "array";
         return $this;
@@ -24,7 +24,7 @@ class LatLong
      *
      * @return self
      */
-    public function asObject() : self
+    public function asObject(): self
     {
         $this->format = "object";
         return $this;
@@ -35,7 +35,7 @@ class LatLong
      *
      * @return self
      */
-    public function asLatitude() : self
+    public function asLatitude(): self
     {
         $this->format = "latitude";
         return $this;
@@ -46,7 +46,7 @@ class LatLong
      *
      * @return self
      */
-    public function asLongitude() : self
+    public function asLongitude(): self
     {
         $this->format = "longitude";
         return $this;
@@ -65,18 +65,18 @@ class LatLong
         switch ($this->format) {
             case "array":
                 $result = array($latitude, $longitude);
-            break;
+                break;
             case "object":
-                $result = new \stdClass;
+                $result = new \stdClass();
                 $result->latitude = $latitude;
                 $result->longitude = $longitude;
-            break;
+                break;
             case "latitude":
                 $result = $latitude;
-            break;
+                break;
             case "longitude":
                 $result = $longitude;
-            break;
+                break;
         }
         return $result;
     }
