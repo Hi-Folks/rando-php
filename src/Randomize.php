@@ -77,7 +77,7 @@ class Randomize
      *
      * @return LatLong
      */
-    public static function latlong() : LatLong
+    public static function latlong(): LatLong
     {
         return new LatLong();
     }
