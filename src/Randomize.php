@@ -54,6 +54,9 @@ class Randomize
         return new Byte();
     }
 
+    /**
+     * @return Sequence
+     */
     public static function sequence()
     {
         return new Sequence();
@@ -61,12 +64,16 @@ class Randomize
 
     /**
      * Generate random date (datetime), you can pass format option default Y-m-d H:i:s
+     * @return Datetime()
      */
     public static function datetime()
     {
         return new Datetime();
     }
 
+    /**
+     * @return Char
+     */
     public static function char()
     {
         return new Char();

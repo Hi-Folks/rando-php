@@ -6,6 +6,9 @@ use HiFolks\RandoPhp\Randomize;
 
 class LatLong
 {
+    /**
+     * @var string
+     */
     private $format = "array";
 
     /**
@@ -55,7 +58,7 @@ class LatLong
     /**
      * Generates a latitude / longitude coordinate
      *
-     * @return array|object|float
+     * @return float[]|object|float
      */
     public function generate()
     {
