@@ -16,7 +16,7 @@ class RandomFloatTest extends TestCase
 
         $this->assertIsFloat($number);
         $this->assertGreaterThanOrEqual(0, $number);
-        $this->assertLessThan(1, $number);
+        $this->assertLessThanOrEqual(1, $number);
 
         // There needs to be 4 characters max when converted to string (0.xx)
         $this->assertLessThanOrEqual(4, strlen((string) $number), "$number is 4 or less chars long (0.xx)");
@@ -105,7 +105,7 @@ class RandomFloatTest extends TestCase
     }
 
     /** @test */
-    public function random_float_min_max_decimals(): void 
+    public function random_float_min_max_decimals(): void
     {
         $number = Randomize::float()->min(5)->max(20)->decimals(5)->generate();
         $floating = round($number - (int) $number, 5);
@@ -119,7 +119,7 @@ class RandomFloatTest extends TestCase
 
         try {
             $number = Randomize::float()->min(10)->max(10)->decimals(-5)->generate();
-        } 
+        }
         catch (InvalidArgumentException $exception) {
             $this->assertEquals("The number of decimals cannot be negative.", $exception->getMessage());
             $catched = true;
