@@ -92,7 +92,7 @@ $randomRGB = Randomize::byte()->length(3)->generate();
 ```
 
 ### Generate a Date
-Sometimes you want to obtain a random date (default min - max range of First day of current year - Last day of current year). For example, you want to generate a random date of birth:
+Sometimes you want to obtain a random date (default min - max range of First day of current year - Last day of current year). For example, you want to generate a random date:
 
 ```php
 $randomDate = Randomize::datetime()->generate();
