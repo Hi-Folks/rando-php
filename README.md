@@ -91,6 +91,23 @@ Sometime you want to obtain some random bytes (hexadecimal). For example, you wa
 $randomRGB = Randomize::byte()->length(3)->generate();
 ```
 
+### Generate a Date
+Sometimes you want to obtain a random date (default min - max range of First day of current year - Last day of current year). For example, you want to generate a random date of birth:
+
+```php
+$randomDate = Randomize::datetime()->generate();
+```
+
+Or you can set the min - max range of 01-01-2020 - 10-01-2020 , which is equivalent to ->min('01-01-2020')->max('10-01-2020'):
+```php
+$randomDate = Randomize::datetime()->min('01-01-2020')->max('10-01-2020')->generate();
+```
+
+You can even specify your preferred format for the random date generated, by using ->format('d-M-Y'):
+```php
+$randomDate = Randomize::datetime()->format('d-M-Y')->generate();
+```
+
 ### Generate sequences
 Sometime you want to obtain some random sequences. For example, you want to roll the dice 15 times:
 
