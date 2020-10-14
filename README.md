@@ -10,15 +10,27 @@
 RandoPHP is a PHP open source package for random stuff. With this package you can:
 - **Draw**: Extract random items (sample) from an array. This is useful when you want to "draw" some numbers or items;
 - **Generate**: useful for create random
-   - *item* like integer, byte, boolean, char (numeric, alphabetic, alphanumeric);
-   - *sequences* like array of integer;
+   - *item* like integer, byte, boolean, float, lat/long coordinates, char (numeric, alphabetic, alphanumeric);
+   - *sequences* like array of integer or char;
 
 With the fluent interface you can control some things like:
 - minimum and maximum value for generation;
 - how many items you want to create;
 - for sequences if you want or not duplicates ([1,5,3,1,1], 1 is duplicate or [1,6,5,3,8], no duplicates);
 - And other stuff, see the documentation for more options.
- 
+
+- [Installation](#installation)
+- [Usage, how to generate:](#usage)
+  - [Random char](#generate-char)
+  - [Random boolean](#generate-boolean)
+  - [Random float](#generate-a-float)
+  - [Random integer](#generate-an-integer)
+  - [Random Bytes](#generate-bytes)
+  - [Random Date](#generate-a-date)
+  - [Random Sequences](#generate-sequences)
+- [Usage, how to extract random values from array/list](#draw-random-stuff)
+
+
 ## Installation
 
 You can install the package via composer:
@@ -75,13 +87,10 @@ Sometimes you want to obtain a random integer (min - max range). For example, yo
 ``` php
 $randomNumber = Randomize::integer()->min(1)->max(6)->generate();
 ```
-
-### Generate an Range
-
-Set the range (min and max) Calling range(1,10), it is equivalent of ->min(1)->max(10):
+The same thing using range() method, instead of min() and max():
 
 ``` php
-$randomNumber = Randomize::integer()->range(1,10)->generate();
+$randomNumber = Randomize::integer()->range(1,6)->generate();
 ```
 
 ### Generate bytes
@@ -139,7 +148,6 @@ Yes, even both.
 $randomChars = Randomize::sequence()->chars()->alphanumeric()->count(10)->generate();
 ```
 
-### Generate sequences with no duplicates
 Sometime you want to obtain some random sequences with **no duplicates**. For example, you want to play "Tombola" (extracting number from 1 to 90 with NO duplicates):
 
 ```php
@@ -170,19 +178,23 @@ Yes, even both and with **no duplicates**.
 $randomChars = Randomize::sequence()->chars()->alphanumeric()->count(10)->noDuplicates()->generate();
 ```
 
-### Suggest which JS framework you could use in your next project (random)
+### Draw random stuff
+If you have a list of values and you want to extract/select/draw one or more elements,
+you could use Draw class instead of Randomize.
+
+#### Suggest which JS framework you could use in your next project (random)
 ```php
 $array=["React.js", "Vue.js", "Svelte.js", "Angular.js" , "Alpine.js", "Vanilla js"];
 $randomJs = Draw::sample($array)->extract();
 ```
 
-### Extract 3 JS framework you could use in your next project
+#### Extract 3 JS framework you could use in your next project
 ```php
 $array=["React.js", "Vue.js", "Svelte.js", "Angular.js" , "Alpine.js", "Vanilla js"];
 $randomJs = Draw::sample($array)->count(3)->extract();
 ```
 
-### Extract 3 JS framework (duplicates allowed)
+#### Extract 3 JS framework (duplicates allowed)
 ```php
 $array = ["React.js", "Vue.js", "Svelte.js", "Angular.js", "Alpine.js", "Vanilla js"];
 $randomJs = Draw::sample($array)->count(3)->allowDuplicates()->extract();
