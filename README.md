@@ -19,6 +19,8 @@ With the fluent interface you can control some things like:
 - for sequences if you want or not duplicates ([1,5,3,1,1], 1 is duplicate or [1,6,5,3,8], no duplicates);
 - And other stuff, see the documentation for more options.
 
+## Table of contents
+
 - [Installation](#installation)
 - [Usage, how to generate:](#usage)
   - [Random char](#generate-char)

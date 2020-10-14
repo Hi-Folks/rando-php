@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.4 - 2020-10-14 HACKTOBERFEST 2020 - 2
+
+### Add
+- Add Latitude / Longitude coordinates random generation (as object , as array as number). Thanks to @vrabe
+- Add Makefile to launch: unit tests, phpstan (level 6), phpcs (PSR12)
+- Adding more tests for DateTime
+
+### Change
+- Set min and max default for date time (first day of the current year, last day of the current year), thanks to @armsasmart
+
+### Documentation
+- Improve readme file, thanks to @pret3nti0u5
+
+
 ## 0.1.3 - 2020-10-07 HACKTOBERFEST 2020 - 1
 
 ### Add
