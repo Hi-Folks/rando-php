@@ -56,7 +56,7 @@ class Char
      */
     public function alphanumeric(): Char
     {
-        $this->ascii_codes = array_merge(range(48, 57) , range(97, 122));
+        $this->ascii_codes = array_merge(range(48, 57), range(97, 122));
         return $this;
     }
 
