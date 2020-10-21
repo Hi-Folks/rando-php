@@ -174,7 +174,7 @@ class Sequence
      */
     public function alphanumeric()
     {
-        $this->ascii_codes = range(48, 57) + range(97, 122);
+        $this->ascii_codes = array_merge(range(48, 57), range(97, 122));
         return $this;
     }
 
