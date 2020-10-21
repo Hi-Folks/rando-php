@@ -14,6 +14,19 @@ class Char
     private $ascii_codes;
 
     /**
+     * Callback list
+     */
+    private $transformers = [
+        'lower' => 'strtolower',
+        'upper' => 'strtoupper'
+    ];
+
+    /**
+     * Current active case
+     */
+    private $case;
+
+    /**
      * Char constructor.
      */
     public function __construct()
@@ -37,6 +50,28 @@ class Char
     public function alpha()
     {
         $this->ascii_codes = self::setAlpha();
+        return $this;
+    }
+
+    /**
+     * Set active transformer to lowercase
+     * 
+     * @return self
+     */
+    public function lower()
+    {
+        $this->case = 'lower';
+        return $this;
+    }
+
+    /**
+     * Set active transformer to uppercase
+     * 
+     * @return self
+     */
+    public function upper()
+    {
+        $this->case = 'upper';
         return $this;
     }
 
@@ -80,6 +115,12 @@ class Char
     public function generate(): string
     {
         $rand_index = random_int(0, sizeof($this->ascii_codes) - 1);
+
+        // If user called either lower() or upper(), apply active trasformer callback
+        if (isset($this->case)) {
+            return call_user_func($this->transformers[$this->case], chr($this->ascii_codes[$rand_index]));
+        }
+
         return chr($this->ascii_codes[$rand_index]);
     }
 }
