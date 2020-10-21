@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.5 - 2020-10-21
+
+### Fix
+- Fix issue with array merge/append for alphanumeric
+
 ## 0.1.4 - 2020-10-14 HACKTOBERFEST 2020 - 2
 
 ### Add
