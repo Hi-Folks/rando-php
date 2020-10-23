@@ -116,11 +116,15 @@ class Char
     {
         $rand_index = random_int(0, sizeof($this->ascii_codes) - 1);
 
-        // If user called either lower() or upper(), apply active trasformer callback
+        $randomChar = chr($this->ascii_codes[$rand_index]);
+
+        // If user called either lower() or upper(), apply active trasformer callback to random char
         if (isset($this->case)) {
-            return call_user_func($this->transformers[$this->case], chr($this->ascii_codes[$rand_index]));
+            return call_user_func($this->transformers[$this->case], $randomChar);
         }
 
-        return chr($this->ascii_codes[$rand_index]);
+        // Else return random char with random case
+        $randomCaseCallback = $this->transformers[array_rand($this->transformers)];
+        return call_user_func($randomCaseCallback, $randomChar);
     }
 }
