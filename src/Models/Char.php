@@ -2,6 +2,8 @@
 
 namespace HiFolks\RandoPhp\Models;
 
+use HiFolks\RandoPhp\Draw;
+
 /**
  * Class Char
  * @package HiFolks\RandoPhp\Models
@@ -126,7 +128,7 @@ class Char
         }
 
         // Else return random char with random case
-        $randomCaseCallback = $this->transformers[array_rand($this->transformers)];
+        $randomCaseCallback = Draw::sample($this->transformers)->extract()[0];
         return call_user_func($randomCaseCallback, $randomChar);
     }
 }
