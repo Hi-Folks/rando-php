@@ -15,6 +15,7 @@ class Char
 
     /**
      * Callback list
+     * @var string[]
      */
     private $transformers = [
         'lower' => 'strtolower',
@@ -23,6 +24,7 @@ class Char
 
     /**
      * Current active case
+     * @var string
      */
     private $case;
 
@@ -55,7 +57,7 @@ class Char
 
     /**
      * Set active transformer to lowercase
-     * 
+     *
      * @return self
      */
     public function lower()
@@ -66,7 +68,7 @@ class Char
 
     /**
      * Set active transformer to uppercase
-     * 
+     *
      * @return self
      */
     public function upper()
