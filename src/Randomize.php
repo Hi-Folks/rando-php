@@ -2,9 +2,10 @@
 
 namespace HiFolks\RandoPhp;
 
+use HiFolks\RandoPhp\Exceptions\ModelNotFoundException;
+use HiFolks\RandoPhp\Models\Boolean;
 use HiFolks\RandoPhp\Models\Char;
-use HiFolks\RandoPhp\Models\Integer as ModelInt;
-use HiFolks\RandoPhp\Models\Boolean as ModelBool;
+use HiFolks\RandoPhp\Models\Integer;
 use HiFolks\RandoPhp\Models\DateTime;
 use HiFolks\RandoPhp\Models\Byte;
 use HiFolks\RandoPhp\Models\FloatModel;
@@ -15,77 +16,38 @@ class Randomize
 {
 
     /**
-     * Generates random boolean
+     * Registered models with format: 'methodToLoadModel' => ClassName
+     */
+    private static $models = [
+        'boolean' => Boolean::class,
+        'integer' => Integer::class,
+        'float' => FloatModel::class,
+        'byte' => Byte::class,
+        'sequence' => Sequence::class,
+        'datetime' => DateTime::class,
+        'char' => Char::class,
+        'latlong' => LatLong::class,
+    ];
+
+    /**
+     * Return the model registered in $models property
      *
-     * @return ModelBool
+     * @param $name
+     * @param $arguments
+     * @return mixed
+     * @throws ModelNotFoundException
      */
-    public static function boolean()
+    public static function __callStatic($name, $arguments)
     {
-        return new ModelBool();
-    }
+        if(in_array($name, array_keys(self::$models))) {
 
-    /**
-     * Generates random numbers
-     *
-     * @return ModelInt
-     */
-    public static function integer()
-    {
-        return new ModelInt();
-    }
+            if(count($arguments))
+                return new self::$models[$name]($arguments);
 
-    /**
-     * Generates random floating point numbers
-     *
-     * @return FloatModel
-     */
-    public static function float()
-    {
-        return new FloatModel();
-    }
+            return new self::$models[$name];
 
-    /**
-     * Generates random byte (32 bit), something in hexadecimal format [0-f][0-f]
-     *
-     * @return Byte
-     */
-    public static function byte()
-    {
-        return new Byte();
-    }
+        }
 
-    /**
-     * @return Sequence
-     */
-    public static function sequence()
-    {
-        return new Sequence();
-    }
-
-    /**
-     * Generate random date (datetime), you can pass format option default Y-m-d H:i:s
-     * @return Datetime()
-     */
-    public static function datetime()
-    {
-        return new Datetime();
-    }
-
-    /**
-     * @return Char
-     */
-    public static function char()
-    {
-        return new Char();
-    }
-
-    /**
-     * Generates random latitude / longitude coordinates in both array and object form.
-     *
-     * @return LatLong
-     */
-    public static function latlong(): LatLong
-    {
-        return new LatLong();
+        throw new ModelNotFoundException('Model not found');
     }
 }
