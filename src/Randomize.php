@@ -5,7 +5,7 @@ namespace HiFolks\RandoPhp;
 use HiFolks\RandoPhp\Exceptions\ModelNotFoundException;
 use HiFolks\RandoPhp\Models\Boolean;
 use HiFolks\RandoPhp\Models\Char;
-use HiFolks\RandoPhp\Models\Integer;
+use HiFolks\RandoPhp\Models\Integer as IntModel;
 use HiFolks\RandoPhp\Models\DateTime;
 use HiFolks\RandoPhp\Models\Byte;
 use HiFolks\RandoPhp\Models\FloatModel;
@@ -17,8 +17,8 @@ use HiFolks\RandoPhp\Models\LatLong;
  *
  * @package HiFolks\RandoPhp
  * @method  static Boolean boolean()
- * @method  static Integer integer()
- * @method  static Float float()
+ * @method  static IntModel integer()
+ * @method  static FloatModel float()
  * @method  static Byte byte()
  * @method  static Sequence sequence()
  * @method  static DateTime datetime()
@@ -30,10 +30,11 @@ class Randomize
 
     /**
      * Registered models with format: 'methodToLoadModel' => ClassName
+     * @var mixed[] $models
      */
     private static $models = [
         'boolean' => Boolean::class,
-        'integer' => Integer::class,
+        'integer' => IntModel::class,
         'float' => FloatModel::class,
         'byte' => Byte::class,
         'sequence' => Sequence::class,
@@ -45,12 +46,12 @@ class Randomize
     /**
      * Return the model registered in $models property
      *
-     * @param  $name
-     * @param  $arguments
+     * @param  string $name
+     * @param  mixed $arguments
      * @return mixed
      * @throws ModelNotFoundException
      */
-    public static function __callStatic($name, $arguments)
+    public static function __callStatic(string $name, $arguments)
     {
         if (in_array($name, array_keys(self::$models))) {
             if (count($arguments)) {
