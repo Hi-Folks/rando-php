@@ -12,7 +12,7 @@ class Byte
 
 
     /**
-     * @param int $length
+     * @param  int $length
      * @return $this
      */
     public function length(int $length): self

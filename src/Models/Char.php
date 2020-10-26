@@ -6,6 +6,7 @@ use HiFolks\RandoPhp\Draw;
 
 /**
  * Class Char
+ *
  * @package HiFolks\RandoPhp\Models
  */
 class Char
@@ -17,6 +18,7 @@ class Char
 
     /**
      * Callback list
+     *
      * @var string[]
      */
     private $transformers = [
@@ -26,6 +28,7 @@ class Char
 
     /**
      * Current active case
+     *
      * @var string
      */
     private $case;
@@ -49,6 +52,7 @@ class Char
 
     /**
      * Set the alpha value to generate
+     *
      * @return self
      */
     public function alpha()
@@ -81,6 +85,7 @@ class Char
 
     /**
      * Set the numeric value to generate
+     *
      * @return self
      */
     public function numeric()
@@ -91,6 +96,7 @@ class Char
 
     /**
      * Get Alphanumeric value
+     *
      * @return self
      */
     public function alphanumeric(): Char
@@ -101,7 +107,8 @@ class Char
 
     /**
      * Set Ascii Codes
-     * @param int[] $ascii_codes
+     *
+     * @param  int[] $ascii_codes
      * @return Char
      */
     public function setAsciiCodes($ascii_codes): self

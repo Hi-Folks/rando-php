@@ -35,6 +35,7 @@ class Sample
 
     /**
      * Sample constructor.
+     *
      * @param int[]|string[]|\stdClass[] $array
      */
     public function __construct($array = [])
@@ -67,7 +68,7 @@ class Sample
     /**
      * Sets the unique attribute
      *
-     * @param bool $unique
+     * @param  bool $unique
      * @return $this
      */
     public function unique($unique = true): self
@@ -133,7 +134,7 @@ class Sample
      * Set the output. The extract method instead of returning an array,
      * it returns a string with items separated by ","
      *
-     * @param bool $implode
+     * @param  bool $implode
      * @return Sample
      */
     public function implode(bool $implode = true): self

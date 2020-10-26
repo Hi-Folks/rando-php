@@ -59,7 +59,7 @@ class FloatModel
     /**
      * Sets the number of decimals (precision)
      *
-     * @param int $decimals number of decimals (precision)
+     * @param  int $decimals number of decimals (precision)
      * @return self
      */
     public function decimals(int $decimals): self

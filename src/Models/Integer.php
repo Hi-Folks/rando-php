@@ -16,7 +16,7 @@ class Integer
     /**
      * Set the greatest value to generate
      *
-     * @param int $max greatest value
+     * @param  int $max greatest value
      * @return self
      */
     public function max(int $max): self
