@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.6 - 2020-11-13
+
+### Add
+- PHP 8 compatibility
+- Add lower() method to Char for generating lower case chars: Randomize::char()->alpha()->lower()->generate() (thanks to @xanaDev);
+- Add upper() method to Char for generating upper case chars: Randomize::char()->alpha()->upper()->generate() (thanks to @xanaDev);
+
+### Change
+- Register models in a property and load them with magic functions (thanks to @marcio-adue)
+ 
 ## 0.1.5 - 2020-10-21
 
 ### Fix

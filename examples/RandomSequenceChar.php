@@ -26,3 +26,9 @@ insertBreak('-');
 printLn("GENERATING A SEQUENCE OF ALPHANUMERIC CHARS");
 printLn("Randomize::sequence()->chars()->alphanumeric()->count(10)->asString()->generate()");
 printLn("SEQUENCE " . Randomize::sequence()->chars()->alphanumeric()->count(10)->asString()->generate());
+insertBreak('-');
+
+printLn("GENERATING A SEQUENCE OF 20 ALPHA UNIQUE CHARS");
+printLn("Randomize::sequence()->chars()->alpha()->unique()->count(20)->asString()->generate()");
+printLn("SEQUENCE " . Randomize::sequence()->chars()->alpha()->unique()->count(20)->asString()->generate());
+insertBreak('-');

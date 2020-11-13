@@ -61,6 +61,15 @@ You can even do both!
 Randomize::char()->alphanumeric()->generate();
 ```
 
+You can generate a lower case char:
+```php
+Randomize::char()->alpha()->lower()->generate();
+```
+You can generate an upper case char:
+```php
+Randomize::char()->alpha()->upper()->generate();
+```
+
 ### Generate Boolean
 
 Sometimes you want to obtain a random boolean true or false (flip a coin):
