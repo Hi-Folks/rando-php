@@ -46,7 +46,8 @@ class RandomIntegerTest extends TestCase
             $this->assertGreaterThan(0, $e->getCode(), "Code exception test");
         } catch (\Error $e) {
             $catch = true;
-            $this->assertStringContainsString("Minimum", $e->getMessage(), "Message Error test");
+            $this->assertIsString($e->getMessage(), "Message Error");
+
         }
         $this->assertSame(true, $catch, "Exception catch");
     }

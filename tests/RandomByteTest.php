@@ -22,7 +22,7 @@ class RandomByteTest extends TestCase
             $byte = Randomize::byte()->length(0)->generate();
         } catch (\Error $e) {
             $catch = true;
-            $this->assertStringContainsString("Length must be greater", $e->getMessage(), "Message Error test");
+            $this->assertIsString($e->getMessage(), "Message Error");
         }
         $this->assertSame(true, $catch, "Exception catch");
 

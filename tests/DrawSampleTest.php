@@ -47,6 +47,7 @@ class DrawSampleTest extends TestCase
         $array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
         $count = 5;
         $sampleKeys = Draw::sample($array)->count(0)->extractKeys();
+        $this->assertSame(null, $sampleKeys, "Null for count 0");
         $this->assertEmpty($sampleKeys, "Check extract key with 0 count");
         $sampleKeys = Draw::sample([])->count(2)->extractKeys();
         $this->assertEmpty($sampleKeys, "Check extract key with empty array");
