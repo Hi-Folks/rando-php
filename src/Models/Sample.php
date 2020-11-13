@@ -101,7 +101,6 @@ class Sample
      * Extract random keys from array.
      *
      * @return int[]|string[]|int|string|null
-     * @throws \Exception
      */
     public function extractKeys()
     {
@@ -122,7 +121,11 @@ class Sample
                         shuffle($a);
                     }
                 } catch (\Exception $e) {
+                    return null;
+                } catch (\Error $e) {
+                    return null;
                 }
+
                 return $a;
             }
         } else {
