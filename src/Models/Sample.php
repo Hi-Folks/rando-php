@@ -146,11 +146,20 @@ class Sample
         return $this;
     }
 
+    /**
+     * Return just 1 element (value) from array
+     * @return int|mixed|\stdClass|string
+     */
     public function snap()
     {
         $key =  $this->count(1)->preserveKeys()->extractKeys();
         return $this->array[$key];
     }
+
+    /**
+     * Return just 1 element (the key) from array
+     * @return int|int[]|string|string[]|null
+     */
     public function snapKey()
     {
         $key =  $this->count(1)->preserveKeys()->extractKeys();
