@@ -51,6 +51,10 @@ $array=[
 $randomJs = Draw::sample($array)->count(2)->preserveKeys()->extract();
 var_dump($randomJs);
 
+echo "--- SUGGEST ME THE PROGRAMMING LANGUAGE TO USE ".PHP_EOL;
+$randomLanguage = Draw::sample(["PHP", "Python", "Golang", "Javascript"])->snap();
+var_dump($randomLanguage);
+
 
 echo "--- GENERATE STRING, 10 alphanumeric chars length".PHP_EOL;
 $randomChars = Randomize::sequence()->chars()->alphanumeric()->count(10)->asString()->generate();
@@ -63,3 +67,4 @@ var_dump($randomChars);
 echo "--- GENERATE STRING, 10 alphabetical chars length".PHP_EOL;
 $randomChars = Randomize::sequence()->chars()->alpha()->count(10)->asString()->generate();
 var_dump($randomChars);
+

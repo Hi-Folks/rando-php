@@ -41,7 +41,9 @@ class RandomDateTimeTest extends TestCase
         $day = Randomize::datetime()->range('01-10-2020 00:00:00', '01-10-2020 12:00:00')->format("d")->generate();
         $this->assertSame("01", $day , "Extracting the right day");
         $year = Randomize::datetime()->range('01-01-2020', 'now')->format("Y")->generate();
-        $this->assertSame("2020", $year , "Extracting the right year");
+        $this->assertIsString($year, "Generated Y is a string");
+        $this->assertSame(strlen($year), 4, "Generated Y is 4 chars");
+
 
     }
 

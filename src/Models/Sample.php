@@ -146,6 +146,18 @@ class Sample
         return $this;
     }
 
+    public function snap()
+    {
+        $key =  $this->count(1)->preserveKeys()->extractKeys();
+        return $this->array[$key];
+    }
+    public function snapKey()
+    {
+        $key =  $this->count(1)->preserveKeys()->extractKeys();
+        return $key;
+    }
+
+
     /**
      * Extract and returns a sample random array, from the original array
      *

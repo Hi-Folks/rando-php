@@ -43,6 +43,11 @@ composer require hi-folks/rando-php
 
 ## Usage
 
+In order to import the right class:
+```php
+use HiFolks\RandoPhp\Randomize;
+```
+
 ### Generate Char
 
 Sometimes you want to obtain a random char, for example, a numeric char:
@@ -192,6 +197,18 @@ $randomChars = Randomize::sequence()->chars()->alphanumeric()->count(10)->noDupl
 ### Draw random stuff
 If you have a list of values and you want to extract/select/draw one or more elements,
 you could use Draw class instead of Randomize.
+For using Draw class you need to import:
+```php
+use HiFolks\RandoPhp\Draw;
+```
+
+#### Suggest which programming language you could use in your next project (random)
+```php
+use HiFolks\RandoPhp\Draw;
+
+$randomLanguage = Draw::sample(["PHP", "Python", "Golang", "Javascript"])->snap();
+var_dump($randomLanguage);
+```
 
 #### Suggest which JS framework you could use in your next project (random)
 ```php
