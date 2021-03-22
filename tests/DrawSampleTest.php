@@ -73,4 +73,33 @@ class DrawSampleTest extends TestCase
         $this->assertSame($count, count($sample), "Check extract count is correct");
     }
 
+    /** @test */
+    public function random_snap()
+    {
+        $array=["testa" => "Testa", "croce" => "Croce"];
+
+        $sample = Draw::sample($array)->snap();
+        $this->assertIsString($sample, "Element is a string");
+        $this->assertContains($sample,["Testa", "Croce"], "Element is in Array");
+
+        $sample = Draw::sample($array)->snapKey();
+        $this->assertIsString($sample, "Element is a string");
+        $this->assertContains($sample,["testa", "croce"], "Element is in Array");
+
+        $array=[
+            "first" => ["This", "is", "First"],
+            "second" => ["This" , "is", "Second" ]
+        ];
+        $sample = Draw::sample($array)->snap();
+        $this->assertIsArray($sample, "Element is an array");
+
+        $sample = Draw::sample($array)->snapKey();
+        $this->assertIsString($sample, "Element is a string");
+        $this->assertContains($sample,["first", "second"], "Element is a valid key");
+
+        $array=[10,11,12,13];
+        $sample = Draw::sample($array)->snap();
+        $this->assertIsInt($sample, "Element is an Integer");
+    }
+
 }
