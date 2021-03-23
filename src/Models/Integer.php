@@ -4,8 +4,8 @@ namespace HiFolks\RandoPhp\Models;
 
 class Integer
 {
-    const DEFAULT_MIN = 0;
-    const DEFAULT_MAX = 100;
+    public const DEFAULT_MIN = 0;
+    public const DEFAULT_MAX = 100;
 
     /**
      * @var int
