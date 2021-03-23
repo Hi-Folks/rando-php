@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.1.7 - WIP
+- Add snap() and snapKey() in Draw class. You can retry 1 item from array
+
 ## 0.1.6 - 2020-11-13
 
 ### Add
