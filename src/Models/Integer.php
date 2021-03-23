@@ -4,14 +4,29 @@ namespace HiFolks\RandoPhp\Models;
 
 class Integer
 {
+    const DEFAULT_MIN = 0;
+    const DEFAULT_MAX = 100;
+
     /**
      * @var int
      */
-    private $min = 0;
+    private $min;
     /**
      * @var int
      */
-    private $max = 100;
+    private $max;
+
+    /**
+     * Integer constructor.
+     * @param int $min
+     * @param int $max
+     */
+    public function __construct(int $min = self::DEFAULT_MIN, int $max = self::DEFAULT_MAX)
+    {
+        $this->min = $min;
+        $this->max = $max;
+    }
+
 
     /**
      * Set the greatest value to generate

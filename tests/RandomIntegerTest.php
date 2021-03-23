@@ -2,6 +2,8 @@
 
 namespace HiFolks\RandoPhp\Tests;
 
+use Error;
+use Exception;
 use HiFolks\RandoPhp\Randomize;
 use PHPUnit\Framework\TestCase;
 
@@ -14,6 +16,13 @@ class RandomIntegerTest extends TestCase
         $this->assertGreaterThanOrEqual(0, $number, "Check min number");
         $this->assertLessThanOrEqual(5, $number, "Check max number");
         $this->assertIsInt($number, "Check is integer");
+
+        $number = Randomize::integer(24, 26)->generate();
+        $this->assertGreaterThanOrEqual(24, $number, "Check min number");
+        $this->assertLessThanOrEqual(26, $number, "Check max number");
+        $this->assertIsInt($number, "Check is integer");
+
+
     }
     /** @test */
     public function random_integer_min_max()
@@ -40,11 +49,11 @@ class RandomIntegerTest extends TestCase
         $max=30;
         $catch=false;
         try {
-            $number = Randomize::integer()->min($min)->max($max)->generate();
-        } catch (\Exception $e) {
+            Randomize::integer()->min($min)->max($max)->generate();
+        } catch (Exception $e) {
             $catch = true;
             $this->assertGreaterThan(0, $e->getCode(), "Code exception test");
-        } catch (\Error $e) {
+        } catch (Error $e) {
             $catch = true;
             $this->assertIsString($e->getMessage(), "Message Error");
 

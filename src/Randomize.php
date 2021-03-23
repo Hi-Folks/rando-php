@@ -17,7 +17,7 @@ use HiFolks\RandoPhp\Models\LatLong;
  *
  * @package HiFolks\RandoPhp
  * @method  static Boolean boolean()
- * @method  static IntModel integer()
+ *
  * @method  static FloatModel float()
  * @method  static Byte byte()
  * @method  static Sequence sequence()
@@ -34,7 +34,7 @@ class Randomize
      */
     private static $models = [
         'boolean' => Boolean::class,
-        'integer' => IntModel::class,
+        //'integer' => IntModel::class,
         'float' => FloatModel::class,
         'byte' => Byte::class,
         'sequence' => Sequence::class,
@@ -42,6 +42,18 @@ class Randomize
         'char' => Char::class,
         'latlong' => LatLong::class,
     ];
+
+
+    /**
+     * @param int $min
+     * @param int $max
+     * @return IntModel
+     */
+    public static function integer($min = IntModel::DEFAULT_MIN, $max = IntModel::DEFAULT_MAX)
+    {
+        return new IntModel($min, $max);
+    }
+
 
     /**
      * Return the model registered in $models property
@@ -54,9 +66,11 @@ class Randomize
     public static function __callStatic(string $name, $arguments)
     {
         if (in_array($name, array_keys(self::$models))) {
+            /*
             if (count($arguments)) {
                 return new self::$models[$name]($arguments);
             }
+            */
 
             return new self::$models[$name]();
         }

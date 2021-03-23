@@ -120,9 +120,7 @@ class Sample
                     if (is_array($a)) {
                         shuffle($a);
                     }
-                } catch (\Exception $e) {
-                    return null;
-                } catch (\Error $e) {
+                } catch (\Exception | \Error $e) {
                     return null;
                 }
 
