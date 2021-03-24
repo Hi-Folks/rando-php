@@ -81,4 +81,26 @@ class RandomCharTest extends TestCase
         $this->assertTrue(ctype_alnum($alpha), "Check for alphanumeric character");
         $this->assertTrue(ctype_alpha($alpha) ? ctype_upper($alpha) : true, "Check for lowercase character");
     }
+
+    /** @test */
+    public function it_generates_customchars()
+    {
+        $array = range(33, 47);
+        $obj = Randomize::char()->addArrayCharsInt($array);
+        $string = $obj->getAsciiCodesAsString();
+        $char = $obj->generate();
+        $this->assertIsString($char, "Is String");
+        $this->assertSame(1, strlen($char), "Is 1 char");
+
+        $this->assertTrue(in_array(ord($char), $array), "--Check for right char: -". $char."-" . $string."++++++");
+
+        $array = ['a', 'B', 'z'];
+
+        $char = Randomize::char()->addArrayChars($array)->alpha()->generate();
+        $this->assertIsString($char, "Is String");
+        $this->assertSame(1, strlen($char), "Is 1 char: -". $char."-");
+
+
+        }
+
 }
