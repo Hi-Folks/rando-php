@@ -64,6 +64,7 @@ class Char
     /**
      * Reset all attributes to default values. It is useful for the construct method
      * but also when you want to reinitialize Char object.
+     * @return void
      */
     public function reset()
     {
@@ -78,7 +79,8 @@ class Char
     /**
      * Add an array of chars (ordinal/numerical ascii value) to the array for randomly select char
      *
-     * @param array $preset
+     * @param int[] $preset
+     * @return self
      */
     public function addPreset(array $preset)
     {
@@ -86,10 +88,17 @@ class Char
         return $this;
     }
 
+    /**
+     * @return int[]
+     */
     public function getAsciiCodes()
     {
         return $this->ascii_codes;
     }
+
+    /**
+     * @return string
+     */
     public function getAsciiCodesAsString()
     {
         return implode(",", $this->ascii_codes);
@@ -98,16 +107,15 @@ class Char
 
     /**
      * @param int[] $charset
-     * @return $this
+     * @return self
      */
     public function addArrayCharsInt(array $charset)
     {
-
         return $this->addPreset($charset);
     }
     /**
-     * @param array $charset
-     * @return $this
+     * @param string[] $charset
+     * @return self
      */
     public function addArrayChars(array $charset)
     {
@@ -125,6 +133,7 @@ class Char
      * (it applies strtolower to the charset) before to select randomly 1
      *
      * @param string $transformType
+     * @return void
      */
     private function addTransform(string $transformType)
     {
