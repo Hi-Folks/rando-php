@@ -84,11 +84,18 @@ class Char
      */
     public function addPreset(array $preset)
     {
-        $this->ascii_codes = $this->ascii_codes + $preset;
+        foreach ( $preset as $p ) {
+            array_push($this->ascii_codes, $p );
+        }
+        //$x = $this->ascii_codes + $preset;
+        //$this->ascii_codes = $x;
         return $this;
     }
 
     /**
+     * It returns the chars set, used for the random generation.
+     * The chars are in "ordinal" form, so int that represents the char
+     * according with Ascii Table
      * @return int[]
      */
     public function getAsciiCodes()
@@ -154,6 +161,24 @@ class Char
         $this->addPreset($this->presetAlphaUpper);
         return $this;
     }
+    /**
+     * Set the alpha value to generate. 'a'-'z' (lower case)
+     * @return self
+     */
+    public function alphaLowerCase()
+    {
+        $this->addPreset($this->presetAlphaLower);
+        return $this;
+    }
+    /**
+     * Set the alpha value to generate. 'A'-'Z' (upper case)
+     * @return self
+     */
+    public function alphaUpperCase()
+    {
+        $this->addPreset($this->presetAlphaUpper);
+        return $this;
+    }
 
     /**
      * Set active transformer to lowercase
@@ -213,6 +238,12 @@ class Char
         return $this;
     }
 
+    public function cleanAsciiCodes(array $array): void
+    {
+        $this->ascii_codes = array_unique($array, SORT_NUMERIC);
+        sort($this->ascii_codes);
+    }
+
     /**
      * @return $this
      */
@@ -222,8 +253,7 @@ class Char
         foreach ($this->ascii_codes as $a) {
             $t[] = ord(strtolower(chr($a)));
         }
-        $this->ascii_codes = array_unique($t, SORT_NUMERIC);
-        sort($this->ascii_codes);
+        $this->cleanAsciiCodes($t);
         return $this;
     }
     /**
@@ -235,9 +265,7 @@ class Char
         foreach ($this->ascii_codes as $a) {
             $t[] = ord(strtoupper(chr($a)));
         }
-        $this->ascii_codes = array_unique($t, SORT_NUMERIC);
-        sort($this->ascii_codes);
-        //$this->ascii_codes = array_diff( $this->ascii_codes , $this->presetAlphaUpper);
+        $this->cleanAsciiCodes($t);
         return $this;
     }
 
@@ -252,8 +280,13 @@ class Char
     {
 
         if (sizeof($this->ascii_codes) === 0) {
+            /*
+             * The DEFAULT IS: if no set (alpha , numeric etc) is defined
+             * it will be considered only alphabetical char in lower case
+             * 'a-z'
+             */
             $this->addPreset($this->presetAlphaLower);
-            $this->addPreset($this->presetAlphaUpper);
+
         }
         foreach ($this->transformersStack as $transformerCode) {
             call_user_func(array($this , $this->transformers[$transformerCode]));
