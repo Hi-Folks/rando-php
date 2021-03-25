@@ -238,6 +238,9 @@ class Char
         return $this;
     }
 
+    /**
+     * @param int[] $array
+     */
     public function cleanAsciiCodes(array $array): void
     {
         $this->ascii_codes = array_unique($array, SORT_NUMERIC);

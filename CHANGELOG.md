@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.8 - WIP
+### Add
+- Adding Integer constructor with min and max
+
+### Change
+- Refactor Char model
+- change GitHub Actions workflow adding matrix for PHP 8, 7.4, 7.3
+
 ## 0.1.7 - 2021-03-23
 ### Add
 - Add snap() and snapKey() in Draw class. You can retry 1 item from array

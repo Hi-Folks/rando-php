@@ -39,6 +39,11 @@ class RandomIntegerTest extends TestCase
         $this->assertLessThanOrEqual($max, $number, "Check max number generated via range");
         $this->assertIsInt($number, "Check is integer generated via range");
 
+        $number = Randomize::integer($min, $max)->generate();
+        $this->assertGreaterThanOrEqual($min, $number, "Check min number generated via range");
+        $this->assertLessThanOrEqual($max, $number, "Check max number generated via range");
+        $this->assertIsInt($number, "Check is integer generated via range");
+
 
     }
 

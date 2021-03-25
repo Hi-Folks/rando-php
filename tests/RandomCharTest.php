@@ -13,6 +13,27 @@ class RandomCharTest extends TestCase
         $char = Randomize::char()->generate();
         $this->assertIsString($char, "Is String");
         $this->assertSame(1, strlen($char), "Is 1 char");
+        $this->assertTrue(ctype_alpha($char), "Check for alphabetic character");
+        $this->assertTrue(ctype_lower($char), "Check for lowercase character");
+
+        $char = Randomize::char()->alphaLowerCase()->generate();
+        $this->assertIsString($char, "Is String");
+        $this->assertSame(1, strlen($char), "Is 1 char");
+        $this->assertTrue(ctype_alpha($char), "Check for alphabetic character");
+        $this->assertTrue(ctype_lower($char), "Check for lowercase character");
+
+        $char = Randomize::char()->alphaUpperCase()->generate();
+        $this->assertIsString($char, "Is String");
+        $this->assertSame(1, strlen($char), "Is 1 char");
+        $this->assertTrue(ctype_alpha($char), "Check for alphabetic character");
+        $this->assertTrue(ctype_upper($char), "Check for lowercase character");
+
+        $char = Randomize::char()->alpha()->generate();
+        $this->assertIsString($char, "Is String");
+        $this->assertSame(1, strlen($char), "Is 1 char");
+        $this->assertTrue(ctype_alpha($char), "Check for alphabetic character");
+
+
     }
 
     /** @test */
