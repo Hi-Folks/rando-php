@@ -84,8 +84,8 @@ class Char
      */
     public function addPreset(array $preset)
     {
-        foreach ( $preset as $p ) {
-            array_push($this->ascii_codes, $p );
+        foreach ($preset as $p) {
+            array_push($this->ascii_codes, $p);
         }
         //$x = $this->ascii_codes + $preset;
         //$this->ascii_codes = $x;
@@ -286,7 +286,6 @@ class Char
              * 'a-z'
              */
             $this->addPreset($this->presetAlphaLower);
-
         }
         foreach ($this->transformersStack as $transformerCode) {
             call_user_func(array($this , $this->transformers[$transformerCode]));
