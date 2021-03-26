@@ -1,49 +1,84 @@
-name: PHP Syntax Checker and Run Tests
-
+# GithHub Actions Workflow generated with Ghygen
+# Original configuration: https://ghygen.hi-folks.dev?code=fef428dc4f9ac4af2f4a879eaecdc214
+name: Testing RandoPHP
 on:
     push:
-        branches: [ master ]
+        branches:
+            - main
+            - master
+            - develop
+            - feature/**
     pull_request:
-        branches: [ master ]
+        branches:
+            - main
+            - master
+            - develop
 
 jobs:
-    build:
-
+    laravel-tests:
         runs-on: ubuntu-latest
 
+        strategy:
+            matrix:
+                operating-system: [ubuntu-latest]
+                php-versions: [ '8.0','7.4','7.3' ]
+                dependency-stability: [ prefer-stable ]
+
+        name: P${{ matrix.php-versions }} - L${{ matrix.laravel }} - ${{ matrix.dependency-stability }} - ${{ matrix.operating-system}}
+
         steps:
-        - uses: actions/checkout@v2
+            - uses: actions/checkout@v2
+            - name: Install PHP versions
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: ${{ matrix.php-versions }}
+            - name: Get Composer Cache Directory 2
+              id: composer-cache
+              run: |
+                  echo "::set-output name=dir::$(composer config cache-files-dir)"
+            - uses: actions/cache@v2
+              id: actions-cache
+              with:
+                  path: ${{ steps.composer-cache.outputs.dir }}
+                  key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+                  restore-keys: |
+                      ${{ runner.os }}-composer-
+            - name: Cache PHP dependencies
+              uses: actions/cache@v2
+              id: vendor-cache
+              with:
+                  path: vendor
+                  key: ${{ runner.OS }}-build-${{ hashFiles('**/composer.lock') }}
 
-        - name: Get Composer Cache Directory 2
-          id: composer-cache
-          run: |
-              echo "::set-output name=dir::$(composer config cache-files-dir)"
-        - uses: actions/cache@v2
-          id: actions-cache
-          with:
-              path: ${{ steps.composer-cache.outputs.dir }}
-              key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-              restore-keys: |
-                  ${{ runner.os }}-composer-
-        - name: Cache PHP dependencies
-          uses: actions/cache@v2
-          id: vendor-cache
-          with:
-              path: vendor
-              key: ${{ runner.OS }}-build-${{ hashFiles('**/composer.lock') }}
+            - name: Install Dependencies
+              if: steps.vendor-cache.outputs.cache-hit != 'true'
+              run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
 
-        - name: Validate composer.json and composer.lock
-          run: composer validate
+            - name: Create Database
+              run: |
+                  mkdir -p database
+                  touch database/database.sqlite
 
-        - name: Install dependencies
-          if: steps.vendor-cache.outputs.cache-hit != 'true'
-          run: composer install --prefer-dist --no-progress
 
-        - name: Run test suite
-          run: composer run-script test
 
-        - name: PHP Syntax Checker (Lint)
-          uses: StephaneBour/actions-php-lint@7.1
-          with:
-           dir: './src'
+            - name: Execute tests (Unit and Feature tests) via PHPUnit
+                # Set environment
+              env:
+                  SESSION_DRIVER: array
+
+              run: vendor/bin/phpunit --testdox
+
+            - name: Execute Code Sniffer via phpcs
+              run: |
+                  composer require --dev squizlabs/php_codesniffer
+                  vendor/bin/phpcs --standard=PSR12 src
+
+            - name: Execute Code Static Analysis (PHP Stan + Larastan)
+              run: |
+                  composer require --dev nunomaduro/larastan
+                  vendor/bin/phpstan analyse src --level=4 --no-progress
+
+
+
+

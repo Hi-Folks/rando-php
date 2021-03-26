@@ -55,7 +55,7 @@ Sometimes you want to obtain a random char, for example, a numeric char:
 ```php
 Randomize::char()->numeric()->generate();
 ```
-Or you might want an alphabetic char:
+Or you might want an alphabetic char ():
 
 ```php
 Randomize::char()->alpha()->generate();
@@ -108,6 +108,13 @@ The same thing using range() method, instead of min() and max():
 ``` php
 $randomNumber = Randomize::integer()->range(1,6)->generate();
 ```
+
+You can use a shortcut helper to generate an integer calling the constructor with min and max:
+
+``` php
+$randomNumber = Randomize::integer(1,6)->generate();
+```
+
 
 ### Generate bytes
 Sometime you want to obtain some random bytes (hexadecimal). For example, you want to generate a random RGB color (a hex triplet in hexadecimal format):

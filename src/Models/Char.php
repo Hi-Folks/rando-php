@@ -17,47 +17,166 @@ class Char
     private $ascii_codes;
 
     /**
-     * Callback list
+     * @var int[]
+     */
+    private $presetAlphaLower;
+    /**
+     * @var int[]
+     */
+    private $presetAlphaUpper;
+    /**
+     * @var int[]
+     */
+    private $presetNumeric;
+
+
+
+
+    /**
+     * List of Transformers to apply when generate() is called
+     * to add some transformers use transformers chainable methods like
+     * ->lower() or ->upper()
      *
      * @var string[]
      */
-    private $transformers = [
-        'lower' => 'strtolower',
-        'upper' => 'strtoupper'
-    ];
+    private $transformersStack = [];
+
 
     /**
-     * Current active case
-     *
-     * @var string
+     * List of Transformers available (with the related method to call)
+     * @var string[]
      */
-    private $case;
+    private $transformers = [
+        'lower' => 'transformLower',
+        'upper' => 'transformUpper'
+    ];
+
+
 
     /**
      * Char constructor.
      */
     public function __construct()
     {
-        $this->ascii_codes = self::setAlpha();
+        $this->reset();
+    }
+
+    /**
+     * Reset all attributes to default values. It is useful for the construct method
+     * but also when you want to reinitialize Char object.
+     * @return void
+     */
+    public function reset()
+    {
+        $this->ascii_codes = [];
+        $this->transformersStack = [];
+        $this->presetAlphaLower = range(97, 122);
+        $this->presetAlphaUpper = range(65, 90);
+        $this->presetNumeric = range(48, 57);
     }
 
 
     /**
+     * Add an array of chars (ordinal/numerical ascii value) to the array for randomly select char
+     *
+     * @param int[] $preset
+     * @return self
+     */
+    public function addPreset(array $preset)
+    {
+        foreach ($preset as $p) {
+            array_push($this->ascii_codes, $p);
+        }
+        //$x = $this->ascii_codes + $preset;
+        //$this->ascii_codes = $x;
+        return $this;
+    }
+
+    /**
+     * It returns the chars set, used for the random generation.
+     * The chars are in "ordinal" form, so int that represents the char
+     * according with Ascii Table
      * @return int[]
      */
-    private static function setAlpha()
+    public function getAsciiCodes()
     {
-        return range(97, 122);
+        return $this->ascii_codes;
     }
 
     /**
-     * Set the alpha value to generate
+     * @return string
+     */
+    public function getAsciiCodesAsString()
+    {
+        return implode(",", $this->ascii_codes);
+    }
+
+
+    /**
+     * @param int[] $charset
+     * @return self
+     */
+    public function addArrayCharsInt(array $charset)
+    {
+        return $this->addPreset($charset);
+    }
+    /**
+     * @param string[] $charset
+     * @return self
+     */
+    public function addArrayChars(array $charset)
+    {
+        $preset = [];
+        foreach ($charset as $c) {
+            $preset[] = ord($c);
+        }
+
+        return $this->addPreset($preset);
+    }
+    /**
+     * Add a transformer type.
+     * A Transformer is a method used in generate method to modify the char set.
+     * For example if you want to have only lower case
+     * (it applies strtolower to the charset) before to select randomly 1
      *
+     * @param string $transformType
+     * @return void
+     */
+    private function addTransform(string $transformType)
+    {
+        if (array_key_exists($transformType, $this->transformers)) {
+            $this->transformersStack = $this->transformersStack + [$transformType];
+        }
+    }
+
+
+
+    /**
+     * Set the alpha value to generate. 'A'-'Z' and 'a'-'z' (upper and lower case)
      * @return self
      */
     public function alpha()
     {
-        $this->ascii_codes = self::setAlpha();
+        $this->addPreset($this->presetAlphaLower);
+        $this->addPreset($this->presetAlphaUpper);
+        return $this;
+    }
+    /**
+     * Set the alpha value to generate. 'a'-'z' (lower case)
+     * @return self
+     */
+    public function alphaLowerCase()
+    {
+        $this->addPreset($this->presetAlphaLower);
+        return $this;
+    }
+    /**
+     * Set the alpha value to generate. 'A'-'Z' (upper case)
+     * @return self
+     */
+    public function alphaUpperCase()
+    {
+        $this->addPreset($this->presetAlphaUpper);
         return $this;
     }
 
@@ -68,7 +187,7 @@ class Char
      */
     public function lower()
     {
-        $this->case = 'lower';
+        $this->addTransform("lower");
         return $this;
     }
 
@@ -79,29 +198,31 @@ class Char
      */
     public function upper()
     {
-        $this->case = 'upper';
+        $this->addTransform('upper');
         return $this;
     }
 
     /**
-     * Set the numeric value to generate
+     * Set the numeric value to generate ('0'-'9')
      *
      * @return self
      */
     public function numeric()
     {
-        $this->ascii_codes = range(48, 57);
+        $this->addPreset($this->presetNumeric);
         return $this;
     }
 
     /**
-     * Get Alphanumeric value
+     * Get Alphanumeric value. 'A'-'Z' AND 'a'-'z' AND '0'-'9'
      *
      * @return self
      */
     public function alphanumeric(): Char
     {
-        $this->ascii_codes = array_merge(range(48, 57), range(97, 122));
+        $this->addPreset($this->presetAlphaLower);
+        $this->addPreset($this->presetAlphaUpper);
+        $this->addPreset($this->presetNumeric);
         return $this;
     }
 
@@ -118,6 +239,41 @@ class Char
     }
 
     /**
+     * @param int[] $array
+     */
+    public function cleanAsciiCodes(array $array): void
+    {
+        $this->ascii_codes = array_unique($array, SORT_NUMERIC);
+        sort($this->ascii_codes);
+    }
+
+    /**
+     * @return $this
+     */
+    private function transformLower(): self
+    {
+        $t = [];
+        foreach ($this->ascii_codes as $a) {
+            $t[] = ord(strtolower(chr($a)));
+        }
+        $this->cleanAsciiCodes($t);
+        return $this;
+    }
+    /**
+     * @return $this
+     */
+    private function transformUpper(): self
+    {
+        $t = [];
+        foreach ($this->ascii_codes as $a) {
+            $t[] = ord(strtoupper(chr($a)));
+        }
+        $this->cleanAsciiCodes($t);
+        return $this;
+    }
+
+
+    /**
      * Generate and returns a random char
      *
      * @return string the random value (integer)
@@ -125,17 +281,23 @@ class Char
      */
     public function generate(): string
     {
-        $rand_index = random_int(0, sizeof($this->ascii_codes) - 1);
 
-        $randomChar = chr($this->ascii_codes[$rand_index]);
-
-        // If user called either lower() or upper(), apply active trasformer callback to random char
-        if (isset($this->case)) {
-            return call_user_func($this->transformers[$this->case], $randomChar);
+        if (sizeof($this->ascii_codes) === 0) {
+            /*
+             * The DEFAULT IS: if no set (alpha , numeric etc) is defined
+             * it will be considered only alphabetical char in lower case
+             * 'a-z'
+             */
+            $this->addPreset($this->presetAlphaLower);
+        }
+        foreach ($this->transformersStack as $transformerCode) {
+            call_user_func(array($this , $this->transformers[$transformerCode]));
         }
 
-        // Else return random char with random case
-        $randomCaseCallback = Draw::sample($this->transformers)->extract()[0];
-        return call_user_func($randomCaseCallback, $randomChar);
+        $rand_index = random_int(0, sizeof($this->ascii_codes) - 1);
+
+        $returnValue = chr($this->ascii_codes[$rand_index]);
+        $this->reset();
+        return $returnValue;
     }
 }
