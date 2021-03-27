@@ -171,6 +171,17 @@ Yes, even both.
 $randomChars = Randomize::sequence()->chars()->alphanumeric()->count(10)->generate();
 ```
 
+You want 20 lower case chars:
+```php
+Randomize::sequence()->chars()->alphaLowerCase()->count(20)->asString()->generate();
+```
+
+You want 20 upper case chars:
+```php
+Randomize::sequence()->chars()->alphaUpperCase()->count(20)->asString()->generate();
+```
+
+
 Sometime you want to obtain some random sequences with **no duplicates**. For example, you want to play "Tombola" (extracting number from 1 to 90 with NO duplicates):
 
 ```php

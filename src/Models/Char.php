@@ -87,8 +87,6 @@ class Char
         foreach ($preset as $p) {
             array_push($this->ascii_codes, $p);
         }
-        //$x = $this->ascii_codes + $preset;
-        //$this->ascii_codes = $x;
         return $this;
     }
 
@@ -239,6 +237,15 @@ class Char
     }
 
     /**
+     * return true if no ascii codes is set
+     * @return bool
+     */
+    public function hasNoAsciiCodes(): bool
+    {
+        return ( sizeof($this->ascii_codes) === 0);
+    }
+
+    /**
      * @param int[] $array
      */
     public function cleanAsciiCodes(array $array): void
@@ -297,7 +304,9 @@ class Char
         $rand_index = random_int(0, sizeof($this->ascii_codes) - 1);
 
         $returnValue = chr($this->ascii_codes[$rand_index]);
-        $this->reset();
+        // we don't need to reset because once the object is instanced, you can call
+        // multiple time
+        // $this->reset();
         return $returnValue;
     }
 }

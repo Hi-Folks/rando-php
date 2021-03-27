@@ -32,3 +32,23 @@ printLn("GENERATING A SEQUENCE OF 20 ALPHA UNIQUE CHARS");
 printLn("Randomize::sequence()->chars()->alpha()->unique()->count(20)->asString()->generate()");
 printLn("SEQUENCE " . Randomize::sequence()->chars()->alpha()->unique()->count(20)->asString()->generate());
 insertBreak('-');
+
+printLn("GENERATING A SEQUENCE OF 20 ALPHA low case UNIQUE CHARS");
+printLn("Randomize::sequence()->chars()->alphaLowerCase()->unique()->count(20)->asString()->generate()");
+printLn("SEQUENCE " . Randomize::sequence()->chars()->alphaLowerCase()->unique()->count(20)->asString()->generate());
+insertBreak('-');
+
+printLn("GENERATING A SEQUENCE OF 20 ALPHA upper case UNIQUE CHARS");
+printLn("Randomize::sequence()->chars()->alphaUpperCase()->unique()->count(20)->asString()->generate()");
+printLn("SEQUENCE " . Randomize::sequence()->chars()->alphaUpperCase()->unique()->count(20)->asString()->generate());
+insertBreak('-');
+
+printLn("GENERATING A SEQUENCE OF 20 ALPHA low case CHARS");
+printLn("Randomize::sequence()->chars()->alphaLowerCase()->count(20)->asString()->generate()");
+printLn("SEQUENCE " . Randomize::sequence()->chars()->alphaLowerCase()->count(20)->asString()->generate());
+insertBreak('-');
+
+printLn("GENERATING A SEQUENCE OF 20 ALPHA upper case CHARS");
+printLn("Randomize::sequence()->chars()->alphaUpperCase()->count(20)->asString()->generate()");
+printLn("SEQUENCE " . Randomize::sequence()->chars()->alphaUpperCase()->count(20)->asString()->generate());
+insertBreak('-');

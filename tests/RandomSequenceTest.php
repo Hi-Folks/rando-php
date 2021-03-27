@@ -77,17 +77,27 @@ class RandomSequenceTest extends TestCase
         $string = Randomize::sequence()->chars()->asString()->numeric()->count($len)->generate();
         $this->assertIsString($string, "Is String");
         $this->assertSame($len, strlen($string), "Is right len");
-        $this->assertTrue(ctype_digit($string), "Check for Numeric character");
+        $this->assertTrue(ctype_digit($string), "Check for Numeric character " . $string);
 
         $string = Randomize::sequence()->chars()->asString()->alpha()->count($len)->generate();
         $this->assertIsString($string, "Is String");
         $this->assertSame($len, strlen($string), "Is right len");
-        $this->assertTrue(ctype_alpha($string), "Check for Alpha character");
+        $this->assertTrue(ctype_alpha($string), "Check for Alpha character " . $string);
 
         $string = Randomize::sequence()->chars()->asString()->alphanumeric()->count($len)->generate();
         $this->assertIsString($string, "Is String");
         $this->assertSame($len, strlen($string), "Is right len");
-        $this->assertTrue(ctype_alnum($string), "Check for AlphaNumeric character");
+        $this->assertTrue(ctype_alnum($string), "Check for AlphaNumeric character : " . $string);
+
+        $string = Randomize::sequence()->chars()->asString()->alphaUpperCase()->count($len)->generate();
+        $this->assertIsString($string, "Is String");
+        $this->assertSame($len, strlen($string), "Is right len");
+        $this->assertTrue(ctype_upper($string), "Check for Upper character : " . $string);
+
+        $string = Randomize::sequence()->chars()->asString()->alphaLowerCase()->count($len)->generate();
+        $this->assertIsString($string, "Is String");
+        $this->assertSame($len, strlen($string), "Is right len");
+        $this->assertTrue(ctype_lower($string), "Check for Lower character : " . $string);
 
     }
 
