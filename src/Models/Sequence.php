@@ -184,13 +184,21 @@ class Sequence
         return $this;
     }
 
-    public function alphaLowerCase()
+    /**
+     * It sets lower case char set
+     * @return $this
+     */
+    public function alphaLowerCase(): self
     {
         $this->charModel->alphaLowerCase();
         return $this;
     }
 
-    public function alphaUpperCase()
+    /**
+     * It sets upper case char set
+     * @return self
+     */
+    public function alphaUpperCase(): self
     {
         $this->charModel->alphaUpperCase();
         return $this;
@@ -199,6 +207,7 @@ class Sequence
     /**
      * Get String
      *
+     * @param bool $toString
      * @return self
      */
     public function asString(bool $toString = true): self
@@ -235,7 +244,11 @@ class Sequence
                     $this->charModel->alphaLowerCase();
                 }
                 if ($this->unique) {
-                    $intArrResult = Draw::sample($this->charModel->getAsciiCodes())->noDuplicates()->count($this->count)->extract();
+                    $intArrResult =
+                        Draw::sample($this->charModel->getAsciiCodes())
+                            ->noDuplicates()
+                            ->count($this->count)
+                            ->extract();
                     for ($i = 0; $i < sizeof($intArrResult); $i++) {
                         $result[] = chr($intArrResult[$i]);
                     }
