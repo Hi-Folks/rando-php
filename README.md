@@ -4,7 +4,7 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/hi-folks/rando-php)
 ![GitHub Release Date](https://img.shields.io/github/release-date/hi-folks/rando-php)
 ![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/hi-folks/rando-php)
-
+[![Testing RandoPHP, PHP 8, 7.4, 7.3](https://github.com/Hi-Folks/rando-php/actions/workflows/php.yml/badge.svg)](https://github.com/Hi-Folks/rando-php/actions/workflows/php.yml)
 ![RandoPHP](rando-php.png)
 
 RandoPHP is a PHP open source package for random stuff. With this package you can:

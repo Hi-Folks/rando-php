@@ -1,8 +1,9 @@
 # Changelog
 
-## 0.1.8 - WIP
+## 0.1.8 - 201-03-27
 ### Add
 - Adding Integer constructor with min and max
+- Adding alphaLowerCase() and alphaUpperCase() methods Sequence (Chars);
 
 ### Change
 - Refactor Char model
