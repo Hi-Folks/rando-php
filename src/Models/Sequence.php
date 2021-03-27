@@ -41,6 +41,12 @@ class Sequence
      */
     private $ascii_codes = [];
 
+
+    /**
+     * @var Char
+     */
+    private $charModel;
+
     /**
      * @return $this
      */
@@ -58,8 +64,8 @@ class Sequence
      */
     public function chars(): self
     {
+        $this->charModel = new Char();
         $this->type = "char";
-        $this->ascii_codes = range(97, 122);
         return $this;
     }
 
@@ -152,7 +158,7 @@ class Sequence
      */
     public function alpha()
     {
-        $this->ascii_codes = range(97, 122);
+        $this->charModel->alpha();
         return $this;
     }
 
@@ -163,7 +169,7 @@ class Sequence
      */
     public function numeric()
     {
-        $this->ascii_codes = range(48, 57);
+        $this->charModel->numeric();
         return $this;
     }
 
@@ -174,13 +180,34 @@ class Sequence
      */
     public function alphanumeric()
     {
-        $this->ascii_codes = array_merge(range(48, 57), range(97, 122));
+        $this->charModel->alphanumeric();
+        return $this;
+    }
+
+    /**
+     * It sets lower case char set
+     * @return $this
+     */
+    public function alphaLowerCase(): self
+    {
+        $this->charModel->alphaLowerCase();
+        return $this;
+    }
+
+    /**
+     * It sets upper case char set
+     * @return self
+     */
+    public function alphaUpperCase(): self
+    {
+        $this->charModel->alphaUpperCase();
         return $this;
     }
 
     /**
      * Get String
      *
+     * @param bool $toString
      * @return self
      */
     public function asString(bool $toString = true): self
@@ -213,14 +240,21 @@ class Sequence
                 break;
 
             case "char":
+                if ($this->charModel->hasNoAsciiCodes()) {
+                    $this->charModel->alphaLowerCase();
+                }
                 if ($this->unique) {
-                    $intArrResult = Draw::sample($this->ascii_codes)->noDuplicates()->count($this->count)->extract();
+                    $intArrResult =
+                        Draw::sample($this->charModel->getAsciiCodes())
+                            ->noDuplicates()
+                            ->count($this->count)
+                            ->extract();
                     for ($i = 0; $i < sizeof($intArrResult); $i++) {
                         $result[] = chr($intArrResult[$i]);
                     }
                 } else {
                     for ($i = 0; $i < $this->count; $i++) {
-                        $result[] = Randomize::char()->setAsciiCodes($this->ascii_codes)->generate();
+                        $result[] = $this->charModel->generate();
                     }
                 }
                 break;
