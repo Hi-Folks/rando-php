@@ -33,6 +33,12 @@ class RandomCharTest extends TestCase
         $this->assertSame(1, strlen($char), "Is 1 char");
         $this->assertTrue(ctype_alpha($char), "Check for alphabetic character");
 
+        $char = Randomize::char()->setAsciiCodes([ord('a'), ord('b')])->generate();
+        $this->assertIsString($char, "Is String");
+        $this->assertSame(1, strlen($char), "Is 1 char");
+        $this->assertTrue(ctype_alpha($char), "Check for alphabetic character");
+        $this->assertTrue(($char==='a' or $char ==='b'), "Check for alphabetic character: " .  $char);
+
 
     }
 
