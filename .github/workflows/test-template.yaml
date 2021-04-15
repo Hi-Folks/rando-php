@@ -1,11 +1,11 @@
 # GithHub Actions Workflow generated with Ghygen
-# Original configuration: http://gh-actions-yaml-generator.test?code=b1c57aadb496cc86855d67b278cc5b06
+# Original configuration: http://gh-actions-yaml-generator.test?code=e05bde5091e3fe5915004fb8ca079704
 name: Template - PHP Package
 on:
   push:
     branches:
-      - main
       - master
+      - main
       - develop
       - features/**
 
@@ -27,23 +27,6 @@ jobs:
       uses: shivammathur/setup-php@v2
       with:
         php-version: ${{ matrix.php-versions }}
-    - name: Get Composer Cache Directory 2
-      id: composer-cache
-      run: |
-        echo "::set-output name=dir::$(composer config cache-files-dir)"
-    - uses: actions/cache@v2
-      id: actions-cache
-      with:
-        path: ${{ steps.composer-cache.outputs.dir }}
-        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-composer-
-    - name: Cache PHP dependencies
-      uses: actions/cache@v2
-      id: vendor-cache
-      with:
-        path: vendor
-        key: ${{ runner.OS }}-build-${{ hashFiles('**/composer.lock') }}
     - name: Install Dependencies
       if: steps.vendor-cache.outputs.cache-hit != 'true'
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
@@ -67,6 +50,10 @@ jobs:
         composer require --dev squizlabs/php_codesniffer
         vendor/bin/phpcs --standard=PSR12 src
 
+    - name: Execute Code Static Analysis (PHP Stan)
+      run: |
+        composer require --dev phpstan/phpstan
+        vendor/bin/phpstan analyse src --level=4 --no-progress
 
 
 
