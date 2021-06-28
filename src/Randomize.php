@@ -5,6 +5,7 @@ namespace HiFolks\RandoPhp;
 use HiFolks\RandoPhp\Exceptions\ModelNotFoundException;
 use HiFolks\RandoPhp\Models\Boolean;
 use HiFolks\RandoPhp\Models\Char;
+use HiFolks\RandoPhp\Models\Chars;
 use HiFolks\RandoPhp\Models\Integer as IntModel;
 use HiFolks\RandoPhp\Models\DateTime;
 use HiFolks\RandoPhp\Models\Byte;
@@ -40,7 +41,7 @@ class Randomize
         'sequence' => Sequence::class,
         'datetime' => DateTime::class,
         'char' => Char::class,
-        'latlong' => LatLong::class,
+        'latlong' => LatLong::class
     ];
 
 
@@ -52,6 +53,16 @@ class Randomize
     public static function integer($min = IntModel::DEFAULT_MIN, $max = IntModel::DEFAULT_MAX)
     {
         return new IntModel($min, $max);
+    }
+
+
+    /**
+     * @param int $count
+     * @return Chars
+     */
+    public static function chars($count = 10)
+    {
+        return new Chars($count);
     }
 
 
