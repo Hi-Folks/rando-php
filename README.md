@@ -30,7 +30,7 @@ With the fluent interface you can control some things like:
   - [Random Bytes](#generate-bytes)
   - [Random Date](#generate-a-date)
   - [Random Sequences](#generate-sequences)
-  - [Random Chars](#generate-chars)
+  - [Random Chars](#random-chars)
 - [Usage, how to extract random values from array/list](#draw-random-stuff)
 
 
