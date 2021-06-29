@@ -37,9 +37,7 @@ class RandomCharTest extends TestCase
         $this->assertIsString($char, "Is String");
         $this->assertSame(1, strlen($char), "Is 1 char");
         $this->assertTrue(ctype_alpha($char), "Check for alphabetic character");
-        $this->assertTrue(($char==='a' or $char ==='b'), "Check for alphabetic character: " .  $char    );
-
-
+        $this->assertTrue(($char === 'a' or $char === 'b'), "Check for alphabetic character: " .  $char);
     }
 
     /** @test */
@@ -119,15 +117,12 @@ class RandomCharTest extends TestCase
         $this->assertIsString($char, "Is String");
         $this->assertSame(1, strlen($char), "Is 1 char");
 
-        $this->assertTrue(in_array(ord($char), $array), "--Check for right char: -". $char."-" . $string."++++++");
+        $this->assertTrue(in_array(ord($char), $array), "--Check for right char: -" . $char . "-" . $string . "++++++");
 
         $array = ['a', 'B', 'z'];
 
         $char = Randomize::char()->addArrayChars($array)->alpha()->generate();
         $this->assertIsString($char, "Is String");
-        $this->assertSame(1, strlen($char), "Is 1 char: -". $char."-");
-
-
-        }
-
+        $this->assertSame(1, strlen($char), "Is 1 char: -" . $char . "-");
+    }
 }

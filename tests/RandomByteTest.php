@@ -13,9 +13,9 @@ class RandomByteTest extends TestCase
         $byte = Randomize::byte()->generate();
         $this->assertIsString($byte, "Is String");
 
-        foreach (range(1,32) as $len) {
+        foreach (range(1, 32) as $len) {
             $byte = Randomize::byte()->length($len)->generate();
-            $this->assertSame($len*2, strlen($byte), "Check length ". $len);
+            $this->assertSame($len * 2, strlen($byte), "Check length " . $len);
         }
         $catch = false;
         try {
@@ -25,9 +25,5 @@ class RandomByteTest extends TestCase
             $this->assertIsString($e->getMessage(), "Message Error");
         }
         $this->assertSame(true, $catch, "Exception catch");
-
-
     }
-
-
 }

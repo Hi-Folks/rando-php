@@ -1,8 +1,6 @@
 <?php
 
-
 namespace HiFolks\RandoPhp\Tests;
-
 
 use HiFolks\RandoPhp\Draw;
 use PHPUnit\Framework\TestCase;
@@ -12,8 +10,8 @@ class DrawSampleTest extends TestCase
     /** @test */
     public function random_extract()
     {
-        $array=[1,2,3,4,5,6,7,8,9];
-        $count=5;
+        $array = [1,2,3,4,5,6,7,8,9];
+        $count = 5;
         $sample = Draw::sample($array)->count($count)->extract();
         $this->assertIsArray($sample);
         $this->assertSame($count, count($sample));
@@ -56,18 +54,17 @@ class DrawSampleTest extends TestCase
     /** @test */
     public function random_extract_implode()
     {
-        $array=[1,2,3,4,5,6,7,8,9];
-        $count=5;
+        $array = [1,2,3,4,5,6,7,8,9];
+        $count = 5;
         $sample = Draw::sample($array)->count($count)->implode()->extract();
         $this->assertIsString($sample);
-
     }
 
     /** @test */
     public function random_extract_preservekeys()
     {
-        $array=range(1,100);
-        $count=5;
+        $array = range(1, 100);
+        $count = 5;
         $sample = Draw::sample($array)->count($count)->preserveKeys()->extract();
         $this->assertIsArray($sample);
         $this->assertSame($count, count($sample), "Check extract count is correct");
@@ -76,17 +73,17 @@ class DrawSampleTest extends TestCase
     /** @test */
     public function random_snap()
     {
-        $array=["testa" => "Testa", "croce" => "Croce"];
+        $array = ["testa" => "Testa", "croce" => "Croce"];
 
         $sample = Draw::sample($array)->snap();
         $this->assertIsString($sample, "Element is a string");
-        $this->assertContains($sample,["Testa", "Croce"], "Element is in Array");
+        $this->assertContains($sample, ["Testa", "Croce"], "Element is in Array");
 
         $sample = Draw::sample($array)->snapKey();
         $this->assertIsString($sample, "Element is a string");
-        $this->assertContains($sample,["testa", "croce"], "Element is in Array");
+        $this->assertContains($sample, ["testa", "croce"], "Element is in Array");
 
-        $array=[
+        $array = [
             "first" => ["This", "is", "First"],
             "second" => ["This" , "is", "Second" ]
         ];
@@ -95,11 +92,10 @@ class DrawSampleTest extends TestCase
 
         $sample = Draw::sample($array)->snapKey();
         $this->assertIsString($sample, "Element is a string");
-        $this->assertContains($sample,["first", "second"], "Element is a valid key");
+        $this->assertContains($sample, ["first", "second"], "Element is a valid key");
 
-        $array=[10,11,12,13];
+        $array = [10,11,12,13];
         $sample = Draw::sample($array)->snap();
         $this->assertIsInt($sample, "Element is an Integer");
     }
-
 }

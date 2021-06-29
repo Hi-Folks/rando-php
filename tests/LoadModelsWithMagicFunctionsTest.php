@@ -1,6 +1,5 @@
 <?php
 
-
 namespace HiFolks\RandoPhp\Tests;
 
 use HiFolks\RandoPhp\Exceptions\ModelNotFoundException;

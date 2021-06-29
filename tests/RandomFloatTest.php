@@ -32,8 +32,7 @@ class RandomFloatTest extends TestCase
 
         try {
             Randomize::float()->min("string");
-        }
-        catch (InvalidArgumentException $exception) {
+        } catch (InvalidArgumentException $exception) {
             $catched = true;
             $this->assertEquals("The min argument must be either an integer or a float.", $exception->getMessage());
         }
@@ -44,8 +43,7 @@ class RandomFloatTest extends TestCase
 
         try {
             Randomize::float()->max("string");
-        }
-        catch (InvalidArgumentException $exception) {
+        } catch (InvalidArgumentException $exception) {
             $catched = true;
             $this->assertEquals("The max argument must be either an integer or a float.", $exception->getMessage());
         }
@@ -56,8 +54,7 @@ class RandomFloatTest extends TestCase
 
         try {
             Randomize::float()->range(0, "string");
-        }
-        catch (InvalidArgumentException $exception) {
+        } catch (InvalidArgumentException $exception) {
             $catched = true;
             $this->assertEquals("The max argument must be either an integer or a float.", $exception->getMessage());
         }
@@ -68,8 +65,7 @@ class RandomFloatTest extends TestCase
 
         try {
             Randomize::float()->range("string", 0);
-        }
-        catch (InvalidArgumentException $exception) {
+        } catch (InvalidArgumentException $exception) {
             $catched = true;
             $this->assertEquals("The min argument must be either an integer or a float.", $exception->getMessage());
         }
@@ -80,8 +76,7 @@ class RandomFloatTest extends TestCase
 
         try {
             Randomize::float()->range("string", "another string");
-        }
-        catch (InvalidArgumentException $exception) {
+        } catch (InvalidArgumentException $exception) {
             $catched = true;
             $this->assertEquals("The min argument must be either an integer or a float.", $exception->getMessage());
         }
@@ -119,8 +114,7 @@ class RandomFloatTest extends TestCase
 
         try {
             $number = Randomize::float()->min(10)->max(10)->decimals(-5)->generate();
-        }
-        catch (InvalidArgumentException $exception) {
+        } catch (InvalidArgumentException $exception) {
             $this->assertEquals("The number of decimals cannot be negative.", $exception->getMessage());
             $catched = true;
         }
@@ -132,8 +126,7 @@ class RandomFloatTest extends TestCase
 
         try {
             $number = Randomize::float()->min(10)->max(1)->decimals(1)->generate();
-        }
-        catch (LogicException $exception) {
+        } catch (LogicException $exception) {
             $this->assertEquals("The specified max is <= than the specified min.", $exception->getMessage());
             $catched = true;
         }

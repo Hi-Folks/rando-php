@@ -16,7 +16,6 @@ class RandomSequenceTest extends TestCase
     {
         $array = Randomize::sequence()->generate();
         $this->assertIsArray($array, "Check is array");
-
     }
 
     /**
@@ -29,7 +28,6 @@ class RandomSequenceTest extends TestCase
         $array = Randomize::sequence()->count(7)->generate();
         $this->assertIsArray($array, "Check is array");
         $this->assertSame(7, count($array), "Check length array generated");
-
     }
 
     /**
@@ -41,7 +39,6 @@ class RandomSequenceTest extends TestCase
     {
         $array = Randomize::sequence()->chars()->generate();
         $this->assertIsArray($array, "Char sequence check is array");
-
     }
 
     /**
@@ -54,7 +51,6 @@ class RandomSequenceTest extends TestCase
         $array = Randomize::sequence()->chars()->count(7)->generate();
         $this->assertIsArray($array, "Char sequence check is array");
         $this->assertEquals(7, count($array), "Char sequence check length array generated");
-
     }
 
     /**
@@ -65,7 +61,6 @@ class RandomSequenceTest extends TestCase
         $array = Randomize::sequence()->chars()->count(7)->noDuplicates()->generate();
         $arrryUnique = array_unique($array);
         $this->assertEquals(7, count($arrryUnique), "No duplicate char sequence array generated");
-
     }
 
     /**
@@ -98,7 +93,6 @@ class RandomSequenceTest extends TestCase
         $this->assertIsString($string, "Is String");
         $this->assertSame($len, strlen($string), "Is right len");
         $this->assertTrue(ctype_lower($string), "Check for Lower character : " . $string);
-
     }
 
 
@@ -110,9 +104,9 @@ class RandomSequenceTest extends TestCase
      */
     public function random_rollthedice()
     {
-        $count=10;
-        $min=1;
-        $max=6;
+        $count = 10;
+        $min = 1;
+        $max = 6;
         $array = Randomize::sequence()->min($min)->max($max)->count($count)->generate();
         $this->assertIsArray($array, "Check is array");
         $this->assertSame($count, count($array), "Check length array generated");
@@ -137,9 +131,6 @@ class RandomSequenceTest extends TestCase
             $this->assertGreaterThanOrEqual(1, $item, "Greater than " . $min);
             $this->assertLessThanOrEqual(6, $item, "Less than " . $min);
         }
-
-
-
     }
 
     /**
@@ -149,9 +140,9 @@ class RandomSequenceTest extends TestCase
      */
     public function random_tombola()
     {
-        $count=90;
-        $min=1;
-        $max=90;
+        $count = 90;
+        $min = 1;
+        $max = 90;
         $array = Randomize::sequence()->integer()->min($min)->max($max)->noDuplicates()->count($count)->generate();
         $this->assertIsArray($array, "Check is array");
         $this->assertSame($count, count($array), "Check length array generated");
@@ -161,10 +152,6 @@ class RandomSequenceTest extends TestCase
         }
 
         $this->assertSame($count, count(array_unique($array)), "Check uniqueness");
-
-
-
-
     }
 
     /**
@@ -174,12 +161,11 @@ class RandomSequenceTest extends TestCase
      */
     public function random_sequence_implode()
     {
-        $min=1;
-        $max=10;
-        $count=3;
+        $min = 1;
+        $max = 10;
+        $count = 3;
         $string = Randomize::sequence()->integer()->min($min)->max($max)->implode()->count($count)->generate();
         $this->assertIsString($string);
-
     }
 
     /**
@@ -189,15 +175,10 @@ class RandomSequenceTest extends TestCase
      */
     public function random_sequence_asString()
     {
-        $min=1;
-        $max=10;
-        $count=3;
+        $min = 1;
+        $max = 10;
+        $count = 3;
         $string = Randomize::sequence()->integer()->min($min)->max($max)->asString()->count($count)->generate();
         $this->assertIsString($string);
-
     }
-
-
-
-
 }

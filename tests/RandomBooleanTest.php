@@ -15,6 +15,4 @@ class RandomBooleanTest extends TestCase
         $this->assertLessThanOrEqual(1, $boolean, "Check max number - boolean");
         $this->assertIsBool($boolean, "Check is boolean");
     }
-
-
 }
