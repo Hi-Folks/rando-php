@@ -1,6 +1,11 @@
 # Changelog
 
-## 0.1.8 - 201-03-27
+## 0.1.9 - 2021-06-29
+### Add
+- Add Randomize::chars() for creating string (it is a kind of shortcut for Sequence class);
+
+
+## 0.1.8 - 2021-03-27
 ### Add
 - Adding Integer constructor with min and max
 - Adding alphaLowerCase() and alphaUpperCase() methods Sequence (Chars);
