@@ -27,7 +27,7 @@ class RandomCharsTest extends TestCase
         $this->assertSame(7, strlen($string), "Check length String generated");
         $string = Randomize::chars(8)->generate();
         $this->assertIsString($string, "Check is String");
-        $this->assertSame(8, strlen($string), "Check length String generated <". $string . ">");
+        $this->assertSame(8, strlen($string), "Check length String generated <" . $string . ">");
     }
 
     /**
@@ -47,6 +47,10 @@ class RandomCharsTest extends TestCase
         $string = Randomize::chars(7)->noDuplicates()->generate();
         $arrayUnique = array_unique(str_split($string));
         $this->assertEquals(7, count($arrayUnique), "No duplicate char sequence array generated");
+
+        $string = Randomize::chars(20)->noDuplicates()->generate();
+        $arrayUnique = array_unique(str_split($string));
+        $this->assertEquals(20, count($arrayUnique), "No duplicate char sequence array generated");
     }
 
     /**
@@ -79,14 +83,5 @@ class RandomCharsTest extends TestCase
         $this->assertIsString($string, "Is String");
         $this->assertSame($len, strlen($string), "Is right len");
         $this->assertTrue(ctype_lower($string), "Check for Lower character : " . $string);
-
     }
-
-
-
-
-
-
-
-
 }
