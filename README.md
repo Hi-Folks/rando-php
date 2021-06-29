@@ -30,6 +30,7 @@ With the fluent interface you can control some things like:
   - [Random Bytes](#generate-bytes)
   - [Random Date](#generate-a-date)
   - [Random Sequences](#generate-sequences)
+  - [Random Chars](#generate-chars)
 - [Usage, how to extract random values from array/list](#draw-random-stuff)
 
 
@@ -211,6 +212,47 @@ Yes, even both and with **no duplicates**.
 ```php
 $randomChars = Randomize::sequence()->chars()->alphanumeric()->count(10)->noDuplicates()->generate();
 ```
+
+### Random Chars
+If you want to generate random string (alphanumeric, only letters, only numbers, with no duplication, lower case, upper case etc) you can use Random Chars generation.
+To generate a string use Randomize::chars():
+```php
+$string = Randomize::chars()->generate();
+```
+Default behaviour is:
+- 10 chars
+- only letters (a-z) and (A-Z)
+- lower and upper case
+- duplication is allowed (the string 'aba' has a duplication for 'a' char)
+
+You can change the default values with some methods and parameters.
+Method to set the type of chars (numeric, alpha, alphanumeric...):
+- _alpha()_ : 'a-z', 'A-Z';
+- _alphanumeric()_ : 'a-z', 'A-Z', '0-9';
+- _numeric()_ : '0-9';
+- _alphaLowerCase()_ : 'a-z';
+- _alphaUpperCase()_ : 'A-Z'.
+
+You have also some methods to "control" the output, for example avoid duplications:
+- unique() : it generates a string with at most one occurrence per character.
+
+
+
+#### String with numeric chars ('0'-'9')
+If you want to generate a string with 16 chars, made with numeric chars ('0'-'9'):
+
+```php
+$string = Randomize::chars(16)->numeric()->generate(); 
+```
+You could obtain something like this '3963233500573002'.
+
+#### String with 20 chars, lower case, just letters, no dups
+
+If you want to obtain a string with 20 chars, lower case and just letters ('a'-'z'), and you want to avoid character duplications ( alphaLowerCase() and unique() ):
+```php 
+$string = Randomize::chars(20)->alphaLowerCase()->unique()->generate();
+```
+You could obtain something like this: 'nmbsjhrgdyfxwoltqkzp'.
 
 ### Draw random stuff
 If you have a list of values and you want to extract/select/draw one or more elements,
