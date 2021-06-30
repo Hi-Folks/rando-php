@@ -84,4 +84,13 @@ class RandomCharsTest extends TestCase
         $this->assertSame($len, strlen($string), "Is right len");
         $this->assertTrue(ctype_lower($string), "Check for Lower character : " . $string);
     }
+
+    /**
+     * @test
+     */
+    public function random_special_characters()
+    {
+        $string = Randomize::chars(20)->specialCharacters()->alpha()->generate();
+        $this->assertEquals(20, strlen($string), "String with special characters");
+    }
 }

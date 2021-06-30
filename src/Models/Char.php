@@ -29,6 +29,15 @@ class Char
      */
     private $presetNumeric;
 
+    /**
+     * @var int[]
+     * (32–47 / 58–64 / 91–96 / 123–126): Special characters include all printable characters that
+     * are neither letters nor numbers. These include punctuation or technical, mathematical characters.
+     * ASCII also includes the space (a non-visible but printable character), and, therefore,
+     * does not belong to the control characters category, as one might suspect.
+     */
+    private $presetSpecialCharacters;
+
 
 
 
@@ -73,6 +82,14 @@ class Char
         $this->presetAlphaLower = range(97, 122);
         $this->presetAlphaUpper = range(65, 90);
         $this->presetNumeric = range(48, 57);
+
+        $this->presetSpecialCharacters =
+            array_merge(
+                range(32, 47),
+                range(58, 64),
+                range(91, 96),
+                range(123, 126)
+            );
     }
 
 
@@ -221,6 +238,17 @@ class Char
         $this->addPreset($this->presetAlphaLower);
         $this->addPreset($this->presetAlphaUpper);
         $this->addPreset($this->presetNumeric);
+        return $this;
+    }
+
+    /**
+     * Set the special characters
+     *
+     * @return self
+     */
+    public function specialCharacters()
+    {
+        $this->addPreset($this->presetSpecialCharacters);
         return $this;
     }
 

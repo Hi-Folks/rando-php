@@ -231,7 +231,8 @@ Method to set the type of chars (numeric, alpha, alphanumeric...):
 - _alphanumeric()_ : 'a-z', 'A-Z', '0-9';
 - _numeric()_ : '0-9';
 - _alphaLowerCase()_ : 'a-z';
-- _alphaUpperCase()_ : 'A-Z'.
+- _alphaUpperCase()_ : 'A-Z';
+- _specialCharacters()_.
 
 You have also some methods to "control" the output, for example avoid duplications:
 - unique() : it generates a string with at most one occurrence per character.
@@ -253,6 +254,15 @@ If you want to obtain a string with 20 chars, lower case and just letters ('a'-'
 $string = Randomize::chars(20)->alphaLowerCase()->unique()->generate();
 ```
 You could obtain something like this: 'nmbsjhrgdyfxwoltqkzp'.
+#### String with 20 chars, letters and special characters
+
+If you want to obtain a string with 20 chars, with letters and special characters:
+```php 
+$string = Randomize::chars(20)->specialCharacters()->generate();
+```
+You could obtain something like this: 'IOgPckeGGifrD%DRy[*!'.
+
+
 
 ### Draw random stuff
 If you have a list of values and you want to extract/select/draw one or more elements,

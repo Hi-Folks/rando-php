@@ -185,6 +185,17 @@ class Sequence
     }
 
     /**
+     * Get SpecialCharacters value
+     *
+     * @return self
+     */
+    public function specialCharacters()
+    {
+        $this->charModel->specialCharacters();
+        return $this;
+    }
+
+    /**
      * It sets lower case char set
      * @return $this
      */
