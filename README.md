@@ -265,7 +265,7 @@ You could obtain something like this: 'nmbsjhrgdyfxwoltqkzp'.
 
 If you want to obtain a string with 20 chars, with letters and special characters:
 ```php 
-$string = Randomize::chars(20)->specialCharacters()->generate();
+$string = Randomize::chars(20)->specialCharacters()->alpha()->generate();
 ```
 You could obtain something like this: 'IOgPckeGGifrD%DRy[*!'.
 

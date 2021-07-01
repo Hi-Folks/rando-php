@@ -54,6 +54,6 @@ printLn("SEQUENCE " . Randomize::chars(20)->alphaUpperCase()->generate());
 insertBreak('-');
 
 printLn("GENERATING A STRING OF 20 special characters");
-printLn("Randomize::chars(20)->specialCharacters()->generate()");
+printLn("Randomize::chars(20)->specialCharacters()->alpha()->generate()");
 printLn("SEQUENCE " . Randomize::chars(20)->alpha()->specialCharacters()->generate());
 insertBreak('-');
