@@ -232,7 +232,7 @@ Method to set the type of chars (numeric, alpha, alphanumeric...):
 - _numeric()_ : '0-9';
 - _alphaLowerCase()_ : 'a-z';
 - _alphaUpperCase()_ : 'A-Z';
-- _specialCharacters()_.
+- _specialCharacters()_ : !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
 
 You have also some methods to "control" the output, for example avoid duplications:
 - unique() : it generates a string with at most one occurrence per character.
