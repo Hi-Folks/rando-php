@@ -31,10 +31,14 @@ class Char
 
     /**
      * @var int[]
-     * (32–47 / 58–64 / 91–96 / 123–126): Special characters include all printable characters that
+     * (33–47 / 58–64 / 91–96 / 123–126): Special characters include all printable characters that
      * are neither letters nor numbers. These include punctuation or technical, mathematical characters.
      * ASCII also includes the space (a non-visible but printable character), and, therefore,
      * does not belong to the control characters category, as one might suspect.
+     * - 33-47 : !"#$%&'()*+,-./
+     * - 58-64 : :;<=>?@
+     * - 91-96 : [\]^_`
+     * - 123-126 : {|}~
      */
     private $presetSpecialCharacters;
 
@@ -85,10 +89,10 @@ class Char
 
         $this->presetSpecialCharacters =
             array_merge(
-                range(32, 47),
-                range(58, 64),
-                range(91, 96),
-                range(123, 126)
+                range(33, 47), // !"#$%&'()*+,-./
+                range(58, 64), // :;<=>?@
+                range(91, 96), // [\]^_`
+                range(123, 126) // {|}~
             );
     }
 
