@@ -76,6 +76,13 @@ You can generate an upper case char:
 Randomize::char()->alpha()->upper()->generate();
 ```
 
+
+You can generate a special character.
+A special character is one of '!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~':
+```php 
+Randomize::char()->specialCharacters()->generate();
+```
+
 ### Generate Boolean
 
 Sometimes you want to obtain a random boolean true or false (flip a coin):

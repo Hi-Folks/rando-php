@@ -1,4 +1,10 @@
 # Changelog
+## 0.2.0 - 2021-07-01
+### Add
+- Add special characters (specialCharacters() method) in Randomize::char() and Randomize::chars().
+Special characters are: !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
+  
+
 
 ## 0.1.9 - 2021-06-29
 ### Add

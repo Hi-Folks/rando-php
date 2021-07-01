@@ -41,3 +41,8 @@ echo "--- GENERATING A ALPHANUMERIC UPPERCASE CHAR" . PHP_EOL;
 echo "--- Randomize::char()->alphanumeric()->upper()->generate();". PHP_EOL;
 echo "CHAR " . Randomize::char()->alphanumeric()->upper()->generate();
 echo PHP_EOL. "-----------------".PHP_EOL;
+
+echo "--- GENERATING A SPECIAL CHARACTER" . PHP_EOL;
+echo "--- Randomize::char()->specialCharacters()->generate();". PHP_EOL;
+echo "CHAR " . Randomize::char()->specialCharacters()->generate();
+echo PHP_EOL. "-----------------".PHP_EOL;
