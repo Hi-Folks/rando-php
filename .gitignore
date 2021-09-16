@@ -6,3 +6,4 @@ coverage
 .idea
 coverage.clover
 .phpunit.result.cache
+.vscode/
