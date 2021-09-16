@@ -132,24 +132,30 @@ $randomRGB = Randomize::byte()->length(3)->generate();
 ```
 
 ### Generate a Date
-Sometimes you want to obtain a random date (default min - max range of First day of current year - Last day of current year). For example, you want to generate a random date:
+Sometimes you want to obtain a random date. For example, you want to generate a random date:
 
 ```php
 $randomDate = Randomize::datetime()->generate();
 ```
 
-Or you can set the min - max range of 01-01-2020 - 10-01-2020 , which is equivalent to ->min('01-01-2020')->max('10-01-2020'):
+By default, a date between the first day of current year to the last day of current year.
+If you want to define the range, for example a range of 01 Jan 2020 to 10 Jan 2020, which is equivalent to ->min('2020–01–01')->max('2020–01–10'):
 ```php
-$randomDate = Randomize::datetime()->min('01-01-2020')->max('10-01-2020')->generate();
+$randomDate = Randomize::datetime()->min('2020–01–01')->max('2020–01–10')->generate();
 ```
 
-You can even specify your preferred format for the random date generated, by using ->format('d-M-Y'):
+You can even specify your preferred format for the random date generated, by using _format()_ method:
 ```php
 $randomDate = Randomize::datetime()->format('d-M-Y')->generate();
 ```
+You can use _min()_ and _max()_ with _format()_:
+```php
+$randomDate = Randomize::datetime()->min('2020–01–01')->max('2020–01–10')->format('d-M-Y')->generate();
+```
+With the latest example you can obtain something like: "05-Jan-2020".
 
 ### Generate sequences
-Sometime you want to obtain some random sequences. For example, you want to roll the dice 15 times:
+Sometimes, you want to obtain some random sequences. For example, you want to roll the dice 15 times:
 
 ```php
 $randomRolls = Randomize::sequence()->min(1)->max(6)->count(15)->generate();
@@ -220,17 +226,17 @@ Yes, even both and with **no duplicates**.
 $randomChars = Randomize::sequence()->chars()->alphanumeric()->count(10)->noDuplicates()->generate();
 ```
 
-### Random Chars
+### Random String
 If you want to generate random string (alphanumeric, only letters, only numbers, with no duplication, lower case, upper case etc) you can use Random Chars generation.
 To generate a string use Randomize::chars():
 ```php
 $string = Randomize::chars()->generate();
 ```
 Default behaviour is:
-- 10 chars
-- only letters (a-z) and (A-Z)
-- lower and upper case
-- duplication is allowed (the string 'aba' has a duplication for 'a' char)
+- 10 chars;
+- only letters (a-z);
+- lowercase;
+- duplication is allowed (the string 'aba' has a duplication for 'a' char).
 
 You can change the default values with some methods and parameters.
 Method to set the type of chars (numeric, alpha, alphanumeric...):
