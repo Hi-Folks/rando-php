@@ -36,10 +36,7 @@ class Sequence
      * @var bool
      */
     private $toString = false;
-    /**
-     * @var int[]
-     */
-    private $ascii_codes = [];
+
 
 
     /**
