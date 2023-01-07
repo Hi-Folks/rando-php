@@ -28,7 +28,6 @@ use HiFolks\RandoPhp\Models\LatLong;
  */
 class Randomize
 {
-
     /**
      * Registered models with format: 'methodToLoadModel' => ClassName
      * @var mixed[] $models

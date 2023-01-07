@@ -6,7 +6,6 @@ use HiFolks\RandoPhp\Models\Sample;
 
 class Draw
 {
-
     /**
      * @param  array<int|string> $array
      * @return Sample

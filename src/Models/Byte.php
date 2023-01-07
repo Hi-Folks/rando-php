@@ -4,7 +4,6 @@ namespace HiFolks\RandoPhp\Models;
 
 class Byte
 {
-
     /**
      * @var int
      */

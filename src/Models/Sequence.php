@@ -7,7 +7,6 @@ use HiFolks\RandoPhp\Draw;
 
 class Sequence
 {
-
     /**
      * @var string
      */
