@@ -16,7 +16,7 @@ on:
 
 jobs:
     laravel-tests:
-        runs-on: {{ matrix.operating-system }}
+        runs-on: ${{ matrix.operating-system }}
 
         strategy:
             matrix:
