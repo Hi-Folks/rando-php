@@ -1,9 +1,14 @@
 # Changelog
+
+## 0.3.0 / 1.0.0 - WIP
+
+- Support for PHP 8.2, PHP 8.1 and PHP 8.0
+
 ## 0.2.0 - 2021-07-01
 ### Add
 - Add special characters (specialCharacters() method) in Randomize::char() and Randomize::chars().
 Special characters are: !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
-  
+
 
 
 ## 0.1.9 - 2021-06-29
@@ -33,7 +38,7 @@ Special characters are: !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
 
 ### Change
 - Register models in a property and load them with magic functions (thanks to @marcio-adue)
- 
+
 ## 0.1.5 - 2020-10-21
 
 ### Fix
@@ -85,14 +90,14 @@ In readme file:
 - Add generate char, thanks to @Zuruckt
 
 
-- 
+-
 
 ## 0.1.2 - 2020-07-22
 
 ### Add
 - preserveKeys() during drawing sample from an associative array
 - added some test in order to have coverage 100%
-  
+
 ### Change
 - method unique(), allowDuplicates(), noDuplicates() for sequence generation;
 
