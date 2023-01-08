@@ -24,7 +24,7 @@ jobs:
                 php-versions: [ '8.2']
                 dependency-stability: [ prefer-stable ]
 
-        name: P${{ matrix.php-versions }} - L${{ matrix.laravel }} - ${{ matrix.dependency-stability }} - ${{ matrix.operating-system}}
+        name: P${{ matrix.php-versions }} - ${{ matrix.operating-system}} - ${{ matrix.dependency-stability }}
 
         steps:
             - uses: actions/checkout@v3
