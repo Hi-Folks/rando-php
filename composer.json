@@ -44,7 +44,8 @@
             "@phpstan"
         ],
         "test": "vendor/bin/phpunit",
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "test-coverage-html": "vendor/bin/phpunit --coverage-html coverage",
+        "test-coverage": "vendor/bin/phpunit --coverage-text",
         "format": "vendor/bin/phpcs --standard=PSR12 src",
         "formatfix": "vendor/bin/phpcbf --standard=PSR12 src",
         "phpstan": "vendor/bin/phpstan"
