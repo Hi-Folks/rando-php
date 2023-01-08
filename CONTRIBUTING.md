@@ -18,7 +18,7 @@ quality to benefit the project. Many developers have different skillsets, streng
 
 ## Viability
 
-When requesting or submitting new features, first consider whether it might be useful to others. Open
+When requesting or submitting new features, first consider whether they might be useful to others. Open
 source projects are used by many developers, who may have entirely different needs to your own. Think about
 whether or not your feature is likely to be used by other users of the project.
 
@@ -40,16 +40,16 @@ Before submitting a pull request:
 
 If the project maintainer has any additional requirements, you will find them listed here.
 
-- **[PSR-2 Coding Standard](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md)** - The easiest way to apply the conventions is to install [PHP Code Sniffer](https://pear.php.net/package/PHP_CodeSniffer).
+- [PSR-12 Coding Standard](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-12-extended-coding-style-guide.md). The easiest way to check the conventions is to run the `composer run format` command. Under the hood, the command uses [PHP Code Sniffer](https://pear.php.net/package/PHP_CodeSniffer).
 
-- **Add tests!** - Your patch won't be accepted if it doesn't have tests.
+- Add tests: please add tests to your feature. Your patch won't be accepted if it doesn't have tests.
 
-- **Document any change in behaviour** - Make sure the `README.md` and any other relevant documentation are kept up-to-date.
+- Document any change in behavior: make sure the `README.md` and any other relevant documentation are kept up-to-date.
 
-- **Consider our release cycle** - We try to follow [SemVer v2.0.0](https://semver.org/). Randomly breaking public APIs is not an option.
+- Consider our release cycle: we try to follow [SemVer v2.0.0](https://semver.org/). Randomly breaking public APIs is not an option.
 
-- **One pull request per feature** - If you want to do more than one thing, send multiple pull requests.
+- One pull request per feature: if you want to do more than one thing, send multiple pull requests.
 
-- **Send coherent history** - Make sure each individual commit in your pull request is meaningful. If you had to make multiple intermediate commits while developing, please [squash them](https://www.git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Changing-Multiple-Commit-Messages) before submitting.
+- Send coherent history: please make sure each commit in your pull request is meaningful. If you had to make multiple intermediate commits while developing, please [squash them](https://www.git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Changing-Multiple-Commit-Messages) before submitting.
 
 **Happy coding**!
