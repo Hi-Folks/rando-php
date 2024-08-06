@@ -67,7 +67,7 @@ class LatLong
         $result = [];
         switch ($this->format) {
             case "array":
-                $result = array($latitude, $longitude);
+                $result = [$latitude, $longitude];
                 break;
             case "object":
                 $result = new \stdClass();

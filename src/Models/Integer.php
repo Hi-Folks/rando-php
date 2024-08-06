@@ -8,23 +8,12 @@ class Integer
     public const DEFAULT_MAX = 100;
 
     /**
-     * @var int
-     */
-    private $min;
-    /**
-     * @var int
-     */
-    private $max;
-
-    /**
      * Integer constructor.
      * @param int $min
      * @param int $max
      */
-    public function __construct(int $min = self::DEFAULT_MIN, int $max = self::DEFAULT_MAX)
+    public function __construct(private int $min = self::DEFAULT_MIN, private int $max = self::DEFAULT_MAX)
     {
-        $this->min = $min;
-        $this->max = $max;
     }
 
 

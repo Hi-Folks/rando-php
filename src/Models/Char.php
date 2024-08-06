@@ -288,6 +288,7 @@ class Char
 
     /**
      * @return $this
+     * @phpstan-ignore method.unused
      */
     private function transformLower(): self
     {
@@ -300,6 +301,7 @@ class Char
     }
     /**
      * @return $this
+     * @phpstan-ignore method.unused
      */
     private function transformUpper(): self
     {
@@ -330,7 +332,7 @@ class Char
             $this->addPreset($this->presetAlphaLower);
         }
         foreach ($this->transformersStack as $transformerCode) {
-            call_user_func(array($this , $this->transformers[$transformerCode]));
+            call_user_func([$this, $this->transformers[$transformerCode]]);
         }
 
         $rand_index = random_int(0, sizeof($this->ascii_codes) - 1);

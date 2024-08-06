@@ -1,8 +1,9 @@
 # Changelog
 
-## 0.3.0 / 1.0.0 - WIP
+## 0.3.0 -2024-08-06
 
-- Support for PHP 8.2, PHP 8.1 and PHP 8.0
+- Support for PHP 8.3, PHP 8.2, PHP 8.1 and PHP 8.0
+- Upgrade Libraries and dependencies
 
 ## 0.2.0 - 2021-07-01
 ### Add
@@ -13,7 +14,7 @@ Special characters are: !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
 
 ## 0.1.9 - 2021-06-29
 ### Add
-- Add Randomize::chars() for creating string (it is a kind of shortcut for Sequence class);
+- Add Randomize::chars() for creating a string (it is a kind of shortcut for Sequence class);
 
 
 ## 0.1.8 - 2021-03-27
