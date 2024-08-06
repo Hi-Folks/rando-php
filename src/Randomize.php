@@ -69,11 +69,10 @@ class Randomize
      * Return the model registered in $models property
      *
      * @param  string $name
-     * @param  mixed $arguments
      * @return mixed
      * @throws ModelNotFoundException
      */
-    public static function __callStatic(string $name, $arguments)
+    public static function __callStatic(string $name, mixed $arguments)
     {
         if (in_array($name, array_keys(self::$models))) {
             /*

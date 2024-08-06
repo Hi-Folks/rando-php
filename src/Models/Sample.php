@@ -12,10 +12,6 @@ namespace HiFolks\RandoPhp\Models;
 class Sample
 {
     /**
-     * @var array|mixed
-     */
-    private $array;
-    /**
      * @var int
      */
     private $count = 1;
@@ -38,9 +34,8 @@ class Sample
      *
      * @param int[]|string[]|\stdClass[] $array
      */
-    public function __construct($array = [])
+    public function __construct(private $array = [])
     {
-        $this->array = $array;
     }
 
     /**
@@ -120,7 +115,7 @@ class Sample
                     if (is_array($a)) {
                         shuffle($a);
                     }
-                } catch (\Exception | \Error $e) {
+                } catch (\Exception | \Error) {
                     return null;
                 }
 
@@ -187,6 +182,8 @@ class Sample
             }
         }
         if ($this->implode) {
+            // @TODO implode only for scalar type items
+            /** @phpstan-ignore-next-line */
             return implode(";", $results);
         } else {
             return $results;

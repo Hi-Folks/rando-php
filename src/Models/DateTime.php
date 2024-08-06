@@ -106,6 +106,6 @@ class DateTime
      */
     public function generate()
     {
-        return gmdate($this->format, rand($this->min, $this->max));
+        return gmdate($this->format, random_int($this->min, $this->max));
     }
 }
