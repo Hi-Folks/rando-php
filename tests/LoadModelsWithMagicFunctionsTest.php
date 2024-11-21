@@ -11,65 +11,65 @@ use PHPUnit\Framework\TestCase;
 class LoadModelsWithMagicFunctionsTest extends TestCase
 {
     /** @test */
-    public function load_boolean_test()
+    public function load_boolean_test(): void
     {
-        $model = Randomize::boolean();
-        $this->assertInstanceOf(Models\Boolean::class, $model);
+        $boolean = Randomize::boolean();
+        $this->assertInstanceOf(Models\Boolean::class, $boolean);
     }
 
     /** @test */
-    public function load_integer_test()
+    public function load_integer_test(): void
     {
-        $model = Randomize::integer();
-        $this->assertInstanceOf(Models\Integer::class, $model);
+        $integer = Randomize::integer();
+        $this->assertInstanceOf(Models\Integer::class, $integer);
     }
 
     /** @test */
-    public function load_float_test()
+    public function load_float_test(): void
     {
-        $model = Randomize::float();
-        $this->assertInstanceOf(Models\FloatModel::class, $model);
+        $floatModel = Randomize::float();
+        $this->assertInstanceOf(Models\FloatModel::class, $floatModel);
     }
 
     /** @test */
-    public function load_byte_test()
+    public function load_byte_test(): void
     {
-        $model = Randomize::byte();
-        $this->assertInstanceOf(Models\Byte::class, $model);
+        $byte = Randomize::byte();
+        $this->assertInstanceOf(Models\Byte::class, $byte);
     }
 
     /** @test */
-    public function load_sequence_test()
+    public function load_sequence_test(): void
     {
-        $model = Randomize::sequence();
-        $this->assertInstanceOf(Models\Sequence::class, $model);
+        $sequence = Randomize::sequence();
+        $this->assertInstanceOf(Models\Sequence::class, $sequence);
     }
 
     /** @test */
-    public function load_datetime_test()
+    public function load_datetime_test(): void
     {
-        $model = Randomize::datetime();
-        $this->assertInstanceOf(Models\DateTime::class, $model);
+        $dateTime = Randomize::datetime();
+        $this->assertInstanceOf(Models\DateTime::class, $dateTime);
     }
 
     /** @test */
-    public function load_char_test()
+    public function load_char_test(): void
     {
-        $model = Randomize::char();
-        $this->assertInstanceOf(Models\Char::class, $model);
+        $char = Randomize::char();
+        $this->assertInstanceOf(Models\Char::class, $char);
     }
 
     /** @test */
-    public function load_latlong_test()
+    public function load_latlong_test(): void
     {
-        $model = Randomize::latlong();
-        $this->assertInstanceOf(Models\LatLong::class, $model);
+        $latLong = Randomize::latlong();
+        $this->assertInstanceOf(Models\LatLong::class, $latLong);
     }
 
     /** @test */
-    public function model_not_found_exception_test()
+    public function model_not_found_exception_test(): void
     {
         $this->expectException(ModelNotFoundException::class);
-        $model = Randomize::nonExistingModel();
+        Randomize::nonExistingModel();
     }
 }

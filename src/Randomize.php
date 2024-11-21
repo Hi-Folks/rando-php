@@ -32,7 +32,7 @@ class Randomize
      * Registered models with format: 'methodToLoadModel' => ClassName
      * @var mixed[] $models
      */
-    private static $models = [
+    private static array $models = [
         'boolean' => Boolean::class,
         //'integer' => IntModel::class,
         'float' => FloatModel::class,
@@ -47,19 +47,19 @@ class Randomize
     /**
      * @param int $min
      * @param int $max
-     * @return IntModel
      */
-    public static function integer($min = IntModel::DEFAULT_MIN, $max = IntModel::DEFAULT_MAX)
-    {
+    public static function integer(
+        $min = IntModel::DEFAULT_MIN,
+        $max = IntModel::DEFAULT_MAX
+    ): \HiFolks\RandoPhp\Models\Integer {
         return new IntModel($min, $max);
     }
 
 
     /**
      * @param int $count
-     * @return Chars
      */
-    public static function chars($count = 10)
+    public static function chars($count = 10): \HiFolks\RandoPhp\Models\Chars
     {
         return new Chars($count);
     }
@@ -68,7 +68,6 @@ class Randomize
     /**
      * Return the model registered in $models property
      *
-     * @param  string $name
      * @return mixed
      * @throws ModelNotFoundException
      */

@@ -8,9 +8,8 @@ class Draw
 {
     /**
      * @param  array<int|string> $array
-     * @return Sample
      */
-    public static function sample($array = [])
+    public static function sample($array = []): \HiFolks\RandoPhp\Models\Sample
     {
         return new Sample($array);
     }

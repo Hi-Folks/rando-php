@@ -9,8 +9,6 @@ class Integer
 
     /**
      * Integer constructor.
-     * @param int $min
-     * @param int $max
      */
     public function __construct(private int $min = self::DEFAULT_MIN, private int $max = self::DEFAULT_MAX)
     {
@@ -21,7 +19,6 @@ class Integer
      * Set the greatest value to generate
      *
      * @param  int $max greatest value
-     * @return self
      */
     public function max(int $max): self
     {
@@ -33,7 +30,6 @@ class Integer
      * Set the smallest value to generate
      *
      * @param  int $min smallest value
-     * @return self
      */
     public function min(int $min): self
     {
@@ -44,10 +40,6 @@ class Integer
     /**
      * Set the range (min and max)
      * Calling range(1,10), it is equivalent of ->min(1)->max(10)
-     *
-     * @param  int $min
-     * @param  int $max
-     * @return self
      */
     public function range(int $min, int $max): self
     {

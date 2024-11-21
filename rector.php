@@ -15,10 +15,10 @@ return RectorConfig::configure()
         php80: true,
     )
     ->withPreparedSets(
-        //deadCode: true,
-        //codeQuality: true,
-        //earlyReturn: true,
-        //typeDeclarations: true,
-        //privatization: true,
-        // naming: true
+        deadCode: true,
+        codeQuality: true,
+        earlyReturn: true,
+        typeDeclarations: true,
+        privatization: true,
+        naming: true
     );

@@ -7,15 +7,9 @@ use LogicException;
 
 class FloatModel
 {
-    /**
-     * @var float
-     */
-    private $min = 0.0;
+    private float|int $min = 0.0;
 
-    /**
-     * @var float
-     */
-    private $max = 1.0;
+    private float|int $max = 1.0;
 
     /**
      * @var int
@@ -27,7 +21,6 @@ class FloatModel
      *
      * @param  int|float $max greatest value
      * @throws InvalidArgumentException
-     * @return self
      */
     public function max($max): self
     {
@@ -44,7 +37,6 @@ class FloatModel
      *
      * @param  int|float $min smallest value
      * @throws InvalidArgumentException
-     * @return self
      */
     public function min($min): self
     {
@@ -60,7 +52,6 @@ class FloatModel
      * Sets the number of decimals (precision)
      *
      * @param  int $decimals number of decimals (precision)
-     * @return self
      */
     public function decimals(int $decimals): self
     {
@@ -80,7 +71,6 @@ class FloatModel
      *
      * @param  int|float $min
      * @param  int|float $max
-     * @return self
      */
     public function range($min, $max): self
     {

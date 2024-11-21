@@ -6,15 +6,10 @@ use HiFolks\RandoPhp\Randomize;
 
 class LatLong
 {
-    /**
-     * @var string
-     */
-    private $format = "array";
+    private string $format = "array";
 
     /**
      * Set output format to array.
-     *
-     * @return self
      */
     public function asArray(): self
     {
@@ -24,8 +19,6 @@ class LatLong
 
     /**
      * Set output format to object.
-     *
-     * @return self
      */
     public function asObject(): self
     {
@@ -35,8 +28,6 @@ class LatLong
 
     /**
      * Set output format to latitude.
-     *
-     * @return self
      */
     public function asLatitude(): self
     {
@@ -46,8 +37,6 @@ class LatLong
 
     /**
      * Set output format to longitude.
-     *
-     * @return self
      */
     public function asLongitude(): self
     {
