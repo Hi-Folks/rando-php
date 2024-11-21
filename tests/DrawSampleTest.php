@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 class DrawSampleTest extends TestCase
 {
     /** @test */
-    public function random_extract()
+    public function random_extract(): void
     {
         $array = [1,2,3,4,5,6,7,8,9];
         $count = 5;
@@ -20,7 +20,7 @@ class DrawSampleTest extends TestCase
         $this->assertSame($count, count($sampleKeys));
     }
     /** @test */
-    public function random_extract_duplicates()
+    public function random_extract_duplicates(): void
     {
         $array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
         $count = 5;
@@ -30,7 +30,7 @@ class DrawSampleTest extends TestCase
     }
 
     /** @test */
-    public function random_extract_keys()
+    public function random_extract_keys(): void
     {
         $array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
         $count = 5;
@@ -40,10 +40,9 @@ class DrawSampleTest extends TestCase
     }
 
     /** @test */
-    public function random_extract_keys_with_empty_stuff()
+    public function random_extract_keys_with_empty_stuff(): void
     {
         $array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-        $count = 5;
         $sampleKeys = Draw::sample($array)->count(0)->extractKeys();
         $this->assertSame(null, $sampleKeys, "Null for count 0");
         $this->assertEmpty($sampleKeys, "Check extract key with 0 count");
@@ -52,7 +51,7 @@ class DrawSampleTest extends TestCase
     }
 
     /** @test */
-    public function random_extract_implode()
+    public function random_extract_implode(): void
     {
         $array = [1,2,3,4,5,6,7,8,9];
         $count = 5;
@@ -61,7 +60,7 @@ class DrawSampleTest extends TestCase
     }
 
     /** @test */
-    public function random_extract_preservekeys()
+    public function random_extract_preservekeys(): void
     {
         $array = range(1, 100);
         $count = 5;
@@ -71,7 +70,7 @@ class DrawSampleTest extends TestCase
     }
 
     /** @test */
-    public function random_snap()
+    public function random_snap(): void
     {
         $array = ["testa" => "Testa", "croce" => "Croce"];
 

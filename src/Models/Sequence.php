@@ -7,46 +7,22 @@ use HiFolks\RandoPhp\Draw;
 
 class Sequence
 {
-    /**
-     * @var string
-     */
-    private $type = "int";
-    /**
-     * @var int
-     */
-    private $count = 10;
-    /**
-     * @var int
-     */
-    private $min = 0;
-    /**
-     * @var int
-     */
-    private $max = 10;
-    /**
-     * @var bool
-     */
-    private $unique = false;
-    /**
-     * @var bool
-     */
-    private $implode = false;
-    /**
-     * @var bool
-     */
-    private $toString = false;
+    private string $type = "int";
+    private int $count = 10;
+    private int $min = 0;
+    private int $max = 10;
+    private bool $unique = false;
+    private bool $implode = false;
+    private bool $toString = false;
 
 
 
-    /**
-     * @var Char
-     */
-    private $charModel;
+    private ?\HiFolks\RandoPhp\Models\Char $char = null;
 
     /**
      * @return $this
      */
-    public function integer()
+    public function integer(): static
     {
         $this->type("int");
         return $this;
@@ -60,7 +36,7 @@ class Sequence
      */
     public function chars(): self
     {
-        $this->charModel = new Char();
+        $this->char = new Char();
         $this->type = "char";
         return $this;
     }
@@ -70,10 +46,9 @@ class Sequence
      * [1,2,4,7,3] is $unique === true, no duplicates
      * [1,4,3,4,3] is $unique === false, with duplicates
      *
-     * @param  bool $unique
      * @return $this
      */
-    public function unique($unique = true): self
+    public function unique(bool $unique = true): self
     {
         $this->unique = $unique;
         return $this;
@@ -98,8 +73,6 @@ class Sequence
     /**
      * Set the output. The extract method instead of returning an array,
      * it returns a string with items separated by ","
-     *
-     * @param bool $implode
      */
     public function implode(bool $implode = true): self
     {
@@ -108,7 +81,6 @@ class Sequence
     }
 
     /**
-     * @param  int $min
      * @return $this
      */
     public function min(int $min): self
@@ -118,7 +90,6 @@ class Sequence
     }
 
     /**
-     * @param  int $max
      * @return $this
      */
     public function max(int $max): self
@@ -128,7 +99,6 @@ class Sequence
     }
 
     /**
-     * @param  int $count
      * @return $this
      */
     public function count(int $count): self
@@ -138,7 +108,6 @@ class Sequence
     }
 
     /**
-     * @param  string $type
      * @return $this
      */
     public function type(string $type): self
@@ -149,45 +118,37 @@ class Sequence
 
     /**
      * Set the alpha value to generate
-     *
-     * @return self
      */
-    public function alpha()
+    public function alpha(): static
     {
-        $this->charModel->alpha();
+        $this->char->alpha();
         return $this;
     }
 
     /**
      * Set the numeric value to generate
-     *
-     * @return self
      */
-    public function numeric()
+    public function numeric(): static
     {
-        $this->charModel->numeric();
+        $this->char->numeric();
         return $this;
     }
 
     /**
      * Get Alphanumeric value
-     *
-     * @return self
      */
-    public function alphanumeric()
+    public function alphanumeric(): static
     {
-        $this->charModel->alphanumeric();
+        $this->char->alphanumeric();
         return $this;
     }
 
     /**
      * Get SpecialCharacters value
-     *
-     * @return self
      */
-    public function specialCharacters()
+    public function specialCharacters(): static
     {
-        $this->charModel->specialCharacters();
+        $this->char->specialCharacters();
         return $this;
     }
 
@@ -197,25 +158,21 @@ class Sequence
      */
     public function alphaLowerCase(): self
     {
-        $this->charModel->alphaLowerCase();
+        $this->char->alphaLowerCase();
         return $this;
     }
 
     /**
      * It sets upper case char set
-     * @return self
      */
     public function alphaUpperCase(): self
     {
-        $this->charModel->alphaUpperCase();
+        $this->char->alphaUpperCase();
         return $this;
     }
 
     /**
      * Get String
-     *
-     * @param bool $toString
-     * @return self
      */
     public function asString(bool $toString = true): self
     {
@@ -230,7 +187,7 @@ class Sequence
      * @return int[]|string[]|string
      * @throws \Exception
      */
-    public function generate()
+    public function generate(): string|array
     {
         $result = [];
 
@@ -247,32 +204,33 @@ class Sequence
                 break;
 
             case "char":
-                if ($this->charModel->hasNoAsciiCodes()) {
-                    $this->charModel->alphaLowerCase();
+                if ($this->char->hasNoAsciiCodes()) {
+                    $this->char->alphaLowerCase();
                 }
                 if ($this->unique) {
                     $intArrResult =
-                        Draw::sample($this->charModel->getAsciiCodes())
+                        Draw::sample($this->char->getAsciiCodes())
                             ->noDuplicates()
                             ->count($this->count)
                             ->extract();
-                    for ($i = 0; $i < sizeof($intArrResult); $i++) {
+                    $counter = count($intArrResult);
+                    for ($i = 0; $i < $counter; $i++) {
                         $result[] = chr($intArrResult[$i]);
                     }
                 } else {
                     for ($i = 0; $i < $this->count; $i++) {
-                        $result[] = $this->charModel->generate();
+                        $result[] = $this->char->generate();
                     }
                 }
                 break;
         }
-
         if ($this->implode) {
             return implode(";", $result);
-        } elseif ($this->toString) {
-            return implode("", $result);
-        } else {
-            return $result;
         }
+
+        if ($this->toString) {
+            return implode("", $result);
+        }
+        return $result;
     }
 }

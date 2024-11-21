@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 class RandomByteTest extends TestCase
 {
     /** @test */
-    public function random_byte()
+    public function random_byte(): void
     {
         $byte = Randomize::byte()->generate();
         $this->assertIsString($byte, "Is String");

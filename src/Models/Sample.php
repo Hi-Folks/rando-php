@@ -11,22 +11,10 @@ namespace HiFolks\RandoPhp\Models;
  */
 class Sample
 {
-    /**
-     * @var int
-     */
-    private $count = 1;
-    /**
-     * @var bool
-     */
-    private $unique = true;
-    /**
-     * @var bool
-     */
-    private $implode = false;
-    /**
-     * @var bool
-     */
-    private $preserveKeys = false;
+    private int $count = 1;
+    private bool $unique = true;
+    private bool $implode = false;
+    private bool $preserveKeys = false;
 
 
     /**
@@ -41,10 +29,9 @@ class Sample
     /**
      * Number of items to "extract"
      *
-     * @param  int $count
      * @return $this
      */
-    public function count($count = 1)
+    public function count(int $count = 1): static
     {
         $this->count = $count;
         return $this;
@@ -63,10 +50,9 @@ class Sample
     /**
      * Sets the unique attribute
      *
-     * @param  bool $unique
      * @return $this
      */
-    public function unique($unique = true): self
+    public function unique(bool $unique = true): self
     {
         $this->unique = $unique;
         return $this;
@@ -74,20 +60,16 @@ class Sample
 
     /**
      * Allow extract duplicates from the original array
-     *
-     * @return $this
      */
-    public function allowDuplicates()
+    public function allowDuplicates(): \HiFolks\RandoPhp\Models\Sample
     {
         return $this->unique(false);
     }
 
     /**
      * No duplicates from the original array
-     *
-     * @return $this
      */
-    public function noDuplicates()
+    public function noDuplicates(): \HiFolks\RandoPhp\Models\Sample
     {
         return $this->unique(true);
     }
@@ -97,7 +79,7 @@ class Sample
      *
      * @return int[]|string[]|int|string|null
      */
-    public function extractKeys()
+    public function extractKeys(): array|null|int|string
     {
         $size = count($this->array);
         if ($size >= 1) {
@@ -108,30 +90,24 @@ class Sample
                     $result[] = $keys[random_int(0, count($keys) - 1)];
                 }
                 return $result;
-            } else {
-                $a = null;
-                try {
-                    $a = array_rand($this->array, $this->count);
-                    if (is_array($a)) {
-                        shuffle($a);
-                    }
-                } catch (\Exception | \Error) {
-                    return null;
-                }
-
-                return $a;
             }
-        } else {
-            return null;
+            $a = null;
+            try {
+                $a = array_rand($this->array, $this->count);
+                if (is_array($a)) {
+                    shuffle($a);
+                }
+            } catch (\Exception | \Error) {
+                return null;
+            }
+            return $a;
         }
+        return null;
     }
 
     /**
      * Set the output. The extract method instead of returning an array,
      * it returns a string with items separated by ","
-     *
-     * @param  bool $implode
-     * @return Sample
      */
     public function implode(bool $implode = true): self
     {
@@ -153,10 +129,9 @@ class Sample
      * Return just 1 element (the key) from array
      * @return int|int[]|string|string[]|null
      */
-    public function snapKey()
+    public function snapKey(): int|string|array|null
     {
-        $key =  $this->count(1)->preserveKeys()->extractKeys();
-        return $key;
+        return $this->count(1)->preserveKeys()->extractKeys();
     }
 
 
@@ -166,27 +141,24 @@ class Sample
      * @return int[]|string[]|\stdClass[]|string
      * @throws \Exception
      */
-    public function extract()
+    public function extract(): string|array
     {
         $keys = $this->extractKeys();
         $results = [];
         foreach ((array) $keys as $key) {
             if (! $this->unique) {
                 $results[] = $this->array[$key];
+            } elseif ($this->preserveKeys) {
+                $results[$key] = $this->array[$key];
             } else {
-                if ($this->preserveKeys) {
-                    $results[$key] = $this->array[$key];
-                } else {
-                    $results[] = $this->array[$key];
-                }
+                $results[] = $this->array[$key];
             }
         }
         if ($this->implode) {
             // @TODO implode only for scalar type items
             /** @phpstan-ignore-next-line */
             return implode(";", $results);
-        } else {
-            return $results;
         }
+        return $results;
     }
 }

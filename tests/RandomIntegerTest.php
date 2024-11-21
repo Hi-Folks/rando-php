@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 class RandomIntegerTest extends TestCase
 {
     /** @test */
-    public function random_integer()
+    public function random_integer(): void
     {
         $number = Randomize::integer()->max(5)->generate();
         $this->assertGreaterThanOrEqual(0, $number, "Check min number");
@@ -23,7 +23,7 @@ class RandomIntegerTest extends TestCase
         $this->assertIsInt($number, "Check is integer");
     }
     /** @test */
-    public function random_integer_min_max()
+    public function random_integer_min_max(): void
     {
         $min = 90;
         $max = 95;
@@ -44,7 +44,7 @@ class RandomIntegerTest extends TestCase
     }
 
     /** @test */
-    public function random_integer_min_max_wrong()
+    public function random_integer_min_max_wrong(): void
     {
         $min = 50;
         $max = 30;

@@ -12,7 +12,7 @@ class RandomSequenceTest extends TestCase
      *
      * @test
      */
-    public function random_sequence()
+    public function random_sequence(): void
     {
         $array = Randomize::sequence()->generate();
         $this->assertIsArray($array, "Check is array");
@@ -23,7 +23,7 @@ class RandomSequenceTest extends TestCase
      *
      * @test
      */
-    public function random_count_sequence()
+    public function random_count_sequence(): void
     {
         $array = Randomize::sequence()->count(7)->generate();
         $this->assertIsArray($array, "Check is array");
@@ -35,7 +35,7 @@ class RandomSequenceTest extends TestCase
      *
      * @test
      */
-    public function random_char_sequence()
+    public function random_char_sequence(): void
     {
         $array = Randomize::sequence()->chars()->generate();
         $this->assertIsArray($array, "Char sequence check is array");
@@ -46,7 +46,7 @@ class RandomSequenceTest extends TestCase
      *
      * @test
      */
-    public function random_count_char_sequence()
+    public function random_count_char_sequence(): void
     {
         $array = Randomize::sequence()->chars()->count(7)->generate();
         $this->assertIsArray($array, "Char sequence check is array");
@@ -56,7 +56,7 @@ class RandomSequenceTest extends TestCase
     /**
      * @test
      */
-    public function random_no_duplicate_char_sequence()
+    public function random_no_duplicate_char_sequence(): void
     {
         $array = Randomize::sequence()->chars()->count(7)->noDuplicates()->generate();
         $arrryUnique = array_unique($array);
@@ -66,7 +66,7 @@ class RandomSequenceTest extends TestCase
     /**
      * @test
      */
-    public function random_numeric_char_sequence()
+    public function random_numeric_char_sequence(): void
     {
         $len = 5;
         $string = Randomize::sequence()->chars()->asString()->numeric()->count($len)->generate();
@@ -102,7 +102,7 @@ class RandomSequenceTest extends TestCase
      *
      * @test
      */
-    public function random_rollthedice()
+    public function random_rollthedice(): void
     {
         $count = 10;
         $min = 1;
@@ -138,7 +138,7 @@ class RandomSequenceTest extends TestCase
      *
      * @test
      */
-    public function random_tombola()
+    public function random_tombola(): void
     {
         $count = 90;
         $min = 1;
@@ -159,7 +159,7 @@ class RandomSequenceTest extends TestCase
      *
      * @test
      */
-    public function random_sequence_implode()
+    public function random_sequence_implode(): void
     {
         $min = 1;
         $max = 10;
@@ -173,7 +173,7 @@ class RandomSequenceTest extends TestCase
      *
      * @test
      */
-    public function random_sequence_asString()
+    public function random_sequence_asString(): void
     {
         $min = 1;
         $max = 10;

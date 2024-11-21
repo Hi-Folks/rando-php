@@ -8,27 +8,27 @@ use PHPUnit\Framework\TestCase;
 class RandomDateTimeTest extends TestCase
 {
     /** @test */
-    public function random_datetime()
+    public function random_datetime(): void
     {
         $datetime = Randomize::datetime()->generate();
         $this->assertIsString($datetime, "Is String");
     }
     /** @test */
-    public function random_datetime_min_max()
+    public function random_datetime_min_max(): void
     {
         $datetime = Randomize::datetime()->min('01-10-2020')->max('10-10-2020')->generate();
         $this->assertIsString($datetime, "Min/Max working");
     }
 
     /** @test */
-    public function random_datetime_format()
+    public function random_datetime_format(): void
     {
         $year = Randomize::datetime()->min('01-10-2020')->max('10-10-2020')->format("Y")->generate();
         $this->assertEquals("2020", $year);
     }
 
     /** @test */
-    public function random_datetime_range_format()
+    public function random_datetime_range_format(): void
     {
         $month = Randomize::datetime()->range('01-10-2020', '30-10-2020')->format("m")->generate();
         $this->assertSame("10", $month, "Extracting the right month");

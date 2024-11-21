@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 class RandomBooleanTest extends TestCase
 {
     /** @test */
-    public function random_boolean()
+    public function random_boolean(): void
     {
         $boolean = Randomize::boolean()->generate();
         $this->assertGreaterThanOrEqual(0, $boolean, "Check min number - boolean");

@@ -4,14 +4,10 @@ namespace HiFolks\RandoPhp\Models;
 
 class Byte
 {
-    /**
-     * @var int
-     */
-    private $length = 8;
+    private int $length = 8;
 
 
     /**
-     * @param  int $length
      * @return $this
      */
     public function length(int $length): self
@@ -21,7 +17,6 @@ class Byte
     }
 
     /**
-     * @return string
      * @throws \Exception
      */
     public function generate(): string

@@ -1,14 +1,14 @@
 <?php
-require_once "./vendor/autoload.php";
+require_once __DIR__ . "/vendor/autoload.php";
 
 use HiFolks\RandoPhp\Randomize;
 
-function printLn($str)
+function printLn(string $str): void
 {
     echo $str . PHP_EOL;
 }
 
-function insertBreak($char, $duplicates = 15)
+function insertBreak($char, $duplicates = 15): void
 {
     echo str_repeat($char, $duplicates) . PHP_EOL;
 }

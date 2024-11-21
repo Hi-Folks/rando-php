@@ -10,7 +10,7 @@ class RandomCharsTest extends TestCase
     /**
      * @test
      */
-    public function random_sequence()
+    public function random_sequence(): void
     {
         $string = Randomize::chars()->generate();
         $this->assertIsString($string, "Check is String");
@@ -20,7 +20,7 @@ class RandomCharsTest extends TestCase
     /**
      * @test
      */
-    public function random_count_sequence()
+    public function random_count_sequence(): void
     {
         $string = Randomize::chars()->count(7)->generate();
         $this->assertIsString($string, "Check is String");
@@ -33,7 +33,7 @@ class RandomCharsTest extends TestCase
     /**
      * @test
      */
-    public function random_char_sequence()
+    public function random_char_sequence(): void
     {
         $string = Randomize::chars()->generate();
         $this->assertIsString($string, "Char sequence check is String");
@@ -42,7 +42,7 @@ class RandomCharsTest extends TestCase
     /**
      * @test
      */
-    public function random_no_duplicate_char_sequence()
+    public function random_no_duplicate_char_sequence(): void
     {
         $string = Randomize::chars(7)->noDuplicates()->generate();
         $arrayUnique = array_unique(str_split($string));
@@ -56,7 +56,7 @@ class RandomCharsTest extends TestCase
     /**
      * @test
      */
-    public function random_numeric_char_sequence()
+    public function random_numeric_char_sequence(): void
     {
         $len = 5;
         $string = Randomize::chars()->numeric()->count($len)->generate();
@@ -88,7 +88,7 @@ class RandomCharsTest extends TestCase
     /**
      * @test
      */
-    public function random_special_characters()
+    public function random_special_characters(): void
     {
         $string = Randomize::chars(20)->specialCharacters()->alpha()->generate();
         $this->assertEquals(20, strlen($string), "String with special characters");
