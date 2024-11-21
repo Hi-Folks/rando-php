@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.1 - 2024-11-21
+
+- Welcome PHP 8.4
+- Introducing Rector PHP
+
 ## 0.3.0 -2024-08-06
 
 - Support for PHP 8.3, PHP 8.2, PHP 8.1 and PHP 8.0
